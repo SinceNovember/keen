@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--         博客类别映射 -->
+        <mapper namespace="com.liu.dao.BlogTypeDao">
+        <resultMap id="BlogTypeResult" type="BlogType">
+        <id property="id" column="id" />
+        <result property="typeName" column="typeName"/>
+        <result property="orderNum" column="orderNum"/>
+        <result property="blogCount" column="blogCount"/>
+    	</resultMap>
+    	<insert id="addBlogType" parameterType="BlogType" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO t_blogtype VALUES(null,#{typeName},#{orderNum})
+	</insert>
+<!--     	<trim prefix="values(" suffix=")" suffixOverrides=","> -->
+<!--     	        <if test="typeName!=null and typeName!=''"> -->
+               
+<!--             </if> -->
+<!--             <if test="orderNum!=null and orderNum!=''"> -->
+               
+<!--             </if>) -->
+<!--     	</trim> -->
+    	<delete id="deleteBlogType" parameterType="Integer">
+    	    DELETE FROM t_blogtype WHERE id=#{id}
+    	</delete>
+    	    <update id="updateBlogType" parameterType="BlogType">
+       		 update db_blog.t_blogtype
+        <set >
+            <if test="typeName!=null and typeName!=''">
+                typeName = #{typeName},
+            </if>
+            <if test="orderNum!=null and orderNum!=''">
+                orderNum = #{orderNum},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+     <select id="getById" parameterType="java.lang.Integer" resultMap="BlogTypeResult" >
+        SELECT * from t_blogtype
+            where id = #{id}
+    </select>
+    <select id="listByPage" parameterType="Map" resultMap="BlogTypeResult">
+        SELECT * from t_blogtype
+         <if test="start!=null and pageSize!=null">
+        limit #{start},#{pageSize}
+        </if>
+    </select>
+    <select id="getTotal" resultType="Long">
+        SELECT COUNT(id) from t_blogtype
+    </select>
+    <select id="getBlogTypeData" resultMap="BlogTypeResult">
+        SELECT t2.*,
+        COUNT(t1.id) AS blogCount
+        FROM t_blog t1
+        RIGHT JOIN t_blogtype t2 ON t1.type_id=t2.id
+        GROUP BY t2.typeName
+        ORDER BY t2.orderNum
+    </select>
+        </mapper>

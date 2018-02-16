@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 	博客内容映射 -->
+<mapper namespace="com.liu.dao.BlogDao">
+	<resultMap type="Blog" id="BlogResult">
+		<id property="id" column="id"/>
+		<result property="title" column="title"/>
+		<result property="summary" column="summary"/>
+		<result property="releaseDate" column="releaseDate"/>
+		<result property="clickHit" column="clickHit"/>
+		<result property="replyHit" column="replyHit"/>
+		<result property="content" column="content"/>
+		<result property="keyWord" column="keyWord"/>
+		
+		<association property="blogType" column="type_id" select="com.liu.dao.BlogTypeDao.getById">
+		</association>
+	</resultMap>
+<!-- 	获取博客文章的日期及博客个数 -->
+    <select id="getBlogData" resultMap="BlogResult">
+        SELECT 
+        DATE_FORMAT(releaseDate,'%Y年%m月') AS releaseDateStr,
+        COUNT(*) AS blogCount
+        FROM 
+        t_blog
+        GROUP BY DATE_FORMAT(releaseDate,'%Y年%m月')
+        ORDER BY releaseDate DESC
+    </select>
+<!--     分页查询 -->
+    <select id="listBlog" parameterType="Map" resultMap="BlogResult">
+        SELECT * FROM t_blog 
+		 <where>
+			<if test="title!=null and title!=''">
+		 		and title like #{title}
+		 	</if>
+		 	<if test="typeId!=null and typeId!=''">
+		 		and type_id=#{typeId}
+		 	</if>
+		 	<if test="releaseDateStr!=null and releaseDateStr!=''">
+		 		and DATE_FORMAT(releaseDate,'%Y年%m月')=#{releaseDateStr}
+		 	</if>
+		 </where>
+		 ORDER BY releaseDate DESC
+		 <if test="start!=null and pageSize!=null">
+		 	limit #{start},#{pageSize}
+		 </if>
+    </select>
+    <select id="getAllBlog" resultMap="BlogResult">
+        SELECT * FROM t_blog ORDER BY releaseDate DESC
+    </select>
+<!--      	获取总数 -->
+    <select id="getTotal" parameterType="Map" resultType="Long">
+        SELECT COUNT(*) FROM t_blog
+        <where>
+            <if test="title!=null and title!=''">
+                and title like #{title}
+            </if>
+            <if test="typeId!=null and typeId!=''">
+                and type_id=#{typeId}
+            </if>
+            <if test="releaseDateStr!=null and releaseDateStr!=''">
+                and DATE_FORMAT(releaseDate,'%Y年%m月')=#{releaseDateStr}
+            </if>
+        </where>
+    </select>
+   <select id="findById" parameterType="Integer" resultMap="BlogResult">
+		SELECT * FROM t_blog WHERE id=#{id}
+	</select>
+    <update id="update" parameterType="Blog">
+        update t_blog
+        <set>
+            <if test="title!=null and title!=''">
+                title=#{title},
+            </if>
+            <if test="summary!=null and summary!=''">
+                summary=#{summary},
+            </if>
+            <if test="content!=null and content!=''">
+		 		content=#{content},
+		 	</if>
+		 	<if test="blogType.id!=null">
+				type_id=#{blogType.id},
+			</if>
+			<if test="clickHit!=null">
+				clickHit=#{clickHit},
+			</if>
+			<if test="replyHit!=null">
+				replyHit=#{replyHit},
+			</if>
+			<if test="keyWord!=null and keyWord!=''">
+		 		keyWord=#{keyWord},
+		 	</if>
+		</set>
+		where id=#{id}
+    </update>
+    <select id="getPrevBlog" parameterType="Date" resultMap="BlogResult">
+        SELECT * FROM t_blog WHERE releaseDate &gt;#{releaseDate}  ORDER BY releaseDate ASC  LIMIT 1
+    </select>
+      <select id="getNextBlog" parameterType="Date" resultMap="BlogResult">
+        SELECT * FROM t_blog WHERE releaseDate &lt;#{releaseDate}  ORDER BY releaseDate DESC LIMIT 1
+    </select>
+    <insert id="addBlog" keyProperty="id" parameterType="Blog" useGeneratedKeys="true">  
+        INSERT INTO t_blog VALUES(null,#{title},#{summary},now(),0,0,#{content},#{keyWord},#{blogType.id}) 
+<!-- 	insert into t_blogtype (typeName,orderNum) values(#typeName,#orderNum) -->
+    </insert>  
+<!--     <insert id="addBlog"  parameterType="Blog" > -->
+<!--        INSERT INTO t_blog(id,title,type_id) VALUES(#{id},#{title},#{blogType.id}) -->
+<!--     </insert> -->
+    <delete id="deleteBlog" parameterType="Integer">
+        delete from t_blog where id=#{id}
+    </delete>
+    <select id="getBlogByTypeId" parameterType="Integer" resultType="Integer">
+        select count(*) from t_blog where type_id=#{typeId}
+    </select>
+    <select id="listBlogByTypeId" parameterType="Map" resultMap="BlogResult">
+        SELECT * FROM t_blog
+         Where type_id=#{typeId}
+		 ORDER BY releaseDate DESC
+		 <if test="start!=null and pageSize!=null">
+		 	limit #{start},#{pageSize}
+		 </if>
+    </select>
+    <select id="getTotalByType" parameterType="Integer" resultType="Long">
+        SELECT COUNT(*) FROM t_blog
+       Where type_id=#{typeId}
+    </select>
+<!--     <select id="listByPage" parameterType="Map" resultMap="BlogResult"> -->
+<!--          SELECT * FROM t_blog  -->
+		
+<!-- 		 ORDER BY releaseDate DESC -->
+<!-- 		 	limit #{start1},#{pageSize} -->
+<!-- 		 </if> -->
+<!--     </select> -->
+</mapper>
