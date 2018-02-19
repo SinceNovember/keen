@@ -33,7 +33,7 @@ Properties下的Project Facets中点击Dynamic Web Module 以及Java 后点击Ap
 Properties下的Deployment Assembly中Add Folder下的src->main->webapp文件夹.<br>
 ![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/4.png)
 第五步:<br>
-Properties下的Deployment Assembly中的Add Jar包文件，全选所有.<br>
+Properties下的Deployment Assembly中的Add->Java Build Path Entries->全选所有.<br>
 ![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/5.png)
 ### webapp文件夹解释
 admin文件夹:<br>
