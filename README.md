@@ -24,7 +24,7 @@ jquery效果:`粒子效果`<br>
 将webapp下的WEB-INF下的lib的三个文件进行导入.<br>
 ![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/1.png)
 第二步:<br>
-进行添加服务器：Properties下的Java BuildPath的Libraries中的Add Library中进行添加服务器<br>
+进行添加服务器：Properties下的Java BuildPath的Libraries中的Add Library下的Server Runtime中进行添加服务器<br>
 ![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/2.png)
 第三步:<br>
 Properties下的Project Facets中点击Dynamic Web Module 以及Java 后点击Apply.<br>
