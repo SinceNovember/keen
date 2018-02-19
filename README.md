@@ -30,7 +30,7 @@ jquery效果:`粒子效果`<br>
 Properties下的Project Facets中点击Dynamic Web Module 以及Java 后点击Apply.<br>
 ![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/3.png)
 第四步:<br>
-Properties下的Deployment Assembly中Add webapp文件夹.<br>
+Properties下的Deployment Assembly中Add Folder下的src->main->webapp文件夹.<br>
 ![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/4.png)
 第五步:<br>
 Properties下的Deployment Assembly中的Add Jar包文件，全选所有.<br>
