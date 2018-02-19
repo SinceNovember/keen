@@ -17,7 +17,23 @@ jquery效果:`粒子效果`<br>
 文章分类，显示后台编写的博客，可对文章进行评论，点击量以及阅读量统计<br>
 上传图片，关于博主的信息，利用luncene对全文进行检索,并且添加了粒子效果<br>
 ### 使用方法
-下载文件，导入项目，并将WEB-INF下面lib下面的三个jar导入项目，将resources下的db.sql导入到数据库,并修改jdbc.properties下得数据库信息。
+下载文件，导入项目，并将WEB-INF下面lib下面的三个jar导入项目，将resources下的db.sql导入到数据库,并修改jdbc.properties下得数据库的账号密码信息。<br>
+####导入文件后
+第一步:<br>
+将webapp下的WEB-INF下的lib的三个文件进行导入.<br>
+![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/1.png)
+第二步:<br>
+进行添加服务器：Properties下的Java BuildPath的Libraries中的Add Library中进行添加服务器<br>
+![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/2.png)
+第三步:<br>
+Properties下的Project Facets中点击Dynamic Web Module 以及Java 后点击Apply.<br>
+![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/3.png)
+第四步:<br>
+Properties下的Deployment Assembly中Add webapp文件夹.<br>
+![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/4.png)
+第五步:<br>
+Properties下的Deployment Assembly中的Add Jar包文件，全选所有.<br>
+![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/5.png)
 ### webapp文件夹解释
 admin文件夹:<br>
 存放后台得页面.<br>
