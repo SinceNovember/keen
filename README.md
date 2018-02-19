@@ -1,0 +1,58 @@
+# Blog
+## 一个用SSM写的一个博客系统
+框架:`SpringMVC+Spring+Mybatis`<br>
+后台前端:`bootstrap`<br>
+安全认证:`shiro`<br>
+全文检索：`lucence`<br>
+文本编辑器:`ueditor`<br>
+前端主题:`hexo`<br>
+jquery效果:`粒子效果`<br>
+### 后台功能
+博客的管理：写博客以及查看博客的信息，可对进行增删改查以及搜索<br>
+博客类别管：对博客所具有的类别进行管理<br>
+评论管理：评论审核以及评论信息管理<br>
+博主个人信息管理:对自己信息进行修改<br>
+系统管理：修改密码，刷新系统缓存，以及退出
+### 前台功能
+文章分类，显示后台编写的博客，可对文章进行评论，点击量以及阅读量统计<br>
+上传图片，关于博主的信息，利用luncene对全文进行检索,并且添加了粒子效果<br>
+### 使用方法
+下载文件，导入项目，并将WEB-INF下面lib下面的三个jar导入项目，将resources下的db.sql导入到数据库,并修改jdbc.properties下得数据库信息。
+### webapp文件夹解释
+admin文件夹:<br>
+存放后台得页面.<br>
+common文件夹:<br>
+存放前台得一些常用jsp页面代码.<br>
+static 文件:<br>
+存放所有得外部资源如图片，js,css以及一些插件.<br>
+foreground与uselsshtml:<br>
+无用文件夹.<br>
+所有得前端页面均放在webapp主目录下。<br>
+### 系统展示
+#### 前台界面:
+主页:
+![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/index.png)
+明细页面:
+![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/detail.png)
+分类页面:
+![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/category.png)
+分类明细页面:
+![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/categories.png)
+标签页面:
+![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/tags.png)
+介绍页面:
+![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/about.png)
+标签页面:
+![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/tags.png)
+搜索结果页面：
+![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/search.png)
+其他页面:
+![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/other.png)
+#### 后台界面:
+写博客页面:
+![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/writeblog.png)
+博客管理页面:
+![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/blogmanager.png)
+博客类别管理页面：
+![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/blogtype.png)
+
