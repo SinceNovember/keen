@@ -80,7 +80,7 @@ public class BloggerAdminController {
 			return null;			
 		}
 		//ÍË³ö
-		@RequestMapping("/lagout")
+		@RequestMapping("/logout")
 		public String logout()throws Exception
 		{
 			SecurityUtils.getSubject().logout();

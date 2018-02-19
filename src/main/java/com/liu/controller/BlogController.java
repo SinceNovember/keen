@@ -83,6 +83,7 @@ public class BlogController {
 	{
 		ModelAndView modelAndView=new ModelAndView();
 		int pageSize=5;
+		int blogcounts=blogService.getAllBlog().size();//获取博客总数
 		Map<String, Object> map=new HashMap<String, Object>();
 		map.put("start", (nowPage-1)*pageSize);
 		map.put("pageSize", pageSize);
@@ -90,7 +91,9 @@ public class BlogController {
 		for (Blog blog : blogByPage) {
 			blog.setReleaseDateStr(DateUtil.formatString2(blog.getReleaseDate().toString()));
 		}
+		int totalPage=(int)Math.ceil(blogcounts*1.0/pageSize);//获取总的页数
 		modelAndView.addObject("blogList", blogByPage);
+		modelAndView.addObject("firsttotalPage", totalPage);
 		modelAndView.addObject("firstnowPage", nowPage);
 		modelAndView.setViewName("index");
 		return modelAndView;
