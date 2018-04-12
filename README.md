@@ -18,7 +18,7 @@ jquery效果:`粒子效果`<br>
 文章分类，显示后台编写的博客，可对文章进行评论，点击量以及阅读量统计<br>
 上传图片，关于博主的信息，利用luncene对全文进行检索,并且添加了粒子效果<br>
 ### 使用方法
-下载文件，导入项目，并将WEB-INF下面lib下面的三个jar导入项目，将resources下的db.sql导入到数据库,并修改jdbc.properties下得数据库的账号密码信息。<br>
+下载文件，导入项目，并将WEB-INF下面lib下面的三个jar导入项目，将resources下的db.sql导入到数据库,并修改jdbc.properties下得数据库的账号密码信息。`如果编辑器无法进行上传图片,请将项目下\static\ueditor1_4_3_3\jsp\config.json下的imageUrlPrefix改为:http://服务器的ip/SSM_blog即可.`<br>
 ####导入文件后
 第一步:<br>
 将webapp下的WEB-INF下的lib的三个文件进行导入.<br>
