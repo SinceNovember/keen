@@ -938,7 +938,6 @@ pre .javascript .function {
   margin: 60px 20px 0;
   min-width:50%;
   width:100px;
-  height:701px;
   overflow:hidden;
   border:0px;
   z_index:124212;
@@ -2757,6 +2756,14 @@ hr {
   .logo-line-before i,
   .logo-line-after i {
     height: 3px;
+  }
+  .comments{
+	  left:0 !important;
+	  width:90%;
+  }
+  #wf{
+	  display:block!important;
+	  width:90%!important;
   }
 }
 .use-motion .logo-line-before i {
