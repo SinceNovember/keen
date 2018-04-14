@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="shortcut icon" href="https://meowv.com/favicon.ico">
 <link rel="bookmark" href="https://meowv.com/favicon.ico" type="image/x-icon">
-<title>喵呜网 - 生命不息,奋斗不止</title>
+<title>SinceNovember-其他</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/static/other/style.css">
 <style>@font-face{font-family:uc-nexus-iconfont;src:url(chrome-extension://pogijhnlcfmcppgimcaccdkmbedjkmhi/res/font_9qmmi8b8jsxxbt9.woff) format('woff'),url(chrome-extension://pogijhnlcfmcppgimcaccdkmbedjkmhi/res/font_9qmmi8b8jsxxbt9.ttf) format('truetype')}</style><style type="text/css" abt="234"></style><script src="${pageContext.request.contextPath}/static/other/hm.js"></script><script>//console.log('a')
 </script><script>doAdblock();
