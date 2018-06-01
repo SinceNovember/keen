@@ -48,9 +48,7 @@ public class BlogTypeAdminController {
 		PageBean pageBean=new PageBean(Integer.parseInt(page), Integer.parseInt(rows));
 		Map<String, Object>map=new HashMap<String, Object>();
 		map.put("start", pageBean.getPage());
-		System.out.println("start:"+pageBean.getStart());
 		map.put("pageSize", pageBean.getPageSize());
-		System.out.println("pagesize:"+pageBean.getPageSize());
 		List<BlogType> blogTypeList=blogTypeService.listByPage(map);
 		Long total=blogTypeService.getTotal();
 		JSONObject result=new JSONObject();
@@ -77,6 +75,7 @@ public class BlogTypeAdminController {
 			int linkTotal=linkService.getLinkData().size();
 			int alltotals=blogTypeTotal+linkTotal;
 			List<BlogType> BlogTypeList=blogTypeService.getBlogTypeData();//即使跟新博客类别信息
+			request.getSession().getServletContext().setAttribute("blogTypeList", BlogTypeList);
 			request.getSession().getServletContext().setAttribute("countsallcategories", blogTypeTotal);
 			request.getSession().getServletContext().setAttribute("countsalltags", alltotals);
 			jsonObject.put("success", true);
@@ -104,7 +103,8 @@ public class BlogTypeAdminController {
 		int blogTypeTotal=blogTypeService.getBlogTypeData().size();
 		int linkTotal=linkService.getLinkData().size();
 		int alltotals=blogTypeTotal+linkTotal;
-		List<BlogType> BlogTypeList=blogTypeService.getBlogTypeData();//即使跟新博客类别信息
+		List<BlogType> BlogTypeList=blogTypeService.getBlogTypeData();
+		request.getSession().getServletContext().setAttribute("blogTypeList", BlogTypeList);
 		request.getSession().getServletContext().setAttribute("countsallcategories", blogTypeTotal);
 		request.getSession().getServletContext().setAttribute("countsalltags", alltotals);
 		jsonObject.put("success", true);

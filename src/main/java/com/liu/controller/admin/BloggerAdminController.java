@@ -28,7 +28,7 @@ public class BloggerAdminController {
 	@Resource
 	private BloggerService bloggerService;
 	//查询用户并通过json传送到前台显示
-	@RequestMapping("/findBlooger")
+	@RequestMapping("/findBlogger")
 	public String findBlogger(HttpServletResponse response)throws Exception
 	{
 		Blogger blogger=bloggerService.getBloggerData();

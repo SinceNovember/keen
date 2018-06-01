@@ -225,6 +225,7 @@ if (document.URL.indexOf("iqiyi.com") >= 0){
 </div>
 <script src="${pageContext.request.contextPath}/static/other/hm.js(1)"></script><script src="${pageContext.request.contextPath}/static/other/vendors.js"></script>
 <script src="${pageContext.request.contextPath}/static/other/index.js"></script>
+<<<<<<< HEAD
 <!--[if IE 6]>
 <script type="text/javascript" src="http://static.webgame.kanimg.com/com/DD_PNG_min.js"></script>
 <script type="text/javascript">
@@ -235,3 +236,6 @@ if (document.URL.indexOf("iqiyi.com") >= 0){
 </script>
 <![endif]-->
 </body></html>
+=======
+</body></html>
+>>>>>>> addicons

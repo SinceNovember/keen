@@ -13,6 +13,7 @@
     <link href="${pageContext.request.contextPath}/static/material/css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/static/material/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/static/material/main.css" rel="stylesheet" type="text/css">
+<title>SinceNovember-关于</title>
 <script type="text/javascript">
 		window.onload = function() {
 		    //配置
@@ -98,7 +99,7 @@
 <h3 id="关于本站："><a href="#" class="headerlink" title="关于本站："></a>关于本站：</h3><ul>
 <li>使用主题<a href="https://hexo.io/" target="_blank" rel="external">hexo-theme</a></li>
 <li>后台使用SpringMVC+Spring+Mybatis框架.</li>
-<li>折腾开始于2018年2月1日.</li>
+<li>aaaa折腾开始于2018年2月1日.</li>
 <li><a href="https://www.github.com/SinceNovember">获取源码</a>
 </ul>
 <h2 id="个人签名"><a href="#" class="headerlink" title="个人签名"></a>个人签名</h2><ul>

@@ -12,7 +12,7 @@
 <link href="${pageContext.request.contextPath}/static/material/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/static/material/main.css" rel="stylesheet" type="text/css">
       <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/static/material/comment.zero.css">
-            
+            <title>SinceNovember-详细内容</title>
         
         
             <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/static/material/bluebird.zero.css">
@@ -102,7 +102,6 @@
           <div id="content" class="content">
   <div id="posts" class="posts-expand">
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article" style="opacity: 1; display: block; transform: translateY(0px);">
-  <link itemprop="mainEntityOfPage" href="http://www.ezlippi.com/blog/2018/02/the-missing-stacktrace.html">
   <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
     <meta itemprop="name" content="EZLippi">
     <meta itemprop="description" content="">
@@ -140,14 +139,24 @@
                   </a>
                 </span>
             </span>
-             <span id="/blog/2018/02/the-missing-stacktrace.html" class="leancloud_visitors" data-flag-title="JVM解惑:消失的异常堆栈">
+             <span >
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
+               <i class="fa fa-eye"></i>
                </span>
                  <span class="post-meta-item-text">点击量  </span>
                  <span class="leancloud-visitors-count">${blog.clickHit }</span>
-				 <span>℃</span>
+				 <span>次</span>
+             </span>
+              </span>
+                <span>
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                <i class="fa fa-comment"></i>
+               </span>
+                 <span class="post-meta-item-text">回复量</span>
+                 <span class="leancloud-visitors-count">${blog.replyHit }</span>
+				 <span>条</span>
              </span>
         </div>
       </header>
