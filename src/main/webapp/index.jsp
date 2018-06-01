@@ -16,7 +16,7 @@
 <title>SinceNovember-主页</title>
 <script type="text/javascript">
 		window.onload = function() {
-		    //配置
+		    //配置文件
 		    var config = {
 		        vx: 4,	//小球x轴速度,正为右，负为左
 		        vy: 4,	//小球 y轴速度
