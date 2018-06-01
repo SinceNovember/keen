@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="shortcut icon" href="https://meowv.com/favicon.ico">
 <link rel="bookmark" href="https://meowv.com/favicon.ico" type="image/x-icon">
-<title>喵呜网 - 生命不息,奋斗不止</title>
+<title>SinceNovember-其他</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/static/other/style.css">
 <style>@font-face{font-family:uc-nexus-iconfont;src:url(chrome-extension://pogijhnlcfmcppgimcaccdkmbedjkmhi/res/font_9qmmi8b8jsxxbt9.woff) format('woff'),url(chrome-extension://pogijhnlcfmcppgimcaccdkmbedjkmhi/res/font_9qmmi8b8jsxxbt9.ttf) format('truetype')}</style><style type="text/css" abt="234"></style><script src="${pageContext.request.contextPath}/static/other/hm.js"></script><script>//console.log('a')
 </script><script>doAdblock();
@@ -225,13 +225,4 @@ if (document.URL.indexOf("iqiyi.com") >= 0){
 </div>
 <script src="${pageContext.request.contextPath}/static/other/hm.js(1)"></script><script src="${pageContext.request.contextPath}/static/other/vendors.js"></script>
 <script src="${pageContext.request.contextPath}/static/other/index.js"></script>
-<!--[if IE 6]>
-<script type="text/javascript" src="http://static.webgame.kanimg.com/com/DD_PNG_min.js"></script>
-<script type="text/javascript">
-	var links=document.getElementsByTagName("a");
-	for(var i=0,l=links.length;i<l;i++){
-		links[i].setAttribute("hideFocus",true);
-	}
-</script>
-<![endif]-->
 </body></html>

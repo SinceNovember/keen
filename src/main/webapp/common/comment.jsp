@@ -64,9 +64,7 @@ var content = $("#wf-content").val();
                     <img src="${pageContext.request.contextPath}/static/userImages/${blogger.imagename}" alt="头像" onerror="Livere.imgError.call(this)">
                 </li>
                 <li class="writer-name" data-path="r_name">
-                    <a title="移动到我的页面" aria-label="移动到我的页面" target="_blank">
                         <span class="writer-name-text">${comment.userIp }</span>
-                    </a>
                 </li>
                 <li class="reply-history" data-modified="0">
                     <div class="reply-history-time">

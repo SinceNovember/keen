@@ -12,6 +12,7 @@
     <link href="${pageContext.request.contextPath}/static/material/css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/static/material/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/static/material/main.css" rel="stylesheet" type="text/css">
+<title>SinceNovember-标签</title>
 <script type="text/javascript">
 		window.onload = function() {
 		    //配置
@@ -98,7 +99,6 @@
          <c:forEach var="link" items="${linksList }">
         <a href="#" style="font-size: 23.25px; color: #575757">${link.linkname }</a>
         </c:forEach>
-        </div>
       </div>
   </div>
           </div>
@@ -113,12 +113,13 @@
    <jsp:include page="common/inform.jsp"></jsp:include>
       </div>
     </main>
-   <jsp:include page="common/footer.jsp"></jsp:include>
+
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
     </div>
   </div>
   </div>
+     <jsp:include page="common/footer.jsp"></jsp:include>
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;

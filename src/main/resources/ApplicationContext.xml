@@ -43,7 +43,7 @@
 		<!-- 获取连接最大等待时间 -->
 		<property name="maxWait" value="${maxWait}"></property>
 	</bean>
-
+<!-- classpath:com/liu/ -->
 	<!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />

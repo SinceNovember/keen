@@ -59,28 +59,28 @@ CREATE TABLE `t_comment` (
 
 
 
-INSERT INTO `blogm`.`t_blogtype` (`id`, `typeName`, `orderNum`) VALUES ('1', 'Java', '1');
-INSERT INTO `blogm`.`t_blogtype` (`id`, `typeName`, `orderNum`) VALUES ('16', 'MyBatis', '2');
-INSERT INTO `blogm`.`t_blogtype` (`id`, `typeName`, `orderNum`) VALUES ('17', 'SpringMVC', '3');
-INSERT INTO `blogm`.`t_blogtype` (`id`, `typeName`, `orderNum`) VALUES ('18', 'Spring', '34');
-INSERT INTO `blogm`.`t_blogtype` (`id`, `typeName`, `orderNum`) VALUES ('19', 'JVM', '6');
+INSERT INTO `blog`.`t_blogtype` (`id`, `typeName`, `orderNum`) VALUES ('1', 'Java', '1');
+INSERT INTO `blog`.`t_blogtype` (`id`, `typeName`, `orderNum`) VALUES ('16', 'MyBatis', '2');
+INSERT INTO `blog`.`t_blogtype` (`id`, `typeName`, `orderNum`) VALUES ('17', 'SpringMVC', '3');
+INSERT INTO `blog`.`t_blogtype` (`id`, `typeName`, `orderNum`) VALUES ('18', 'Spring', '34');
+INSERT INTO `blog`.`t_blogtype` (`id`, `typeName`, `orderNum`) VALUES ('19', 'JVM', '6');
 
-INSERT INTO `blogm`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('37', '²âÊÔ3', '²âÊÔ²âÊÔ²âÊÔ11', '2018-02-19 15:03:18', '0', '0', '<p>²âÊÔ²âÊÔ²âÊÔ11</p>', '²âÊÔ', '1');
-INSERT INTO `blogm`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('38', '²âÊÔ4', '²âÊÔ²âÊÔ²âÊÔ', '2018-02-19 15:03:30', '0', '0', '<p>²âÊÔ²âÊÔ²âÊÔ</p>', '¶î', '1');
-INSERT INTO `blogm`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('39', '²âÊÔ²âÊÔ²âÊÔ²âÊÔ', '2222', '2018-02-19 15:03:42', '0', '0', '<p>2222</p>', '1', '1');
-INSERT INTO `blogm`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('40', '²âÊÔ455', '²âÊÔ°¡', '2018-02-19 15:03:59', '0', '0', '<p>²âÊÔ°¡<br/></p>', '²âÊÔ', '1');
-INSERT INTO `blogm`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('41', 'Ë®Ë®', 'µãµãµÎµÎ', '2018-02-19 15:04:55', '4', '1', '<p>µãµãµÎµÎ</p>', '12', '1');
-INSERT INTO `blogm`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('42', '²âÊÔmybatis', 'Mybatis²âÊÔ', '2018-02-19 15:21:33', '0', '0', '<p>Mybatis²âÊÔ<img src=\"http://localhost:8080/SSM_blog/static/userImages1/20180219/1519024886626044549.jpg\" title=\"1519024886626044549.jpg\" alt=\"java.jpg\"/></p>', 'mybatis Java', '16');
-INSERT INTO `blogm`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('43', '²âÊÔSpringMVC', 'SpringMVC²âÊÔ£¡', '2018-02-19 15:22:13', '0', '0', '<p>SpringMVC²âÊÔ£¡</p>', 'springmvc mybatis', '17');
-INSERT INTO `blogm`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('44', '²âÊÔSpring', '²âÊÔSpring', '2018-02-19 15:22:45', '0', '0', '<p>²âÊÔSpring</p>', 'spring', '18');
-INSERT INTO `blogm`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('45', '²âÊÔJVM', '²âÊÔJVM', '2018-02-19 15:23:31', '2', '0', '<p>²âÊÔJVM</p>', 'JVM', '19');
-INSERT INTO `blogm`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('46', '²âÊÔ2', '²âÊÔ²âÊÔ2', '2018-02-19 15:31:10', '1', '0', '<p>²âÊÔ²âÊÔ2<br/></p>', 'Java MyBatis', '17');
+INSERT INTO `blog`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('37', '²âÊÔ3', '²âÊÔ²âÊÔ²âÊÔ11', '2018-02-19 15:03:18', '0', '0', '<p>²âÊÔ²âÊÔ²âÊÔ11</p>', '²âÊÔ', '1');
+INSERT INTO `blog`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('38', '²âÊÔ4', '²âÊÔ²âÊÔ²âÊÔ', '2018-02-19 15:03:30', '0', '0', '<p>²âÊÔ²âÊÔ²âÊÔ</p>', '¶î', '1');
+INSERT INTO `blog`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('39', '²âÊÔ²âÊÔ²âÊÔ²âÊÔ', '2222', '2018-02-19 15:03:42', '0', '0', '<p>2222</p>', '1', '1');
+INSERT INTO `blog`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('40', '²âÊÔ455', '²âÊÔ°¡', '2018-02-19 15:03:59', '0', '0', '<p>²âÊÔ°¡<br/></p>', '²âÊÔ', '1');
+INSERT INTO `blog`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('41', 'Ë®Ë®', 'µãµãµÎµÎ', '2018-02-19 15:04:55', '4', '1', '<p>µãµãµÎµÎ</p>', '12', '1');
+INSERT INTO `blog`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('42', '²âÊÔmybatis', 'Mybatis²âÊÔ', '2018-02-19 15:21:33', '0', '0', '<p>Mybatis²âÊÔ<img src=\"http://localhost:8080/SSM_blog/static/userImages1/20180219/1519024886626044549.jpg\" title=\"1519024886626044549.jpg\" alt=\"java.jpg\"/></p>', 'mybatis Java', '16');
+INSERT INTO `blog`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('43', '²âÊÔSpringMVC', 'SpringMVC²âÊÔ£¡', '2018-02-19 15:22:13', '0', '0', '<p>SpringMVC²âÊÔ£¡</p>', 'springmvc mybatis', '17');
+INSERT INTO `blog`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('44', '²âÊÔSpring', '²âÊÔSpring', '2018-02-19 15:22:45', '0', '0', '<p>²âÊÔSpring</p>', 'spring', '18');
+INSERT INTO `blog`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('45', '²âÊÔJVM', '²âÊÔJVM', '2018-02-19 15:23:31', '2', '0', '<p>²âÊÔJVM</p>', 'JVM', '19');
+INSERT INTO `blog`.`t_blog` (`id`, `title`, `summary`, `releaseDate`, `clickHit`, `replyHit`, `content`, `keyWord`, `type_id`) VALUES ('46', '²âÊÔ2', '²âÊÔ²âÊÔ2', '2018-02-19 15:31:10', '1', '0', '<p>²âÊÔ²âÊÔ2<br/></p>', 'Java MyBatis', '17');
 
-INSERT INTO `blogm`.`t_blogger` (`id`, `username`, `password`, `profile`, `nickname`, `sign`, `imagename`) VALUES ('1', 'admin', '123', '<p>Ã»ÓÐ¼ò½é£¡</p>', 'ÁõÓî¶«', 'Ã»ÓÐÇ©Ãû', '20180219025821.jpg');
+INSERT INTO `blog`.`t_blogger` (`id`, `username`, `password`, `profile`, `nickname`, `sign`, `imagename`) VALUES ('1', 'admin', '123', '<p>Ã»ÓÐ¼ò½é£¡</p>', 'ÁõÓî¶«', 'Ã»ÓÐÇ©Ãû', '20180219025821.jpg');
 
 
-INSERT INTO `blogm`.`t_comment` (`id`, `userIp`, `content`, `commentDate`, `state`, `blog_id`) VALUES ('3', '0:0:0:0:0:0:0:1', 'ÆÀÂÛ²âÊÔ£¡', '2018-02-19 14:59:51', '1', '37');
-INSERT INTO `blogm`.`t_comment` (`id`, `userIp`, `content`, `commentDate`, `state`, `blog_id`) VALUES ('4', '0:0:0:0:0:0:0:1', '1111', '2018-02-19 15:16:28', '1', '41');
+INSERT INTO `blog`.`t_comment` (`id`, `userIp`, `content`, `commentDate`, `state`, `blog_id`) VALUES ('3', '0:0:0:0:0:0:0:1', 'ÆÀÂÛ²âÊÔ£¡', '2018-02-19 14:59:51', '1', '37');
+INSERT INTO `blog`.`t_comment` (`id`, `userIp`, `content`, `commentDate`, `state`, `blog_id`) VALUES ('4', '0:0:0:0:0:0:0:1', '1111', '2018-02-19 15:16:28', '1', '41');
 
-INSERT INTO `blogm`.`t_link` (`id`, `linkname`, `linkurl`, `orderNum`) VALUES ('8', 'SpringMvc', NULL, NULL);
+INSERT INTO `blog`.`t_link` (`id`, `linkname`, `linkurl`, `orderNum`) VALUES ('8', 'SpringMvc', NULL, NULL);
 

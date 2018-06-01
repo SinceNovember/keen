@@ -12,6 +12,7 @@
     <link href="${pageContext.request.contextPath}/static/material/css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/static/material/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/static/material/main.css" rel="stylesheet" type="text/css">
+<title>SinceNovember-分类</title>
 <script type="text/javascript">
 		window.onload = function() {
 		    //配置
@@ -111,12 +112,13 @@
    <jsp:include page="common/inform.jsp"></jsp:include>
       </div>
     </main>
-   <jsp:include page="common/footer.jsp"></jsp:include>
+     <jsp:include page="common/footer.jsp"></jsp:include>
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
     </div>
   </div>
   </div>
+
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
