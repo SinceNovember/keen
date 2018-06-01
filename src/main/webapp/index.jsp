@@ -13,7 +13,7 @@
     <link href="${pageContext.request.contextPath}/static/material/css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/static/material/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/static/material/main.css" rel="stylesheet" type="text/css">
-
+<title>SinceNovember-主页</title>
 <script type="text/javascript">
 		window.onload = function() {
 		    //配置
@@ -108,8 +108,12 @@
     <meta itemprop="image" content="/images/avatar.gif">
   </span>
   <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<<<<<<< HEAD
+=======
+    <meta itemprop="name" content="SinceNovember">
+>>>>>>> 949d641c88e62af347630a4034e72fa48b7123f1
     <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
-      <a href="${pageContext.request.contextPath}/static/material/avatar.jpg" class="fancybox" rel="group"><img style="display:none;" itemprop="url image" alt="EZLippi-浮生志" src="${pageContext.request.contextPath}/static/material/avatar.jpg"></a>
+      <a href="${pageContext.request.contextPath}/static/material/avatar.jpg" class="fancybox" rel="group"><img style="display:none;" itemprop="url image" alt="SinceNovember" src="${pageContext.request.contextPath}/static/material/avatar.jpg"></a>
     </span>
   </span>
       <header class="post-header">

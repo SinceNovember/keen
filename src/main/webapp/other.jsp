@@ -225,4 +225,17 @@ if (document.URL.indexOf("iqiyi.com") >= 0){
 </div>
 <script src="${pageContext.request.contextPath}/static/other/hm.js(1)"></script><script src="${pageContext.request.contextPath}/static/other/vendors.js"></script>
 <script src="${pageContext.request.contextPath}/static/other/index.js"></script>
+<<<<<<< HEAD
 </body></html>
+=======
+<!--[if IE 6]>
+<script type="text/javascript" src="http://static.webgame.kanimg.com/com/DD_PNG_min.js"></script>
+<script type="text/javascript">
+	var links=document.getElementsByTagName("a");
+	for(var i=0,l=links.length;i<l;i++){
+		links[i].setAttribute("hideFocus",true);
+	}
+</script>
+<![endif]-->
+</body></html>
+>>>>>>> 949d641c88e62af347630a4034e72fa48b7123f1

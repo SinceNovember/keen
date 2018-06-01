@@ -42,32 +42,32 @@ public class BlogIndex {
 	private Directory directory;   
 	private IndexWriter getWriter() throws Exception
 	{
-		directory=FSDirectory.open(Paths.get("D:\\blog_Index"));//´´½¨Ä¿Â¼ ±¾µØ´ÅÅÌ´æ´¢
-		SmartChineseAnalyzer analyzer=new SmartChineseAnalyzer();//ÅäÖÃ½âÎöÆ÷
-		IndexWriterConfig config=new IndexWriterConfig(analyzer);//´´½¨IndexWriterÅäÖÃ
-		IndexWriter indexWriter=new IndexWriter(directory, config);//´´½¨IndexWriter
+		directory=FSDirectory.open(Paths.get("C:\\blog_Index"));//åˆ›å»ºç›®å½• æœ¬åœ°ç£ç›˜å­˜å‚¨
+		SmartChineseAnalyzer analyzer=new SmartChineseAnalyzer();//é…ç½®è§£æå™¨
+		IndexWriterConfig config=new IndexWriterConfig(analyzer);//åˆ›å»ºIndexWriteré…ç½®
+		IndexWriter indexWriter=new IndexWriter(directory, config);//åˆ›å»ºIndexWriter
 		return indexWriter;
 	}
-	public void addIndex(Blog blog)throws Exception//Ìí¼ÓË÷Òı
+	public void addIndex(Blog blog)throws Exception//æ·»åŠ ç´¢å¼•
 	{
 		IndexWriter indexWriter=getWriter();
-		Document document=new Document();//´´½¨¼ÇÂ¼
-		document.add(new StringField("id", String.valueOf(blog.getId()), Field.Store.YES));//×îºóÒ»¸öÓÃÓÚ´æ´¢²¢Ìí¼Ó¼ÍÂ¼ÁĞ
+		Document document=new Document();//åˆ›å»ºè®°å½•
+		document.add(new StringField("id", String.valueOf(blog.getId()), Field.Store.YES));//æœ€åä¸€ä¸ªç”¨äºå­˜å‚¨å¹¶æ·»åŠ çºªå½•åˆ—
 		document.add(new TextField("title", blog.getTitle(), Field.Store.YES));
 		document.add(new StringField("releaseDate", DateUtil.formatDate(new Date(),"yyyy-MM-dd"), Field.Store.YES));
 		document.add(new TextField("content",blog.getContentNoTag(), Field.Store.YES));
-		indexWriter.addDocument(document);//Ìí¼Óµ½IndexWriter
-		indexWriter.close();//¹Ø±ÕºÜ¹Ø¼ü
+		indexWriter.addDocument(document);//æ·»åŠ åˆ°IndexWriter
+		indexWriter.close();//å…³é—­å¾ˆå…³é”®
 	}
-	public void deleteIndex(String blogId)throws Exception//É¾³ıË÷Òı
+	public void deleteIndex(String blogId)throws Exception//åˆ é™¤ç´¢å¼•
 	{
 		IndexWriter indexWriter=getWriter();
-		indexWriter.deleteDocuments(new Term("id",blogId)); //TermÒ»¸ö±ê¼Ç£¬É¾³ı¼ÇÂ¼
-		indexWriter.forceMergeDeletes();//Ç¿ÖÆÉ¾³ı
+		indexWriter.deleteDocuments(new Term("id",blogId)); //Termä¸€ä¸ªæ ‡è®°ï¼Œåˆ é™¤è®°å½•
+		indexWriter.forceMergeDeletes();//å¼ºåˆ¶åˆ é™¤
 		indexWriter.commit();
 		indexWriter.close();
 	}
-	public void updateIndex(Blog blog)throws Exception//ĞŞ¸ÄË÷Òı
+	public void updateIndex(Blog blog)throws Exception//ä¿®æ”¹ç´¢å¼•
 	{
 		IndexWriter indexWriter=getWriter();
 		Document document=new Document();
@@ -78,23 +78,23 @@ public class BlogIndex {
 		indexWriter.updateDocument(new Term("id",String.valueOf(blog.getId())), document);
 		indexWriter.close();
 	}
-	public List<Blog> searchBlog(String q)throws Exception//²éÑ¯Ë÷Òı
+	public List<Blog> searchBlog(String q)throws Exception//æŸ¥è¯¢ç´¢å¼•
 	{
-		directory=FSDirectory.open(Paths.get("D:\\blog_Index"));
+		directory=FSDirectory.open(Paths.get("C:\\blog_Index"));
 		IndexReader indexReader=DirectoryReader.open(directory);
-		IndexSearcher indexSearcher=new IndexSearcher(indexReader);//Ë÷ÒıËÑË÷Æ÷
-		BooleanQuery.Builder booleanQuery=new BooleanQuery.Builder();//ÓÃÓÚ¶Ô¶à¸ö×Ö¶Î½øĞĞ²éÑ¯
+		IndexSearcher indexSearcher=new IndexSearcher(indexReader);//ç´¢å¼•æœç´¢å™¨
+		BooleanQuery.Builder booleanQuery=new BooleanQuery.Builder();//ç”¨äºå¯¹å¤šä¸ªå­—æ®µè¿›è¡ŒæŸ¥è¯¢
 		SmartChineseAnalyzer analyzer=new SmartChineseAnalyzer();
 		QueryParser parser1=new QueryParser("title", analyzer);
 		Query query1=parser1.parse(q);
 		QueryParser parser2=new QueryParser("content",analyzer);
 		Query query2=parser2.parse(q);
-		booleanQuery.add(query1,BooleanClause.Occur.SHOULD);//Ó¦¸Ã´æÔÚ£¬½«Á©¸öÌí¼Óµ½²éÑ¯ÁĞ±íÖĞ
+		booleanQuery.add(query1,BooleanClause.Occur.SHOULD);//åº”è¯¥å­˜åœ¨ï¼Œå°†ä¿©ä¸ªæ·»åŠ åˆ°æŸ¥è¯¢åˆ—è¡¨ä¸­
 		booleanQuery.add(query2,BooleanClause.Occur.SHOULD);
-		TopDocs hits=indexSearcher.search(booleanQuery.build(),100);//²éÑ¯100¸ö
-		QueryScorer queryScorer=new QueryScorer(query1);//·ÖÊı¸ßµÄ
-		SimpleHTMLFormatter simpleHTMLFormatter=new SimpleHTMLFormatter("<b><font color='red'>","</font></b>");//ÓÃÓÚ¶Ô¹Ø¼ü×ÖÌí¼Ó¸ñÊ½
-		Highlighter highlighter=new Highlighter(simpleHTMLFormatter, queryScorer);//ÖÆ¶¨×Ö½øĞĞ¸ßÁÁ
+		TopDocs hits=indexSearcher.search(booleanQuery.build(),100);//æŸ¥è¯¢100ä¸ª
+		QueryScorer queryScorer=new QueryScorer(query1);//åˆ†æ•°é«˜çš„
+		SimpleHTMLFormatter simpleHTMLFormatter=new SimpleHTMLFormatter("<b><font color='red'>","</font></b>");//ç”¨äºå¯¹å…³é”®å­—æ·»åŠ æ ¼å¼
+		Highlighter highlighter=new Highlighter(simpleHTMLFormatter, queryScorer);//åˆ¶å®šå­—è¿›è¡Œé«˜äº®
 		Fragmenter fragmenter=new SimpleSpanFragmenter(queryScorer);
 		highlighter.setTextFragmenter(fragmenter);
 //		QueryScorer scorer=new QueryScorer(query1);
@@ -103,7 +103,7 @@ public class BlogIndex {
 //		Highlighter highlighter=new Highlighter(simpleHTMLFormatter, scorer);
 //		highlighter.setTextFragmenter(fragmenter);
 		List<Blog> blogIndexList=new LinkedList<Blog>();
-		for(ScoreDoc score:hits.scoreDocs)//½øĞĞ±ãÀûËù²éÑ¯µ½µÄË÷Òı
+		for(ScoreDoc score:hits.scoreDocs)//è¿›è¡Œä¾¿åˆ©æ‰€æŸ¥è¯¢åˆ°çš„ç´¢å¼•
 		{
 			Document document=indexSearcher.doc(score.doc);
 			Blog blog=new Blog();
