@@ -92,8 +92,8 @@
 </header>
       <h2 id="个人简介："><a href="#" class="headerlink" title="个人简介："></a>个人简介：</h2><ul>
 <li>SinceNovember</li>
-<li>Web后台开发、Java开发者</li>
-<li>来自江苏淮安</li>
+<li>Web后台开发、Java开发</li>
+<li>来自江苏</li>
 <li>Email: 83428190@qq.com </li>
 </ul>
 <h3 id="关于本站："><a href="#" class="headerlink" title="关于本站："></a>关于本站：</h3><ul>
