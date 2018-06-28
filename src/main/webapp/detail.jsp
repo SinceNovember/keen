@@ -61,7 +61,6 @@
   };
 
 </script>
-  <link rel="canonical" href="http://www.ezlippi.com/categories/android/">
 <script src="${pageContext.request.contextPath}/static/material/pace.min.js"></script>
 <link href="${pageContext.request.contextPath}/static/material/pace-theme-flash.css" rel="stylesheet">
 <style>
