@@ -1,7 +1,7 @@
 # Blog
 ## 一个用SSM写的一个博客系统
 框架:`SpringMVC+Spring+Mybatis`<br>
-后台前端:`bootstrap`<br>
+后台前端:`easyui`<br>
 安全认证:`shiro`<br>
 全文检索：`lucence`<br>
 文本编辑器:`ueditor`<br>
