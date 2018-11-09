@@ -109,9 +109,15 @@
   </span>
   <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <meta itemprop="name" content="SinceNovember">
 =======
 >>>>>>> addicons
+=======
+=======
+    <meta itemprop="name" content="SinceNovember">
+>>>>>>> 949d641c88e62af347630a4034e72fa48b7123f1
+>>>>>>> c869c9b15bbc165602631be283e5601698d0d0f1
     <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
       <a href="${pageContext.request.contextPath}/static/material/avatar.jpg" class="fancybox" rel="group"><img style="display:none;" itemprop="url image" alt="SinceNovember" src="${pageContext.request.contextPath}/static/material/avatar.jpg"></a>
     </span>

@@ -226,6 +226,11 @@ if (document.URL.indexOf("iqiyi.com") >= 0){
 <script src="${pageContext.request.contextPath}/static/other/hm.js(1)"></script><script src="${pageContext.request.contextPath}/static/other/vendors.js"></script>
 <script src="${pageContext.request.contextPath}/static/other/index.js"></script>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+</body></html>
+=======
+>>>>>>> c869c9b15bbc165602631be283e5601698d0d0f1
 <!--[if IE 6]>
 <script type="text/javascript" src="http://static.webgame.kanimg.com/com/DD_PNG_min.js"></script>
 <script type="text/javascript">
@@ -236,6 +241,10 @@ if (document.URL.indexOf("iqiyi.com") >= 0){
 </script>
 <![endif]-->
 </body></html>
+<<<<<<< HEAD
 =======
 </body></html>
 >>>>>>> addicons
+=======
+>>>>>>> 949d641c88e62af347630a4034e72fa48b7123f1
+>>>>>>> c869c9b15bbc165602631be283e5601698d0d0f1
