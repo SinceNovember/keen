@@ -17,26 +17,25 @@
 ### 前台功能
 文章分类，显示后台编写的博客，可对文章进行评论，点击量以及阅读量统计<br>
 上传图片，关于博主的信息，利用luncene对全文进行检索,并且添加了粒子效果<br>
-### 系统展示
-#### 前台界面:
-主页:
+# 界面展示
+
 ![](https://github.com/SinceNovember/Blog/blob/master/upload/1.png)
-明细页面:
-![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/detail.png)
-分类页面:
-![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/category.png)
-分类明细页面:
-![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/categories.png)
-标签页面:
-![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/tags.png)
-介绍页面:
-![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/about.png)
-标签页面:
-![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/tags.png)
-搜索结果页面：
-![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/search.png)
-其他页面:
-![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/other.png)
+
+![](https://github.com/SinceNovember/Blog/blob/master/upload/2.png)
+
+![](https://github.com/SinceNovember/Blog/blob/master/upload/3.png)
+
+![](https://github.com/SinceNovember/Blog/blob/master/upload/4.png)
+
+![](https://github.com/SinceNovember/Blog/blob/master/upload/5.png)
+
+![](https://github.com/SinceNovember/Blog/blob/master/upload/6.png)
+
+![](https://github.com/SinceNovember/Blog/blob/master/upload/7.png)
+
+![](https://github.com/SinceNovember/Blog/blob/master/upload/8.png)
+
+![](https://github.com/SinceNovember/Blog/blob/master/upload/9.png)
 #### 后台界面:
 写博客页面:
 ![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/writeblog.png)
