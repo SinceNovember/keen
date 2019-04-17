@@ -30,17 +30,15 @@
 ![](https://github.com/SinceNovember/Blog/blob/master/upload/5.png)
 
 ![](https://github.com/SinceNovember/Blog/blob/master/upload/6.png)
+![](https://github.com/SinceNovember/Blog/blob/master/upload/login.png)
 
 ![](https://github.com/SinceNovember/Blog/blob/master/upload/7.png)
 
 ![](https://github.com/SinceNovember/Blog/blob/master/upload/8.png)
 
 ![](https://github.com/SinceNovember/Blog/blob/master/upload/9.png)
-#### 后台界面:
-写博客页面:
-![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/writeblog.png)
-博客管理页面:
-![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/blogmanager.png)
-博客类别管理页面：
-![](https://github.com/SinceNovember/Blog/blob/master/backgroundimage/blogtype.png)
+![](https://github.com/SinceNovember/Blog/blob/master/upload/10.png)
+![](https://github.com/SinceNovember/Blog/blob/master/upload/11.png)
+![](https://github.com/SinceNovember/Blog/blob/master/upload/12.png)
+![](https://github.com/SinceNovember/Blog/blob/master/upload/13.png)
 
