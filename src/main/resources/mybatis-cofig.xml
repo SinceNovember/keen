@@ -8,8 +8,7 @@
         </settings>
 <!--         mybatis别名设置 -->
             <typeAliases>
-                <typeAlias alias="User" type="com.liu.model.User"/>
-                <package name="com.liu.model"/>
+                <package name="com.liu.entity"/>
             </typeAliases>
 		
         </configuration>

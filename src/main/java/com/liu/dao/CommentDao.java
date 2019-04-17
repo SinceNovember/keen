@@ -3,13 +3,18 @@ package com.liu.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.liu.model.Comment;
+import com.liu.entity.Comment;
 
 public interface CommentDao {
-	public List<Comment> getCommentData(Map<String,Object>map);
-	public int addComment(Comment comment);
-	public Long getTotal(Map<String, Object>map);
-	public Integer update(Comment comment);
-	public Integer deleteComment(Integer id);
-	public Integer deleteCommentByBlogId(Integer blogId);
+	public Integer insertComment(Comment comment);
+	public List<Comment> getCommentByAid(Integer commentArticleId);
+	public Integer deleteCommentByCid(Integer commentId);
+	public Integer updateLike(Comment comment);
+	public List<Comment> listComment(Integer role);
+	public List<Comment> listRecentComment(Map<String,Object>map);
+	public Comment getCommentByid(Integer commentId);
+	public String getContentByCid(Integer commentId);
+	public Integer updateMyContent(Comment comment);
+	public List<Comment> getChildComment(Integer commentId);
+	public Integer deleteCommentByAid(Integer commentArticleId);
 }

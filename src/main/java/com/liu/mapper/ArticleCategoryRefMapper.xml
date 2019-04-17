@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liu.dao.ArticleCategoryRefDao">
+
+   		<resultMap id="ArticleByCidResult" type="ArticleCategoryRef">
+        <id column="article_id" property="articleId" jdbcType="INTEGER"/>
+        <association property="article" column="article_id" select="com.liu.dao.ArticleDao.getArticleByAid"></association>
+    	</resultMap>
+    
+    <sql id="tb">article_category_ref</sql>
+
+<!-- 	根据用户Id插入分类 -->
+    <insert id="insertCategoryByAid" parameterType="ArticleCategoryRef">
+        insert into
+        <include refid="tb"/>
+        (article_id, category_id)
+        values (#{0}, #{1})
+    </insert>
+    
+<!--     根绝文章id获取分类id -->
+    <select id="getCategoryIdByAid" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select category_id from <include refid="tb"/>
+    where article_id = #{articleId}
+  	</select>
+  	
+<!--   	根绝分类id获取文章 -->
+     <select id="getArticleByCid" parameterType="java.lang.Integer" resultMap="ArticleByCidResult">
+     select article_id from <include refid="tb"/>
+     where category_id = #{categoryId}
+  	 </select>
+
+
+<!-- 删除文章id -->
+    <delete id="deleteByArticleId" parameterType="java.lang.Integer">
+        delete from
+        <include refid="tb"/>
+        where article_id = #{article_id}
+    </delete>
+
+</mapper>

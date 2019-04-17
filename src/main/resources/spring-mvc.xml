@@ -11,10 +11,10 @@
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
 	<context:component-scan base-package="com.liu.controller" />
-
+<!-- 	<context:component-scan base-package="com.liu.controller.admin" /> -->
 	<!-- 配置注解映射器和注解适配器 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
-	
+
 	<!-- 静态资源解析，包括js,css,img... -->
 	<mvc:resources location="/static/" mapping="/static/**"></mvc:resources>
 	<mvc:resources location="/upload/" mapping="/upload/**"></mvc:resources>
@@ -28,8 +28,10 @@
 	<!-- 文件上传 -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="10000000" />
+		<property name="maxUploadSize" value="1000000000" />
 		<property name="defaultEncoding" value="utf-8" />
 	</bean>
-
+<!-- 	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor"> -->
+<!-- 		<property name="securityManager" ref="securityManager" /> -->
+<!-- 	</bean> -->
 </beans>

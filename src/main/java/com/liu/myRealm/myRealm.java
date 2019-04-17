@@ -11,8 +11,8 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
-import com.liu.model.Blogger;
-import com.liu.service.BloggerService;
+import com.liu.entity.User;
+import com.liu.service.UserService;
 
  /** 
  * @ClassName: myRealm 
@@ -22,7 +22,7 @@ import com.liu.service.BloggerService;
  */
 public class myRealm  extends AuthorizingRealm{
 	@Resource 
-	private BloggerService bloggerService;
+	private UserService userService;
 
 	@Override
 //	授权查询回调函数
@@ -35,11 +35,11 @@ public class myRealm  extends AuthorizingRealm{
 //	认证回调函数,进行登陆认证
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		String username=(String)token.getPrincipal();//获取用户名
-		Blogger blogger=bloggerService.getByUsername(username);
-		if(blogger!=null)
+		User user=userService.getUserByUsername(username);
+		if(user!=null)
 		{
-			SecurityUtils.getSubject().getSession().setAttribute("currentUser", blogger);
-			AuthenticationInfo authenticationInfo=new SimpleAuthenticationInfo(blogger.getUsername(),blogger.getPassword(),"myRealm");
+			SecurityUtils.getSubject().getSession().setAttribute("user", user);
+			AuthenticationInfo authenticationInfo=new SimpleAuthenticationInfo(user.getUserName(),user.getUserPass(),"myRealm");
 			return authenticationInfo;
 		}
 		return null;

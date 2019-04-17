@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liu.dao.TagDao" >
+  <resultMap id="TagResultMap" type="Tag" >
+    <id column="tag_id" property="tagId" jdbcType="INTEGER" />
+    <result column="tag_name" property="tagName" jdbcType="VARCHAR" />
+     <result column="font_size" property="fontSize" jdbcType="VARCHAR" />
+         <result column="font_color" property="fontColor" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tag_id, tag_name, font_size,font_color
+  </sql>
+  <sql id="tb">tag</sql>
+  
+  <!--    根据文章id获取其所有标签 -->
+      <select id="getTagByAid" parameterType="Integer" resultMap="TagResultMap">
+		select tag.*
+		from tag,article_tag_ref
+		where tag.tag_id=article_tag_ref.tag_id
+		and article_tag_ref.article_id=#{aid};
+    </select>
+
+        <!--获得标签列表-->
+  <select id="listTag"  resultMap="TagResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM 
+    <include refid="tb"/>
+  </select>
+       <!--获得标签根据id-->
+    <select id="getTagById"  parameterType="Integer"  resultMap="TagResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM 
+    <include refid="tb"/>
+    where tag_id=#{tid}
+  </select>
+  <!--     获取该分类文章数 -->
+     <select id="getTagArticleCount" parameterType="Integer" resultType="Integer">
+		select COUNT(*)
+        from 
+        article_tag_ref
+        where tag_id=#{tid}
+    </select>
+<!--     插入标签 -->
+    <insert id="insertTag" parameterType="Tag" useGeneratedKeys="true" keyProperty="tagId">
+    insert into <include refid="tb"/>
+    (tag_name, font_size,font_color)
+    values (#{tagName,jdbcType=VARCHAR}, #{fontSize,jdbcType=VARCHAR}, #{fontColor,jdbcType=VARCHAR})
+  </insert>
+  
+<!--   删除标签 -->
+      <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from <include refid="tb"/>
+    where tag_id = #{tid,jdbcType=INTEGER}
+  </delete>
+  
+<!--   修改标签 -->
+    <update id="updateTag" parameterType="Tag" >
+    update <include refid="tb"/>
+    <set >
+      <if test="tagName != null" >
+        tag_name = #{tagName,jdbcType=VARCHAR},
+      </if>
+      <if test="fontSize != null" >
+        font_size = #{fontSize,jdbcType=VARCHAR},
+      </if>
+      <if test="fontColor != null" >
+       font_color = #{fontColor,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where tag_id = #{tagId,jdbcType=INTEGER}
+  </update>
+  </mapper>

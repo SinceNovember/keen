@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liu.dao.UserLogDao">
+
+    <resultMap id="BaseResultMap" type="UserLog">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="time" property="time" jdbcType="TIMESTAMP"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="detail" property="detail" jdbcType="VARCHAR"/>
+        <result column="ip" property="ip" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id, time, type, detail, ip
+  </sql>
+
+<!-- 显示所有日志 -->
+    <select id="listLog" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"></include>
+        FROM log
+        ORDER BY id DESC
+       limit #{start},#{pageSize}
+  </select>
+
+<!-- 获取日志数 -->
+    <select id="getLogCount" resultType="Integer">
+        SELECT COUNT(*) id FROM log
+    </select>
+
+<!-- 插入日志 -->
+    <insert id="insertLog" parameterType="UserLog" keyProperty="id" useGeneratedKeys="true" >
+    INSERT INTO log (ID,  TIME, TYPE, DETAIL, IP)
+    VALUES (NULL, #{time, jdbcType=TIMESTAMP}, #{type, jdbcType=INTEGER},
+    #{detail, jdbcType=INTEGER}, #{ip, jdbcType=VARCHAR})
+  </insert>
+
+<!-- 删除日志 -->
+    <delete id="deleteLog" parameterType="int">
+    DELETE FROM log
+    WHERE ID = #{id, jdbcType=INTEGER}
+  </delete>
+
+<!-- 删除所有日志 -->
+    <delete id="deleteAllLog">
+    DELETE FROM log
+  </delete>
+
+</mapper>

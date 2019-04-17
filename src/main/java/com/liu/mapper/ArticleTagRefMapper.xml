@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liu.dao.ArticleTagRefDao">
+
+   <resultMap id="ArticleByTidResult" type="ArticleTagRef">
+   <id column="article_id" property="articleId" jdbcType="INTEGER"/>
+   <association property="article" column="article_id" select="com.liu.dao.ArticleDao.getArticleByAid"></association>
+   </resultMap>
+  <sql id="tb">article_tag_ref</sql>
+
+<!-- 	根据文章id插入标签 -->
+  <insert id="insertTagByAid" parameterType="java.lang.Integer" >
+    insert into <include refid="tb"/>
+    (article_id, tag_id)
+    values (#{0}, #{1})
+  </insert>
+
+<!-- 	根据文章id获取标签id -->
+    <select id="getTagIdByAid" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select tag_id from <include refid="tb"/>
+    where article_id = #{articleId}
+  </select>
+
+<!-- 	根据标签id获取文章 -->
+     <select id="getArticleByTid" parameterType="java.lang.Integer" resultMap="ArticleByTidResult">
+     select article_id from <include refid="tb"/>
+     where tag_id = #{tagId}
+  	 </select>
+  	 
+<!--   	 根据文章id删除所有关联 -->
+  <delete id="deleteByArticleId" parameterType="java.lang.Integer" >
+    delete from <include refid="tb"/> where article_id = #{articleId}
+  </delete>
+  
+<!--   	统计标签下得所有文章 -->
+  <select id="countArticleByTagId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select count(*) from <include refid="tb"/>
+    where tag_id = #{tagId}
+  </select>
+
+
+</mapper>

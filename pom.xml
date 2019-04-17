@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.liu.SSM</groupId>
-  <artifactId>SSM_blog</artifactId>
+  <groupId>com.liu</groupId>
+  <artifactId>Blog</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>SSM_blog Maven Webapp</name>
+  <name>Blog Maven Webapp</name>
   <url>http://maven.apache.org</url>
  <properties>
 		<!-- spring版本号 -->
@@ -42,11 +42,6 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.7.1</version>
         </dependency>
-<!-- <dependency>   -->
-<!--   <groupId>org.apache.geronimo.bundles</groupId>   -->
-<!--   <artifactId>aspectjweaver</artifactId>   -->
-<!--   <version>1.6.8_2</version>   -->
-<!-- </dependency> -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
@@ -115,32 +110,26 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.30</version>
 		</dependency>
-		<!-- 导入dbcp的jar包，用来在applicationContext.xml中配置数据库 -->
-		<dependency>
-			<groupId>commons-dbcp</groupId>
-			<artifactId>commons-dbcp</artifactId>
-			<version>1.2.2</version>
-		</dependency>
-			<dependency>
-		<groupId>commons-lang</groupId>
-		<artifactId>commons-lang</artifactId>
-		<version>2.6</version>
-	</dependency>	
+        <!-- 添加阿里巴巴连接池Druid支持 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.16</version>
+        </dependency>
 		<!-- JSTL标签类 -->
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		<!-- 日志文件管理包 -->
-		<!-- log start -->
+<!-- 		日志 -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
 		
-		
+
 		<!-- 格式化对象，方便输出日志 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -203,7 +192,7 @@
 	    <artifactId>lucene-analyzers-smartcn</artifactId>
 	    <version>5.3.1</version>
 	</dependency>
-		<!-- log end -->
+		<!-- luncene end -->
 		<!-- 映入JSON -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
@@ -248,8 +237,16 @@
 	    <artifactId>jsoup</artifactId>
 	    <version>1.9.2</version>
 	</dependency>
-			</dependencies>
+<!-- 	json -->
+	<dependency>
+	<groupId>net.sf.json-lib</groupId>
+	<artifactId>json-lib</artifactId>
+	<version>2.4</version>
+	<classifier>jdk15</classifier>
+	</dependency>
+
+	</dependencies>
   <build>
-    <finalName>SSM_blog</finalName>
+    <finalName>Blog</finalName>
   </build>
 </project>

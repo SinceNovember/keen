@@ -8,33 +8,56 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.liu.dao.CommentDao;
-import com.liu.model.Comment;
+import com.liu.entity.Comment;
 @Service("commentService")
 public class CommentServiceImpl implements CommentService {
 	@Resource
 	private CommentDao commentDao;
-	public List<Comment> getCommentData(Map<String, Object> map) {		
-		return commentDao.getCommentData(map);
+	public Integer insertComment(Comment comment) {
+		// TODO Auto-generated method stub
+		return commentDao.insertComment(comment);
+	}
+	public List<Comment> getCommentByAid(Integer commentArticleId) {
+		// TODO Auto-generated method stub
+		return commentDao.getCommentByAid(commentArticleId);
+	}
+	public Integer deleteCommentByCid(Integer commentId) {
+		// TODO Auto-generated method stub
+		return commentDao.deleteCommentByCid(commentId);
+	}
+	public Integer updateLike(Comment comment) {
+		// TODO Auto-generated method stub
+		return commentDao.updateLike(comment);
 	}
 
-	public int addComment(Comment comment) {
-		return commentDao.addComment(comment);
+	public Comment getCommentByid(Integer commentId) {
+		// TODO Auto-generated method stub
+		return commentDao.getCommentByid(commentId);
+	}
+	public List<Comment> listComment(Integer role) {
+		// TODO Auto-generated method stub
+		return commentDao.listComment(role);
+	}
+	public String getContentByCid(Integer commentId) {
+		// TODO Auto-generated method stub
+		return commentDao.getContentByCid(commentId);
+	}
+	public Integer updateMyContent(Comment comment) {
+		// TODO Auto-generated method stub
+		return commentDao.updateMyContent(comment);
+	}
+	public List<Comment> getChildComment(Integer commentId) {
+		// TODO Auto-generated method stub
+		return commentDao.getChildComment(commentId);
+	}
+	public Integer deleteCommentByAid(Integer commentArticleId) {
+		// TODO Auto-generated method stub
+		return commentDao.deleteCommentByAid(commentArticleId);
+	}
+	public List<Comment> listRecentComment(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return commentDao.listRecentComment(map);
 	}
 
-	public Long getTotal(Map<String, Object> map) {
-		return commentDao.getTotal(map);
-	}
-
-	public Integer update(Comment comment) {
-		return commentDao.update(comment);
-	}
-
-	public Integer deleteComment(Integer id) {
-		return commentDao.deleteComment(id);
-	}
-
-	public Integer deleteCommentByBlogId(Integer blogId) {
-		return commentDao.deleteComment(blogId);
-	}
 
 }

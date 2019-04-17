@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liu.dao.PageDao" >
+    <resultMap id="PageResultMap" type="Page" >
+    <id column="page_id" property="pageId" jdbcType="INTEGER" />
+    <result column="page_flag" property="pageFlag" jdbcType="INTEGER" />
+    <result column="page_tag" property="pageTag" jdbcType="VARCHAR" />
+    <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
+    </resultMap>
+        <sql id="Base_Column_List">
+		page_id,page_flag,page_tag,image_path
+  </sql>
+  
+<!--   	获取页面信息 -->
+	<select id="getPage" parameterType="java.lang.Integer" resultMap="PageResultMap">
+	SELECT 
+	   <include refid="Base_Column_List"/>
+	   FROM page
+	   WHERE page_flag=#{pageFlag}
+	</select>
+	
+<!-- 	修改页面 -->
+	<update id="updatePage" parameterType="Page">
+		 update
+        page
+        <set>
+         <if test="pageTag != null">page_tag	 = #{pageTag,jdbcType=VARCHAR},</if>
+         <if test="imagePath != null">image_path = #{imagePath,jdbcType=VARCHAR},</if>
+        </set>
+        where page_flag=#{pageFlag,jdbcType=INTEGER}
+		</update>
+</mapper>

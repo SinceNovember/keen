@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liu.dao.CategoryNodeDao">
+        <resultMap id="CategoryNodeResultMap" type="Category">
+        <id column="category_id" property="categoryId" jdbcType="INTEGER"/>
+        <result column="category_pid" property="categoryPid" jdbcType="INTEGER"/>
+        <result column="category_name" property="categoryName" jdbcType="VARCHAR"/>
+        <result column="category_description" property="categoryDescription" jdbcType="VARCHAR"/>
+        <result column="category_order" property="categoryOrder" jdbcType="INTEGER"/>
+        <association property="childrenCategory" column="category_id" select="com.liu.dao.CategoryDao.getCategoryByPid"></association>
+        
+        
+    </resultMap>
+   <sql id="tb">category</sql>
+   <sql id="Base_Column_List">
+    category_id, category_pid, category_name, category_description, category_order
+  </sql>
+<!--   获取所有的父亲节点，且包含了子节点分类 -->
+    <select id="getAllParent" resultMap="CategoryNodeResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from 
+        <include refid="tb"/>
+        where category_pid=0
+    </select>
+    
+</mapper>
