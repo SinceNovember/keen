@@ -2,7 +2,7 @@
 ## 简介
 > 一个使用SSM开发得一个精美、小巧得博客系统:bowtie:
 
-## 一个用SSM写的一个博客系统
+## 主要技术
 >框架:`SpringMVC+Spring+Mybatis`<br>
 后台UI:`layui`<br>
 安全认证:`shiro`<br>
