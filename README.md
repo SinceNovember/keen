@@ -5,7 +5,7 @@
 安全认证:`shiro`<br>
 全文检索：`lucence`<br>
 文本编辑器:`editor.md`<br>
-前端主题:`hexo`<br>
+前端主题:`hexo-theme-melody`<br>
 开发环境:`eclipse`<br>
 ### 后台功能
 博客的管理：写博客以及查看博客的信息，可对进行增删改查以及搜索<br>
