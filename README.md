@@ -3,13 +3,14 @@
 > 一个使用SSM开发得一个精美、小巧得博客系统:bowtie:
 
 ## 一个用SSM写的一个博客系统
-框架:`SpringMVC+Spring+Mybatis`<br>
+>框架:`SpringMVC+Spring+Mybatis`<br>
 后台UI:`layui`<br>
 安全认证:`shiro`<br>
 全文检索：`lucence`<br>
 文本编辑器:`editor.md`<br>
 前端主题:`hexo-theme-melody`<br>
 开发环境:`eclipse`<br>
+
 
 ## 功能
 - Markdown/Emoji
