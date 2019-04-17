@@ -54,8 +54,7 @@
 
 ## 使用方法
 下载后导入到IDE中，项目使用到`MAVEN`，请确保安装好MAVEN，修改resource下得db.properties下得数据库密码，导入数据库文件。
-各图片上传文件：
- > 
+#### 各图片上传文件：
 - editor.md文章内图片:`/static/pic` <br>
 - 评论者头像:`/static/pic/comment` <br>
 - 文章缩略图:`/static/bgpic` <br>
