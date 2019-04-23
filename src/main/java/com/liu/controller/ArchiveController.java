@@ -63,8 +63,8 @@ public class ArchiveController {
 		Page page=pageService.getPage(3);//获取归档页面图片以及标签
 		modelAndView.addObject("archiveType", "文章");
 		modelAndView.addObject("archiveTitle",  articles.size());
-		modelAndView.addObject("articles", articles);
-		modelAndView.addObject("articleCount", articles.size());
+		modelAndView.addObject("archives", articles);
+		modelAndView.addObject("archiveCount", articles.size());
 		modelAndView.addObject("page", page);
 		modelAndView.setViewName("/home/archives");
 		return modelAndView;
@@ -114,8 +114,8 @@ public class ArchiveController {
 		Page page=pageService.getPage(3);
 		modelAndView.addObject("archiveType", "分类");
 		modelAndView.addObject("archiveTitle", category.getCategoryName());
-		modelAndView.addObject("articles", articles);
-		modelAndView.addObject("articleCount", articles.size()-1);
+		modelAndView.addObject("archives", articles);
+		modelAndView.addObject("archiveCount", articles.size()-1);
 		modelAndView.addObject("page", page);
 		modelAndView.setViewName("/home/archives");
 		return modelAndView;
@@ -164,8 +164,8 @@ public class ArchiveController {
 		Page page=pageService.getPage(3);
 		modelAndView.addObject("archiveType", "标签");
 		modelAndView.addObject("archiveTitle", tag.getTagName());
-		modelAndView.addObject("articles", articles);
-		modelAndView.addObject("articleCount", articles.size()-1);
+		modelAndView.addObject("archives", articles);
+		modelAndView.addObject("archiveCount", articles.size()-1);
 		modelAndView.addObject("page", page);
 		modelAndView.setViewName("/home/archives");
 		return modelAndView;

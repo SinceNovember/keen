@@ -28,7 +28,7 @@ public class BackUploadController {
 	{
 		JSONObject jsonObject=new JSONObject();
 		String servletPath = request.getSession().getServletContext().getRealPath("/");//项目路径
-	    String uploadPath = servletPath+"static\\pic\\";//图片存放位置
+	    String uploadPath = servletPath+"static/pic/";//图片存放位置
 	    String OriginName = myfiles.getOriginalFilename();
 	    long startTime=System.currentTimeMillis();  //获取运行时间，用于设为图片得名称
 	    String suffix = OriginName.substring(OriginName.lastIndexOf(".") + 1);//获取图片后缀名

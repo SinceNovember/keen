@@ -48,13 +48,9 @@ public class InitArticleData implements ServletContextListener,ApplicationContex
 		PageService pageService=(PageService) applicationContext.getBean("pageService");
 		UserService userService=(UserService) applicationContext.getBean("userService");
 		ResolveToc resolveToc=new ResolveToc();
+		Integer articleCount=articleService.countArticle();//获取博客总数
 		Integer pageSize=5;
-		Map<String, Object> map=new HashMap<String, Object>();
-		int articleCount=articleService.listArticle(map).size();//获取博客总数
-		PageBean pageBean=new PageBean(1, pageSize);
-		map.put("start", pageBean.getPage());
-		map.put("pageSize", pageBean.getPageSize());
-		List<Article> articles=articleService.listArticle(map);
+		List<Article> articles=articleService.lisRecenttArticle(pageSize);
 		for(Article article:articles)
 		{
 			article.setSummary(resolveToc.summary(article.getHtmlContent()));

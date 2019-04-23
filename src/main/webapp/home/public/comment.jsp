@@ -118,7 +118,8 @@ function myadd()
 }
 <!--点赞-->
 
-$('.comment-show').on('click','.date-dz-z',function(){
+// $('.comment-show').on('click','.date-dz-z',function(){
+		$(document).on('click','.date-dz-z',function(){
     var zNum = $(this).find('.z-num').html();
     if($(this).is('.date-dz-z-click')){
         zNum--;

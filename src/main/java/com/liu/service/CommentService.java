@@ -8,6 +8,7 @@ import com.liu.entity.Comment;
 public interface CommentService {
 	public Integer insertComment(Comment comment);
 	public List<Comment> getCommentByAid(Integer commentArticleId);
+	public Integer countComment();
 	public Integer deleteCommentByCid(Integer commentId);
 	public Integer updateLike(Comment comment);
 	public List<Comment> listComment(Integer role);

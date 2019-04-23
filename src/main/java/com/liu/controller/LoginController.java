@@ -56,7 +56,7 @@ public class LoginController {
 		userLogService.insertLog(manageLog.insertLog("µÇÂ½","ÓÃ»§µÇÂ½"));
 		request.getSession().getServletContext().setAttribute("recentArticles",articles);
 		request.getSession().getServletContext().setAttribute("comments", comments);
-		request.getSession().getServletContext().setAttribute("commentCount", comments.size());
+		request.getSession().getServletContext().setAttribute("commentCount",commentServie.countComment());
 		request.getSession().getServletContext().setAttribute("logs", logs);
 		return "redirect:/admin/main.jsp";
 	}catch (Exception e) 

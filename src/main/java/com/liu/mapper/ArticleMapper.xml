@@ -49,7 +49,17 @@
 		 	limit #{start},#{pageSize}
 		 </if>
     </select>
-   
+
+<!--    获取最新的几篇文章 -->
+      <select id="lisRecenttArticle"  parameterType="Integer" resultMap="DetailArticleResultMap">
+        SELECT
+        <include refid="Detail_Column_List"/>
+        FROM
+        <include refid="tb"/>
+        where issue_type=1
+        ORDER BY article_id DESC
+		 	limit 0,#{pageSize}
+    </select>
 <!--    统计所有正文数 -->
        <select id="countArticle"  resultType="java.lang.Integer">
         SELECT	COUNT(*)
@@ -136,6 +146,16 @@
         WHERE article_id=#{articleId}
     </update>
     
+       
+<!--    	评论数减1 -->
+		    <update id="commentReduce" parameterType="Integer">
+		    update 
+        <include refid="tb"/>
+        <set>
+        article_comment_count=    article_comment_count-1
+        </set>
+          WHERE article_id=#{articleId}
+       </update>
 <!--     添加文章数 -->
         <update id="addCommentCount" parameterType="java.lang.Integer">
                 update

@@ -80,7 +80,7 @@ public class ArticleController {
 	* @Description: 获取文章得详细内容
 	 */
 	@RequestMapping("/{aid}")
-	public ModelAndView articleByAid(@PathVariable("aid")Integer aid)
+	public ModelAndView articleByAid(@PathVariable("aid")Integer aid,HttpServletRequest request)
 	{
 
 		ModelAndView modelAndView=new ModelAndView();
@@ -101,6 +101,12 @@ public class ArticleController {
 			comment.setChildComment(commentService.getChildComment(comment.getCommentId()));//获取文章下的评论
 		}
 		Page page=pageService.getPage(2);//获取文章页得标签和图片
+		List<Article>articles=articleService.lisRecenttArticle(5);//刷新session中的文章
+		for(Article article2:articles)
+		{
+			article2.setSummary(resolveToc.summary(article2.getHtmlContent()));
+		}
+		request.getSession().getServletContext().setAttribute("articles", articles);
 		modelAndView.addObject("article", article);
 		modelAndView.addObject("tocs", tocs);
 		modelAndView.addObject("preArticle", preArticle);

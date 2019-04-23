@@ -58,6 +58,10 @@ public class CommentServiceImpl implements CommentService {
 		// TODO Auto-generated method stub
 		return commentDao.listRecentComment(map);
 	}
+	public Integer countComment() {
+		// TODO Auto-generated method stub
+		return commentDao.countComment();
+	}
 
 
 }

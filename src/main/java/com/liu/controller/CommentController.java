@@ -1,6 +1,7 @@
 package com.liu.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -10,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.liu.Utils.DateUtil;
+import com.liu.Utils.ResolveToc;
 import com.liu.Utils.ResponseUtil;
 import com.liu.Utils.UploadUtil;
+import com.liu.entity.Article;
 import com.liu.entity.Comment;
 import com.liu.service.ArticleService;
 import com.liu.service.CommentService;
@@ -30,11 +33,12 @@ public class CommentController {
 	private CommentService commentService;
 	@Autowired
 	private ArticleService articleService;
+	ResolveToc resolveToc=new ResolveToc();
 	@RequestMapping("/insert_comment")
 	public String insert_comment(Comment comment,HttpServletRequest request,HttpServletResponse response) throws Exception
 	{
-		String lastPath="\\static\\pic\\comment\\";//上传的头像的路径
-		String absolutePath="\\static\\pic\\comment\\default.jpg";//默认头像路径
+		String lastPath="static/pic/comment/";//上传的头像的路径
+		String absolutePath="static/pic/comment/default.jpg";//默认头像路径
 		JSONObject jsonObject=new JSONObject();
 		String request_ip=request.getRemoteAddr();//获取发表评论的Ip
 		Date date=new Date();
@@ -57,6 +61,12 @@ public class CommentController {
 			commentTemp.setCommentContent(comment.getCommentContent());
 			commentTemp.setCommentAvatarPath(absolutePath);
 			articleService.addCommentCount(comment.getCommentArticleId());
+			List<Article>articles=articleService.lisRecenttArticle(5);//刷新session中的文章
+			for(Article article1:articles)
+			{
+				article1.setSummary(resolveToc.summary(article1.getHtmlContent()));
+			}
+			request.getSession().getServletContext().setAttribute("articles", articles);
 			jsonObject.put("success", true);
 			jsonObject.put("msg", "评论成功");
 			jsonObject.put("comment", commentTemp);

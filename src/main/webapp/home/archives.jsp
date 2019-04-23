@@ -20,7 +20,7 @@
      </div>
      <c:if test="${not empty articles }">
      <div class="article-sort">
-		<c:forEach items="${articles}" var="a" varStatus="status" begin="0"  end="${articleCount }">
+		<c:forEach items="${archives}" var="a" varStatus="status" begin="0"  end="${archiveCount }">
 		<c:if test="${articles[status.index].createYear ne articles[status.index-1].createYear}">
 
 		<div class="article-sort-item year">

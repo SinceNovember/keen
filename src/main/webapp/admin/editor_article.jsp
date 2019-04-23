@@ -50,7 +50,7 @@
         </div>
 </div>
         <div class="layui-form-item layui-form-text">
-        <div id="layout" style="height: 650px;background: #f6f6f6;">
+        <div id="layout" style="width:100%;background: #f6f6f6;">
             <div class="editormd" id="test-editormd">
 <textarea class="editormd-markdown-textarea" name="markdownContent" id="category_content">${article.markdownContent }</textarea>
 <!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
@@ -59,7 +59,7 @@
 </div>
         
         	<div align="center">
-        <div style="width:1200px">
+        <div>
         
                 <blockquote class="layui-elem-quote layui-quote-nm">
             温馨提示：<br>

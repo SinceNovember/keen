@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.liu.Utils.ManageLog;
+import com.liu.Utils.ResolveToc;
 import com.liu.Utils.ResponseUtil;
 import com.liu.Utils.UploadUtil;
 import com.liu.entity.Article;
@@ -61,6 +62,7 @@ public class BackArticleController {
 	private  UserLogService userLogService;
 	public static ManageLog manageLog=new ManageLog();//管理日志对象
 	ArticleIndex articleIndex=new ArticleIndex();//博客索引，用于检索操作
+	ResolveToc resolveToc=new ResolveToc();
 	/**
 	 * 
 	* @Title: ListAll  
@@ -111,7 +113,7 @@ public class BackArticleController {
 	public String write(Article article,HttpServletRequest request,HttpServletResponse response) throws Exception
 	{
 		Date date=new Date();
-		String lastPath="\\static\\bgpic\\";//封面缩略图存放位置
+		String lastPath="static/bgpic/";//封面缩略图存放位置
 		JSONObject jsonObject=new JSONObject();
 		if(article.getArticleImage().getOriginalFilename().length()!=0)
 		{		
@@ -119,14 +121,21 @@ public class BackArticleController {
 		article.setArticleImagePath(absolutePath);
 		}else
 		{
-			article.setArticleImagePath("\\static\\bgpic\\default.jpg");//没有封面图片设置为默认图片
+			article.setArticleImagePath("static/bgpic/default.jpg");//没有封面图片设置为默认图片
 		}
 		article.setArticleCommentCount(0);
 		article.setArticleViewCount(0);
 		article.setArticleCreateTime(date);
 		if(articleService.insertArticle(article)!=null)
 		{
+			
 		request.getSession().getServletContext().setAttribute("articleCount", articleService.countArticle());//更新添加博客后前台的显示数
+		List<Article>articles=articleService.lisRecenttArticle(5);//刷新session中的文章
+		for(Article article1:articles)
+		{
+			article1.setSummary(resolveToc.summary(article1.getHtmlContent()));
+		}
+		request.getSession().getServletContext().setAttribute("articles", articles);
 		Integer articleId=articleService.getAidByTitle(article.getArticleTitle());
 		articleIndex.addIndex(article);//提交文章加入到lunce索引中，用于查询
 		
@@ -219,6 +228,12 @@ public class BackArticleController {
 		{
 			userLogService.insertLog(manageLog.insertLog("修改博客", article.getArticleTitle()));//插入日志
 			request.getSession().getServletContext().setAttribute("articleCount", articleService.countArticle());//更新添加博客后前台的显示数
+			List<Article>articles=articleService.lisRecenttArticle(5);
+			for(Article article1:articles)
+			{
+				article1.setSummary(resolveToc.summary(article1.getHtmlContent()));
+			}
+			request.getSession().getServletContext().setAttribute("articles", articles);
 			articleIndex.updateIndex(article);//修改提交，修改lucence索引
 			jsonObject.put("success", true);
 			jsonObject.put("msg", "修改成功");
@@ -248,6 +263,12 @@ public class BackArticleController {
 			articleTagRefService.deleteByArticleId(aid);//删除标签关联表
 			commentService.deleteCommentByAid(aid);
 			request.getSession().getServletContext().setAttribute("articleCount", articleService.countArticle());//更新删除博客后前台的显示数
+			List<Article>articles=articleService.lisRecenttArticle(5);//刷新session中的文章
+			for(Article article1:articles)
+			{
+				article1.setSummary(resolveToc.summary(article1.getHtmlContent()));
+			}
+			request.getSession().getServletContext().setAttribute("articles", articles);
 			articleIndex.deleteIndex(aid.toString());//删除文章后，删除指定得索引
 			jsonObject.put("success", true);
 			jsonObject.put("msg", "删除成功");

@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.liu.Utils.ManageLog;
+import com.liu.Utils.ResolveToc;
 import com.liu.Utils.ResponseUtil;
 import com.liu.Utils.UploadUtil;
+import com.liu.entity.Article;
 import com.liu.entity.Comment;
+import com.liu.service.ArticleService;
 import com.liu.service.CommentService;
 import com.liu.service.UserLogService;
 import com.liu.service.UserService;
@@ -38,7 +41,10 @@ public class BackCommentController {
 	private UserService userService;
 	@Autowired
 	private UserLogService userLogService;
+	@Autowired
+	private ArticleService articleService;
 	ManageLog manageLog=BackArticleController.manageLog;
+	ResolveToc resolveToc=new ResolveToc();
 	/**
 	 * 
 	* @Title: list_comment  
@@ -66,9 +72,18 @@ public class BackCommentController {
 		JSONObject jsonObject=new JSONObject();
 		String originPath=commentService.getCommentByid(cid).getCommentAvatarPath();
 		userLogService.insertLog(manageLog.insertLog("删除评论",commentService.getContentByCid(cid)));//添加日志
+		Integer article_id=commentService.getCommentByid(cid).getCommentArticleId();
 		if(commentService.deleteCommentByCid(cid)!=null)
 		{
+			articleService.commentReduce(article_id);
 			UploadUtil.deleteImage(originPath, request);//删除原先的图片;
+			List<Article>articles=articleService.lisRecenttArticle(5);//刷新session中的文章
+			for(Article article1:articles)
+			{
+				article1.setSummary(resolveToc.summary(article1.getHtmlContent()));
+			}
+			request.getSession().getServletContext().setAttribute("articles", articles);
+
 			jsonObject.put("success", true);
 			jsonObject.put("msg", "评论删除成功");
 		}
@@ -110,7 +125,7 @@ public class BackCommentController {
 		comment.setCommentAuthorName(userService.getUser(1).getUserNickname());
 		comment.setCommentLikeCount(0);
 		comment.setCommentIp(request.getRemoteAddr());//设置为本地ip
-		comment.setCommentAvatarPath("\\static\\pic\\comment\\default.jpg");
+		comment.setCommentAvatarPath("static/pic/comment/default.jpg");
 
 		if((commentService.insertComment(comment))!=null)		
 			{

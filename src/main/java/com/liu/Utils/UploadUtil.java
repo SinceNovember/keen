@@ -42,7 +42,8 @@ public class UploadUtil {
 	 */
 	public static String UploadbgImage(MultipartFile myfiles,String lastPath,HttpServletRequest request)
 	{
-		   String servletPath = request.getSession().getServletContext().getRealPath("/");//项目路径
+		    String servletPath = request.getSession().getServletContext().getRealPath("/");//项目路径
+		    System.out.println("servletPath:"+servletPath);
 	        String uploadPath=servletPath+lastPath;//封面存放位置
 	        String OriginName = myfiles.getOriginalFilename();
 	        long startTime=System.currentTimeMillis();  
@@ -50,6 +51,7 @@ public class UploadUtil {
 	        String fileName=startTime+"."+suffix;
 			UploadUtil.Upload(myfiles, uploadPath,fileName);
 			String absolutePath=lastPath+fileName;
+			System.out.println("absolutePath:"+absolutePath);
 			return absolutePath;
 	}
 	/**

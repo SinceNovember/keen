@@ -58,6 +58,14 @@ public class ArticleServiceImpl implements ArticleService{
 		// TODO Auto-generated method stub
 		return articleDao.addCommentCount(articleId);
 	}
+	public List<Article> lisRecenttArticle(Integer pageSize) {
+		// TODO Auto-generated method stub
+		return articleDao.lisRecenttArticle(pageSize);
+	}
+	public Integer commentReduce(Integer article_id) {
+		// TODO Auto-generated method stub
+		return articleDao.commentReduce(article_id);
+	} 
 
 
 

@@ -53,7 +53,7 @@ public class BackConsoleController {
 		List<UserLog> logs=userLogService.listLog(map);
 		List<Comment> comments=commentServie.listRecentComment(map);//最近发布得评论
 		modelAndView.addObject("comments", comments);
-		modelAndView.addObject("commentCount", comments.size());
+		modelAndView.addObject("commentCount", commentServie.countComment());
 		modelAndView.addObject("recentArticles", articles);
 		modelAndView.addObject("logs", logs);
 		modelAndView.setViewName("/admin/console");

@@ -129,11 +129,12 @@ public class Test2 {
 //		
 		List<Article>articles=articleService.listArticle(map);
 
-		for(Article article:articles)
-		{
-			index.addIndex(article);
-		}
-		System.out.println("完成");
+//		for(Article article:articles)
+//		{
+//			index.addIndex(article);
+//		}
+//		System.out.println("完成");
+		System.out.println(articleService.commentReduce(131));
 //		System.out.println(commentService.listRecentComment(map));
 //		System.out.println(userService.getUserByUsername("admin1"));
 //		ManageLog manageLog=new ManageLog();

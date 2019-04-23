@@ -8,6 +8,8 @@ import com.liu.entity.Article;
 public interface ArticleService {
 	public List<Article>listArticle(Map<String, Object>map);
 	public List<Article>listAdminArticle(Map<String, Object>map);
+	public List<Article>lisRecenttArticle(Integer pageSize);
+	public Integer commentReduce(Integer article_id);
 	public Integer countArticle();
 	public Article getArticleByAid(Integer articleId);
 	public Integer addCommentCount(Integer articleId);

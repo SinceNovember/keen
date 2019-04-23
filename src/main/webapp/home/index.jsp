@@ -31,15 +31,15 @@
      </c:forEach>    </span>
      <span class="article-meta tags"><span class="article-meta__separator">|</span>
         <c:forEach items="${a. tagList}" var="t">
-     <i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="${pageContext.request.contextPath }/tag/archives/${t.tagId}">${t.tagName }</a>
+     <i class="fa fa-tag article-meta__icon" aria-hidden="true"></i>&nbsp;<a class="article-meta__tags" href="${pageContext.request.contextPath }/tag/archives/${t.tagId}">${t.tagName }</a>
      </c:forEach>
      </span>
           <span class="article-meta tags"><span class="article-meta__separator">|</span>
-     <i class="fa fa-eye"></i>${a.articleViewCount}
+     <i class="fa fa-eye"></i>&nbsp;${a.articleViewCount}
      </span>
      
                <span class="article-meta tags"><span class="article-meta__separator">|</span>
-     <i class="fa fa-comment"></i>${a.articleCommentCount}
+     <i class="fa fa-comment"></i>&nbsp;${a.articleCommentCount}
      </span>
      <div class="content">
    	  ${a.summary}

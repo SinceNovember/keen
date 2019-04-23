@@ -7,6 +7,7 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
@@ -36,6 +37,10 @@ public class myRealm  extends AuthorizingRealm{
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		String username=(String)token.getPrincipal();//获取用户名
 		User user=userService.getUserByUsername(username);
+		if(user==null)
+		{
+			throw new UnknownAccountException("没有找到该账号");  
+		}
 		if(user!=null)
 		{
 			SecurityUtils.getSubject().getSession().setAttribute("user", user);
