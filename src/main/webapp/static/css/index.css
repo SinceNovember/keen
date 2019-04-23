@@ -1459,7 +1459,8 @@ footer.is-mobile {
 	line-height:.3rem
 }
 #post-content {
-	margin-bottom:1rem
+	margin-bottom:1rem;
+	margin-left: 0.7rem;
 }
 a {
 	color:#99a9bf;
