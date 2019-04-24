@@ -43,8 +43,7 @@ $(function () {
 
             $("h1, h2, h3, h4, h5, h6").css("color", "#99a9bf");
 
-            $(".article-container code").css({ "background": "#7A5353", "color": "#99a9bf" });
-
+            $(".article-container code").css("background","rgb(0, 0, 0)");
             
             $("#vcomment").addClass("vc");
 
@@ -66,7 +65,7 @@ $(function () {
             $(".donate-btn").css("background-color", "#616A6B");
 
 
-
+            $(".article-container pre ").css( "background","#000000");
             // 代碼框
             $(".article-container .highlight").addClass("dhighlight");
 
@@ -152,10 +151,10 @@ $(function () {
             $("#sidebar").css({ "background": "#f6f8fa  ", "box-shadow": "-0.25rem 0 0.25rem rgba(232,237,250,.6)   " });
 
 
-
+            $(".article-container pre ").css( "background","#263238");
             $("h1, h2, h3, h4, h5, h6").css("color", "#344c67");
 
-            $(".article-container code").css({ "background": "rgba(27,31,35,.05)", "color": "#1f2d3d" });
+            $(".article-container code").css("background","rgb(38, 50, 56)");
 
             // $("#top-container,#nav").css("background-image", "url('/img/top.png')");
             // $(".footer-bg").css("background-image", "url('/img/top.png')");

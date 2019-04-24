@@ -163,21 +163,11 @@ html {
 }
 body {
 	position:relative;
-	display:-webkit-box;
-	display:-moz-box;
-	display:-webkit-flex;
-	display:-ms-flexbox;
-	display:box;
 	display:flex;
 	-webkit-box-orient:vertical;
-	-moz-box-orient:vertical;
-	-o-box-orient:vertical;
-	-webkit-flex-direction:column;
-	-ms-flex-direction:column;
 	flex-direction:column;
 	min-height:100%;
 	background:#fff;
-	color:#4c4948;
 	font-size:14px;
 	font-family:Lato,Helvetica Neue For Number,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
 	line-height:2
@@ -393,8 +383,11 @@ body {
 .article-container .highlight,.article-container pre {
 	overflow:auto;
 	margin:1rem 0;
+	width:98%;
 	padding:0;
-	padding-top:1.4rem;
+	padding-top:0.3rem;
+	padding-left:0.8rem;
+	padding-bottom:0.3rem;
 	background:#263238;
 	color:#eff;
 	font-size:14px;
@@ -411,19 +404,22 @@ blockquote {
 }
 .article-container code,.article-container pre {
 	font-family:consolas,Menlo,"PingFang SC","Microsoft YaHei",monospace,Helvetica Neue For Number!important
+
 }
 .article-container code {
 	padding:.1rem .2rem;
-	background:rgba(27,31,35,.05);
-	color:#1f2d3d;
 	word-wrap:break-word;
-	font-size:14px
+	font-size:14px;	
+    color: rgb(255, 255, 255) !important;
 }
 .article-container pre code {
 	padding:0;
 	background:0 0;
-	color:#eff;
 	text-shadow:none
+/* 	background: rgb(0, 0, 0); */
+/*     color: rgb(255, 255, 255); */
+/*     background: rgba(27, 31, 35, 0.05); */
+/*     color: rgb(255, 255, 255) !important; */
 }
 .article-container .highlight {
 	position:relative;
@@ -1156,7 +1152,8 @@ footer.is-mobile {
 }#pagination {
 	overflow:hidden;
 	margin-top:1rem;
-	width:100%
+	margin-left:0.4rem;
+	width:98%
 }
 #pagination .pagination {
 	text-align:center
@@ -1284,6 +1281,7 @@ footer.is-mobile {
 }
 .post-meta__tags {
 	margin-right:.4rem;
+	margin-left:0.3rem;
 	padding:.2rem .6rem;
 	border:1px solid #03152A;
 	border-radius:.6rem;
@@ -1527,6 +1525,8 @@ img:hover {
 }
 .post-copyright {
 	position:relative;
+	margin-left:0.2rem;
+	margin-right:0.2rem;
 	margin-bottom:1rem;
 	padding:.5rem .8rem;
 	border:1px solid #eee;
@@ -1984,4 +1984,9 @@ img:hover {
 #local-search .search-result-list {
 	overflow-y: auto;
 	max-height: 10.5rem
+}
+.contair-margin
+{
+	margin-left:0.5rem;
+	margin-right:0.5rem;
 }

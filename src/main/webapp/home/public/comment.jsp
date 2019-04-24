@@ -15,8 +15,8 @@
     	 <input type="file" name="commentAvatarImage" id="" value="default.jpg" onchange="prev(this)"/>        
         <a  href="javascript:myadd();" class="plBtn" id="review" >评论</a>
         <div class="inputbox">
-        姓名:&nbsp;<input type="text" name="commentAuthorName" id="cname" style="width:100px;height:45px;"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        邮箱:&nbsp;<input type=”text" name="commentAuthorEmail" style="width:230px;height:45px;"/>
+        姓名:&nbsp;<input type="text" name="commentAuthorName" id="cname" class="bname"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        邮箱:&nbsp;<input type=”text" name="commentAuthorEmail" class="bemail"/>
         </div>
         </form>
     </div>

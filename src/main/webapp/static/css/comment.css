@@ -204,7 +204,6 @@ input:focus{
      position: relative; 
      top:-50px;
      left:60px;
-     width: 530px;
     }
     input[type="file"]{
         position: absolute;
@@ -228,8 +227,16 @@ input:focus{
     border-radius: 2px;
 }
 
-
-
+.bname
+{
+	width:10%;
+	height:45px;
+}
+.bemail
+{
+	width:26%;
+	height:45px;
+}
 
 
 

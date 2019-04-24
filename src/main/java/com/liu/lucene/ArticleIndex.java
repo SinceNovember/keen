@@ -49,7 +49,7 @@ public class ArticleIndex {
 	private Directory directory;   
 	private IndexWriter getWriter() throws Exception
 	{
-		directory=FSDirectory.open(Paths.get("/usr/local/article_Index"));//创建目录 本地磁盘存储
+		directory=FSDirectory.open(Paths.get("D:\\article_Index"));//创建目录 本地磁盘存储
 		SmartChineseAnalyzer analyzer=new SmartChineseAnalyzer();//配置解析器
 		IndexWriterConfig config=new IndexWriterConfig(analyzer);//创建IndexWriter配置
 		IndexWriter indexWriter=new IndexWriter(directory, config);//创建IndexWriter
@@ -85,7 +85,7 @@ public class ArticleIndex {
 	}
 	public List<Article> searchArticle(String q,Integer flag)throws Exception//查询索引
 	{
-		directory=FSDirectory.open(Paths.get("/usr/local/article_Index"));
+		directory=FSDirectory.open(Paths.get("D:\\article_Index"));
 		IndexReader indexReader=DirectoryReader.open(directory);
 		IndexSearcher indexSearcher=new IndexSearcher(indexReader);//索引搜索器
 		BooleanQuery.Builder booleanQuery=new BooleanQuery.Builder();//用于对多个字段进行查询
