@@ -7,8 +7,7 @@
 <head>
 
   <jsp:include page="public/headercss.jsp"></jsp:include>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/comment.css">
+
 </head>
  <body>
   <canvas class="fireworks"></canvas>

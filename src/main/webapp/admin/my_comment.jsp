@@ -52,9 +52,16 @@
                           ${c.commentContent}
                         </td>
                         <td align="center">
+                         <c:choose>
+                        <c:when test="${empty c.article.articleTitle}">
+                        留言板
+                        </c:when>
+                   		<c:otherwise>
                         <a href="${pageContext.request.contextPath }/${c.article.articleId}" target="_blank">
                          ${c.article.articleTitle }
                          </a>
+                         </c:otherwise>
+                              </c:choose>
                         </td>
                         
                         <td align="center">

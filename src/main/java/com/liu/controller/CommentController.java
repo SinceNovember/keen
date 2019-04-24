@@ -41,6 +41,8 @@ public class CommentController {
 		String absolutePath="static/pic/comment/default.jpg";//默认头像路径
 		JSONObject jsonObject=new JSONObject();
 		String request_ip=request.getRemoteAddr();//获取发表评论的Ip
+//		if(comment.getCommentArticleId().equals(""))
+//		System.out.println("aaaa");
 		Date date=new Date();
 		comment.setCommentCreateTime(date);
 		comment.setCommentIp(request_ip);

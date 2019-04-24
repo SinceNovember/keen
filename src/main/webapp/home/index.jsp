@@ -15,7 +15,7 @@
    <div class="layout" id="content-inner">
    
    <c:forEach items="${articles }" var="a">
-       <div class="recent-post-item article-container">
+       <div class="recent-post-item article-container" style="margin-left:0.5rem;margin-right:0.5rem">
      <a class="article-title" href="${pageContext.request.contextPath}/${a.articleId}">${a.articleTitle }</a>
      <time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> <fmt:formatDate pattern="yyyy-MM-dd"  value="${a.articleCreateTime }" /></time>
      <span class="article-meta">

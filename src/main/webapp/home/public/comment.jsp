@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
  <script src="${pageContext.request.contextPath}/static/jquery/jquery.js"></script>
+     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/comment.css">
  <div class="commentAll">
     <!--评论区域 begin-->
     <div class="reviewArea clearfix">
@@ -21,15 +23,15 @@
     <!--评论区域 end-->
     <!--回复区域 begin-->
     <div class="comment-show">
-    <c:choose>
+        <c:choose>
     <c:when test="${not empty comments }">
     <c:forEach items="${comments }"	var="c">
     
         <div class="comment-show-con clearfix">
-            <div class="comment-show-con-img pull-left"><img src="${pageContext.request.contextPath}/${c.commentAvatarPath}"  height="48" width="48" style="border-radius: 50%" alt="加载失败"></div>
+            <div class="comment-show-con-img pull-left"><img src="${pageContext.request.contextPath}/${c.commentAvatarPath}" alt=""  height="48" width="48" style="border-radius: 50%"></div>
             <div class="comment-show-con-list pull-left clearfix">
                 <div class="pl-text clearfix">
-                    <a href="#" class="comment-size-name">${c.commentAuthorName } : </a>
+                    <a  class="comment-size-name">${c.commentAuthorName } : </a>
                     <span class="my-pl-con">&nbsp;${c.commentContent }</span>
                 </div>
                 <div class="date-dz">
@@ -43,14 +45,21 @@
                 </div>
                 <div class="hf-list-con"></div>
             </div>
-            <c:if test="${not empty c.childComment }">
+            
+			            <c:if test="${not empty c.childComment }">
 					<c:forEach items="${c.childComment }" var="cc">
-					        <div class="comment-show-con clearfix">
-					
-                    <div class="comment-show-con-img1 pull-left"><img src="${pageContext.request.contextPath}/${cc.commentAvatarPath}"  height="48" width="48" style="border-radius: 50%" alt="加载失败"></div>
-            <div class="comment-show-con-list1 pull-left clearfix">
+			 <div style="margin-left:2rem">
+            <div class="comment-show-con-img pull-left"><img src="${pageContext.request.contextPath}/${cc.commentAvatarPath}" alt=""  height="48" width="48" style="border-radius: 50%"></div>
+            <div class="comment-show-con-list pull-left clearfix">
                 <div class="pl-text clearfix">
-                    <a href="#" class="comment-size-name">${cc.commentAuthorName } : </a>
+                <c:choose>
+         	<c:when test="${cc.commentRole eq 1}">
+       			 <span><a class="btn">博主</a>&nbsp;	: </span>
+       			 </c:when>
+       			 <c:otherwise>
+       			 <span><a class="comment-size-name">${cc.commentAuthorName }</a>&nbsp;	: </span> 
+       			 </c:otherwise>
+       			        </c:choose>
                     <span class="my-pl-con">&nbsp;${cc.commentContent }</span>
                 </div>
                 <div class="date-dz">
@@ -63,23 +72,20 @@
                 </div>
                 <div class="hf-list-con"></div>
             </div>
-            </div>
-            </c:forEach>
-            </c:if>
-            
         </div>
         </c:forEach>
-        </c:when>
+        </c:if>
+    </div>
+
+</c:forEach>
+</c:when>
         <c:otherwise>
         <div class="comment-show-con clearfix" id="comment_p">
         <input type="hidden" value="1" id="no_comment">
 		<p align="center">暂无评论</p>
         </div>
         </c:otherwise>
-        </c:choose>
-    <!--回复区域 end-->
-</div>
-
+</c:choose>
    </div>
     <script>
 function myadd()

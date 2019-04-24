@@ -24,7 +24,7 @@ body{font-family: "Microsoft Yahei";}
 /*----------评论区域 begin----------*/
 .comment-show{margin-top: 20px;}
 .comment-show-con {
-    width: 100%;
+    width: 90%;
     border-top: 1px solid #EDEDED;
     padding: 10px 0;
 }
@@ -216,7 +216,17 @@ input:focus{
         cursor: pointer;
     }
 
-
+.btn{
+	
+	position: relative;
+    display: inline-block;
+    padding: 0 6px;
+    font-size: 12px;
+    text-align: center;
+    background-color: #423c3b;
+    color: #c5c5c5;
+    border-radius: 2px;
+}
 
 
 

@@ -16,11 +16,9 @@
        ${about }
 
     </article>
+         <jsp:include page="public/comment.jsp"></jsp:include>
    </div>
-<%--      <jsp:include page="public/comment.jsp"></jsp:include> --%>
-   
   </div>
- 
   <jsp:include page="public/footer.jsp"></jsp:include>
   <jsp:include page="public/headerjs.jsp"></jsp:include>
  </body>
