@@ -18,11 +18,11 @@ body{font-family: "Microsoft Yahei";}
 .content{float: left;}
 .flex-text-wrap,pre{margin: 0 !important;}
 .commentAll{padding: 20px;border: 1px solid #ededed;margin: 33px auto;}
-.plBtn{width: 75px;height: 36px;line-height: 36px;background-color: #339b53;text-align: center;display: block;float: right;color: #FFFFFF;font-size: 16px;border-radius: 6px;margin-right: 2px;margin-top: 12px;}
+.plBtn{width: 13%;height: 40px;line-height: 35px;background-color: #339b53;text-align: center;display: block;float: right;color: #FFFFFF;font-size: 16px;border-radius: 6px;margin-right: 2px;margin-top: 5px;}
 .plBtn:hover{background-color: #2f904d;}
 
 /*----------评论区域 begin----------*/
-.comment-show{margin-top: 20px;}
+.comment-show{margin-top: 5px;}
 .comment-show-con {
     width: 90%;
     border-top: 1px solid #EDEDED;
@@ -202,7 +202,7 @@ input:focus{
     .inputbox
     {
      position: relative; 
-	 width:70%;
+	 width:60%;
      top:-50px;
      left:60px;
     }
@@ -230,13 +230,13 @@ input:focus{
 
 .bname
 {
-	width:20%;
-	height:45px;
+	width:17%;
+	height:40px;
 }
 .bemail
 {
-	width:30%;
-	height:45px;
+	width:34%;
+	height:40px;
 }
 .comment-avatar
 {
