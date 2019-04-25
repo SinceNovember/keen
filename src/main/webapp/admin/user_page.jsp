@@ -30,14 +30,14 @@
             <div class="layui-col-sm12">
               <div class="layui-card">
               <div class="layui-row layui-col-space15">  
-              <div class="layui-col-sm9" style="position:relative;left:50px;">       
+              <div class="layui-col-sm9" style="margin-left:2.3rem">       
                    <div class="layui-card-body layui-text">
 		   <div class="layui-form-item">     
   		  <form class="layui-form"   id="myForm"  method="POST" enctype="multipart/form-data">
 				<div class="layui-col-md9">
 			<input type="hidden" name="userId"  value="${user.userId}">
        				 <div class="layui-form-item">
-						<div style="position:relative;left:60px">
+						<div style="position:relative;left:70px">
                         <img class="layui-upload-img" src="${pageContext.request.contextPath }/${user.avatarPath}" id="prevView" width="100"
                              height="100">
                              <input type="file" name="avatarImage"  class="avatar" onchange="prev(this)"/> 
@@ -86,7 +86,7 @@
                     </div>
                     <br>
         	<div align="center">
-        <div style="width:1200px">
+        <div>
         
                 <blockquote class="layui-elem-quote layui-quote-nm">
             温馨提示：<br>
