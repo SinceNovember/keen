@@ -202,6 +202,7 @@ input:focus{
     .inputbox
     {
      position: relative; 
+	 width:70%;
      top:-50px;
      left:60px;
     }
@@ -229,12 +230,12 @@ input:focus{
 
 .bname
 {
-	width:10%;
+	width:20%;
 	height:45px;
 }
 .bemail
 {
-	width:26%;
+	width:30%;
 	height:45px;
 }
 .comment-avatar
