@@ -28,7 +28,7 @@
     <c:forEach items="${comments }"	var="c">
     
         <div class="comment-show-con clearfix">
-            <div class="comment-show-con-img pull-left"><img src="${pageContext.request.contextPath}/${c.commentAvatarPath}" alt=""  height="48" width="48" style="border-radius: 50%"></div>
+            <div class="comment-show-con-img pull-left"><img src="${pageContext.request.contextPath}/${c.commentAvatarPath}" alt="" class="comment-avatar"></div>
             <div class="comment-show-con-list pull-left clearfix">
                 <div class="pl-text clearfix">
                     <a  class="comment-size-name">${c.commentAuthorName } : </a>
@@ -49,14 +49,17 @@
 			            <c:if test="${not empty c.childComment }">
 					<c:forEach items="${c.childComment }" var="cc">
 			 <div style="margin-left:2rem">
-            <div class="comment-show-con-img pull-left"><img src="${pageContext.request.contextPath}/${cc.commentAvatarPath}" alt=""  height="48" width="48" style="border-radius: 50%"></div>
-            <div class="comment-show-con-list pull-left clearfix">
-                <div class="pl-text clearfix">
                 <c:choose>
          	<c:when test="${cc.commentRole eq 1}">
+         	    <div class="comment-show-con-img pull-left"><img src="${pageContext.request.contextPath}/${inform.avatarPath}" alt="" class="comment-avatar"></div>
+            <div class="comment-show-con-list pull-left clearfix">
+                <div class="pl-text clearfix">
        			 <span><a class="btn">博主</a>&nbsp;	: </span>
        			 </c:when>
        			 <c:otherwise>
+       		 <div class="comment-show-con-img pull-left"><img src="${pageContext.request.contextPath}/${cc.commentAvatarPath}" alt="" class="comment-avatar"></div>
+            <div class="comment-show-con-list pull-left clearfix">
+                <div class="pl-text clearfix">
        			 <span><a class="comment-size-name">${cc.commentAuthorName }</a>&nbsp;	: </span> 
        			 </c:otherwise>
        			        </c:choose>

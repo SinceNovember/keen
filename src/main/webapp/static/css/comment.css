@@ -237,7 +237,13 @@ input:focus{
 	width:26%;
 	height:45px;
 }
-
+.comment-avatar
+{
+	height:48px;
+	width:48px;
+	border-radius:50%;
+	filter:brightness(1);
+}
 
 
 
