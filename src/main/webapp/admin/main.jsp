@@ -157,6 +157,12 @@
                 <cite>日志</cite>
               </a>
             </li>
+            <li data-name="app" class="layui-nav-item">
+              <a lay-href="${pageContext.request.contextPath }/admin/vistor" lay-tips="应用" lay-direction="2">
+                <i class="layui-icon layui-icon-log"></i>
+                <cite>访问</cite>
+              </a>
+            </li>	
           </ul>
         </div>
       </div>

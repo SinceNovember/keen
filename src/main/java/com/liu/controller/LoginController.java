@@ -19,9 +19,11 @@ import com.liu.entity.Article;
 import com.liu.entity.Comment;
 import com.liu.entity.User;
 import com.liu.entity.UserLog;
+import com.liu.listener.AccessListener;
 import com.liu.service.ArticleService;
 import com.liu.service.CommentService;
 import com.liu.service.UserLogService;
+import com.liu.service.VistorService;
 
  /** 
  * @ClassName: LoginController 
@@ -37,6 +39,8 @@ public class LoginController {
 	private CommentService commentServie;
 	@Autowired
 	private UserLogService userLogService;
+	@Autowired
+	private VistorService vistorService;
 	ManageLog manageLog=BackArticleController.manageLog;//用于统计日志
 	public static String LoginIp="";
 	@RequestMapping("/login")
@@ -54,10 +58,13 @@ public class LoginController {
 		List<UserLog> logs=userLogService.listLog(map);//最新的日志
 		LoginIp=request.getRemoteAddr();
 		userLogService.insertLog(manageLog.insertLog("登陆","用户登陆"));
+		request.getSession().getServletContext().setAttribute("countVistor",vistorService.countVistor());
+		request.getSession().getServletContext().setAttribute("newVistor",AccessListener.VISTOR_NUMBER);
 		request.getSession().getServletContext().setAttribute("recentArticles",articles);
 		request.getSession().getServletContext().setAttribute("comments", comments);
 		request.getSession().getServletContext().setAttribute("commentCount",commentServie.countComment());
 		request.getSession().getServletContext().setAttribute("logs", logs);
+		AccessListener.VISTOR_NUMBER=0;//访问量归0
 		return "redirect:/admin/main.jsp";
 	}catch (Exception e) 
 		{

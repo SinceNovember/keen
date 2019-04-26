@@ -105,4 +105,14 @@ textarea,
         background-size: 51px auto;
     }
 }
+ .input-avatar
+        {
+        position: absolute;
+        left: 120px;
+        top: 32px;
+        width:90px;
+        height: 38px;
+        opacity: 0;
+        cursor: pointer;
+        }
 

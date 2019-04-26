@@ -2,12 +2,9 @@ package com.liu.lucene;
 
 import java.io.StringReader;
 import java.nio.file.Paths;
-import java.text.Format;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.enterprise.inject.New;
 
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.cn.smart.SmartChineseAnalyzer;
@@ -35,7 +32,6 @@ import org.apache.lucene.search.highlight.SimpleSpanFragmenter;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
-import com.liu.Utils.DateUtil;
 import com.liu.Utils.StringUtil;
 import com.liu.entity.Article;
 

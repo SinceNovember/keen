@@ -1457,7 +1457,8 @@ footer.is-mobile {
 }
 #post-content {
 	margin-bottom:1rem;
-	margin-left: 0.7rem;
+	margin-left: 0.5rem;
+	margin-right: 0.3rem;
 }
 a {
 	color:#99a9bf;

@@ -15,10 +15,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.liu.entity.Article;
 import com.liu.entity.Comment;
 import com.liu.entity.UserLog;
+import com.liu.entity.Vistor;
 import com.liu.lucene.ArticleIndex;
 import com.liu.service.ArticleService;
 import com.liu.service.CommentService;
 import com.liu.service.UserLogService;
+import com.liu.service.VistorService;
 
 
  /** 
@@ -36,6 +38,8 @@ public class BackConsoleController {
 	private CommentService commentServie;
 	@Autowired
 	private UserLogService userLogService;
+	@Autowired
+	private VistorService vistorService;
 	ArticleIndex articleIndex=new ArticleIndex();//博客索引，用于检索操作
 	/**
 	 * 
@@ -56,6 +60,7 @@ public class BackConsoleController {
 		modelAndView.addObject("commentCount", commentServie.countComment());
 		modelAndView.addObject("recentArticles", articles);
 		modelAndView.addObject("logs", logs);
+		modelAndView.addObject("countVistor", vistorService.countVistor());
 		modelAndView.setViewName("/admin/console");
 		return modelAndView;
 	}

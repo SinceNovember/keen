@@ -12,7 +12,7 @@
 
  <div id="content-outer">
    <div class="layout" id="content-inner">
-    <article id="page" style="margin-left:0.7rem">
+    <article id="page" style="margin-left:0.5rem;margin-right:0.5rem">
        ${about }
 
     </article>

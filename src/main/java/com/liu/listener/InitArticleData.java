@@ -33,14 +33,14 @@ import com.liu.service.UserService;
  */
 public class InitArticleData implements ServletContextListener,ApplicationContextAware{
 
-	private static ApplicationContext applicationContext;
+	public static ApplicationContext applicationContext=new ClassPathXmlApplicationContext("classpath:ApplicationContext.xml");
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	public void contextInitialized(ServletContextEvent sce) {
-		applicationContext=new ClassPathXmlApplicationContext("classpath:ApplicationContext.xml");
+	
 		ServletContext application=sce.getServletContext();
 		ArticleService articleService=(ArticleService) applicationContext.getBean("articleService");
 		CategoryService categoryService=(CategoryService) applicationContext.getBean("categoryService");

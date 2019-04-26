@@ -17,14 +17,14 @@
       <div class="layui-col-sm6 layui-col-md3">
         <div class="layui-card">
           <div class="layui-card-header">
-            访问量
-            <span class="layui-badge layui-bg-blue layuiadmin-badge">周</span>
+            新增访问量
+            <span ><i class="layui-inline layui-icon layui-icon-release" style="color:#1e9fff"></i></span>
           </div>
-          <div class="layui-card-body layuiadmin-card-list">
-            <p class="layuiadmin-big-font">9,999,666</p>
+          <div class="layui-card-body layuiadmin-card-list" >
+            <p class="layuiadmin-big-font">${newVistor }</p>
             <p>
               总计访问量 
-              <span class="layuiadmin-span-color">88万 <i class="layui-inline layui-icon layui-icon-flag"></i></span>
+              <span class="layuiadmin-span-color">${countVistor}<i class="layui-inline layui-icon layui-icon-flag"></i></span>
             </p>
           </div>
         </div>

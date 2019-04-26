@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liu.dao.VistorDao" >
+     <resultMap id="VisotrResultMap" type="Vistor" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="browser" property="browser" jdbcType="VARCHAR" />
+    <result column="visit_time" property="visitTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+    
+   <sql id="Base_Column_List" >
+   id,ip,browser,visit_time
+  </sql>
+<!--   插入访问者 -->
+      <insert id="insertVistor" parameterType="Vistor" useGeneratedKeys="true" keyProperty="id">
+        insert into vistor(ip,browser,visit_time) 
+    values (#{ip,jdbcType=INTEGER}, #{browser,jdbcType=VARCHAR}, #{visitTime,jdbcType=TIMESTAMP})
+    </insert>
+<!--     展示访问者 -->
+        <select id="listVistor" resultMap="VisotrResultMap">
+        SELECT
+        <include refid="Base_Column_List"></include>
+        FROM vistor
+        ORDER BY id DESC
+  </select>
+<!--   统计访问量 -->
+          <select id="countVistor" resultType="Integer">
+        SELECT COUNT(*)
+        FROM vistor
+  </select>
+<!--   删除访问者 -->
+      <delete id="deleteVistor" parameterType="Integer">
+    DELETE FROM vistor
+    WHERE ID = #{id, jdbcType=INTEGER}
+  </delete>
+</mapper>

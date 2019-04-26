@@ -14,6 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.liu.Utils.ManageLog;
+import com.liu.dao.VistorDao;
 import com.liu.entity.Article;
 import com.liu.entity.ArticleCategoryRef;
 import com.liu.entity.ArticleTagRef;
@@ -21,6 +22,7 @@ import com.liu.entity.Comment;
 import com.liu.entity.Page;
 import com.liu.entity.User;
 import com.liu.entity.UserLog;
+import com.liu.entity.Vistor;
 import com.liu.lucene.ArticleIndex;
 import com.liu.service.ArticleCategoryRefService;
 import com.liu.service.ArticleService;
@@ -33,6 +35,7 @@ import com.liu.service.TagService;
 import com.liu.service.UploadService;
 import com.liu.service.UserLogService;
 import com.liu.service.UserService;
+import com.liu.service.VistorService;
 
 @RunWith(SpringJUnit4ClassRunner.class)	
 @ContextConfiguration(locations={"classpath:ApplicationContext.xml"})
@@ -59,6 +62,8 @@ public class Test2 {
 	private UserService userService;
 	@Resource
 	private UserLogService userLogService;
+	@Resource
+	private VistorService vistorService;
 	ArticleIndex index=new ArticleIndex();
 	@Test
 	public void test() throws Exception{
@@ -134,10 +139,15 @@ public class Test2 {
 //			index.addIndex(article);
 //		}
 //		System.out.println("Íê³É");
-		System.out.println(articleService.commentReduce(131));
+//		System.out.println(articleService.commentReduce(131));
 //		System.out.println(commentService.listRecentComment(map));
 //		System.out.println(userService.getUserByUsername("admin1"));
 //		ManageLog manageLog=new ManageLog();
 //		manageLog.insertLog("1", "111");
+		Vistor vistor=new Vistor();
+		vistor.setIp("111");
+		vistor.setBrowser("aaa");
+		vistor.setVisitTime(new Date());
+		System.out.println(vistorService.deleteVistor(3));
 	}
 }

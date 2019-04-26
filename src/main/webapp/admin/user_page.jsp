@@ -6,20 +6,8 @@
 <html>
 <head>
 <jsp:include page="public/headercss.jsp"></jsp:include>
- <link rel="stylesheet" href="${pageContext.request.contextPath}/static/editor/css/style.css" />
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css" />
  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/editor/css/editormd.css" />
-        <style>
-        .avatar
-        {
-        position: absolute;
-        left: 120px;
-        top: 32px;
-        width:90px;
-        height: 38px;
-        opacity: 0;
-        cursor: pointer;
-        }
-        </style>
 </head>
 <body>
   <div class="layui-fluid">
@@ -40,7 +28,7 @@
 						<div style="position:relative;left:70px">
                         <img class="layui-upload-img" src="${pageContext.request.contextPath }/${user.avatarPath}" id="prevView" width="100"
                              height="100">
-                             <input type="file" name="avatarImage"  class="avatar" onchange="prev(this)"/> 
+                             <input type="file" name="avatarImage"  class="input-avatar" onchange="prev(this)"/> 
                              &nbsp; &nbsp;  
                             <div class="layui-btn"  onchange="prev(this)">上传头像</div>
                              </div>

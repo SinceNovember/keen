@@ -23,8 +23,10 @@ import com.liu.Utils.UploadUtil;
 import com.liu.entity.PageBean;
 import com.liu.entity.User;
 import com.liu.entity.UserLog;
+import com.liu.entity.Vistor;
 import com.liu.service.UserLogService;
 import com.liu.service.UserService;
+import com.liu.service.VistorService;
 
 import net.sf.json.JSONObject;
 
@@ -41,6 +43,8 @@ public class BackUserController {
 	private UserService userService;
 	@Autowired
 	private UserLogService userLogService;
+	@Autowired
+	private VistorService vistorService;
 	ManageLog manageLog=BackArticleController.manageLog;
 	/**
 	 * 
@@ -166,6 +170,42 @@ public class BackUserController {
 	{
 		JSONObject jsonObject=new JSONObject();
 		if((userLogService.deleteLog(id))!=null)		
+			{
+			jsonObject.put("success", true);
+			jsonObject.put("msg", "删除成功");
+			}
+		else
+		{
+			jsonObject.put("success", false);
+			jsonObject.put("msg", "删除失败");
+		}
+		ResponseUtil.write(response,jsonObject);
+		return null;
+	}
+	/**
+	 * 
+	* @Title: Vistor  
+	* @Description: 访问者查看
+	 */
+	@RequestMapping("/vistor")
+	public ModelAndView Vistor()
+	{
+		ModelAndView modelAndView=new ModelAndView();
+		List<Vistor> vistors=vistorService.listVistor();
+		modelAndView.addObject("vistors", vistors);
+		modelAndView.setViewName("/admin/vistor");
+		return modelAndView;
+	}
+	/**
+	 * 
+	* @Title: delete_vistor  
+	* @Description:删除访问
+	 */
+	@RequestMapping("/delete_vistor")
+	public String delete_vistor(@RequestParam("id")Integer id,HttpServletRequest request,HttpServletResponse response) throws Exception
+	{
+		JSONObject jsonObject=new JSONObject();
+		if((vistorService.deleteVistor(id))!=null)		
 			{
 			jsonObject.put("success", true);
 			jsonObject.put("msg", "删除成功");
