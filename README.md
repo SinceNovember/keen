@@ -1,7 +1,7 @@
 # Blog
 ## 简介
 > 一个使用SSM开发得一个精美、小巧得博客系统:bowtie:<br>
-预览站点:[47.103.14.56](http://47.103.14.56)
+预览站点:[sincenovember.top](http://www.sincenovember.top)
 
 ## 主要技术
 >框架:`SpringMVC+Spring+Mybatis`<br>
