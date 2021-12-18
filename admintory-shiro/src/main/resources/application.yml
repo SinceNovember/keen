@@ -1,0 +1,71 @@
+server:
+  port: 8099
+
+datasource:
+  url: localhost:3306/admintory
+
+netty:
+  port: 9999
+
+spring:
+  datasource:
+    druid:
+      username: root
+      password: Gepoint
+      url: jdbc:mysql://${datasource.url}?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+      driver-class-name: com.mysql.jdbc.Driver
+#       hikari:
+#      max-lifetime: 1770000
+#      maximumPoolSize: 10
+  redis:
+    database: 1
+    host: localhost
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 5
+        min-idle: 0
+    timeout: 10000
+
+logging:
+  level:
+    com:
+      simple:
+        system:
+          dao: trace
+  config: logback.xml
+
+# mybatis-plus 配置内容
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true # 虽然默认为 true ，但是还是显示去指定下。
+  global-config:
+    db-config:
+      #      id-type: auto # ID 主键自增
+      select-strategy: not_empty
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.simple.*.system.model.entity
+  type-handlers-package: com.simple.common.model.enums.converter
+
+#分页pageHelper
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+
+#七牛云配置
+# 七牛密钥，配上自己申请的七牛账号对应的密钥
+oss:
+  qiniu:
+    enable: true
+    accessKey: zfBs-mpQl9EhYbgfKlDt_AKMYkK_zQWIpZ7D2sYm
+    secretKey: PuLWjVnpx671hksF1irVl7GQRrrkRx6MYOQxxwc1
+    # 七牛空间名
+    bucket: kkkttt
+    domain: r401m0osl.hn-bkt.clouddn.com
+

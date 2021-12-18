@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.simple.system.dao.DeptMapper">
+    <resultMap id="BaseResultMap" type="com.simple.system.model.dto.DeptDTO">
+        <id column="dept_id" property="deptId"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="dept_name" property="deptName"/>
+        <result column="create_user_id" property="createUserId"/>
+        <result column="order_num" property="orderNum"/>
+        <result column="create_time" property="createTime"/>
+<!--        <result column="update_time" property="updateTime"/>-->
+<!--        <result column="deleted" property="deleted"/>-->
+        <association property="createUser" column="create_user_id" javaType="com.simple.system.model.dto.UserDTO"
+                     select="com.simple.system.dao.UserMapper.getUserDetailById" >
+<!--            <result column="title" property="title"/>-->
+<!--            <result column="icon" property="icon"/>-->
+<!--            <result column="affix" property="affix"/>-->
+<!--            <result column="no_cache" property="noCache"/>-->
+<!--            <result column="bread_crumb" property="breadCrumb"/>-->
+        </association>
+        <collection property="memberList" ofType="com.simple.system.model.dto.UserDTO" column="dept_id"
+                    select="com.simple.system.dao.UserMapper.getUserDetailByDeptId">
+        </collection>
+        <collection property="children" ofType="com.simple.system.model.dto.DeptDTO" column="dept_id"
+                    select="com.simple.system.dao.DeptMapper.listDeptWithMemberByParentId">
+        </collection>
+    </resultMap>
+
+
+    <resultMap id="OptionResultMap" type="com.simple.system.model.dto.OptionDTO">
+        <id column="dept_id" property="value"/>
+        <result column="dept_name" property="label"/>
+        <collection property="children" ofType="com.simple.system.model.dto.OptionDTO" column="dept_id"
+                    select="com.simple.system.dao.DeptMapper.listDeptOptionByParentId">
+        </collection>
+    </resultMap>
+
+    <resultMap id="TreeResultMap" type="com.simple.system.model.dto.DeptTreeDTO">
+        <id column="id" property="value"/>
+        <result column="label" property="label"/>
+        <result column="nodeType" property="nodeType"/>
+        <collection property="children" ofType="com.simple.system.model.dto.DeptTreeDTO" column="id"
+                    select="com.simple.system.dao.DeptMapper.listDeptWithUserTreeModelByParentId">
+        </collection>
+<!--        <collection property="leafList" ofType="com.simple.system.model.dto.TreeDTO" column="id"-->
+<!--                    select="com.simple.system.dao.UserMapper.listUserTreeModelByDeptId">-->
+<!--        </collection>-->
+    </resultMap>
+</mapper>

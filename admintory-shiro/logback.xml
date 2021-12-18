@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property name="LOG_PATTERN"
+		value="%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n" />
+
+	<property name="FILE_PATH"
+		value="D:/logs/blog/blog.%d{yyyy-MM-dd}.%i.log" />
+
+	<!-- 控制台输出日志 -->
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<!--每天生成一个日志文件，保存30天的日志文件。 -->
+	<appender name="rollingFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>
+				${FILE_PATH}
+			</fileNamePattern>
+
+			<!-- keep 30 days' worth of history -->
+			<maxHistory>15</maxHistory>
+
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- or whenever the file size reaches 100MB -->
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+
+		<encoder>
+			<pattern>${LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+	<!-- project default level -->
+	<logger name="cn.nxcoder.blog" level="INFO" />
+
+	<root level="INFO">
+		<appender-ref ref="console" />
+		<appender-ref ref="rollingFile" />
+	</root>
+</configuration>
