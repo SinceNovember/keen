@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.simple.system.dao.MenuMapper">
+    <resultMap id="BaseResultMap" type="com.simple.system.model.dto.MenuDTO">
+        <id column="id" property="id"/>
+        <result column="path" property="path"/>
+        <result column="pid" property="parentId"/>
+        <result column="component" property="component"/>
+        <result column="name" property="name"/>
+        <result column="redirect" property="redirect"/>
+        <result column="hidden" property="hidden"/>
+        <result column="order_num" property="orderNum"/>
+        <result column="always_show" property="alwaysShow"/>
+        <result column="is_expand" property="isExpand"/>
+        <result column="type" property="menuType"/>
+        <result column="request_method" property="requestMethod"/>
+        <association property="meta" javaType="com.simple.system.model.entity.Menu$Meta">
+            <result column="title" property="title"/>
+            <result column="icon" property="icon"/>
+            <result column="affix" property="affix"/>
+            <result column="no_cache" property="noCache"/>
+            <result column="bread_crumb" property="breadCrumb"/>
+        </association>
+<!--        <collection property="children" ofType="com.simple.system.model.entity.dto.MenuDTO" column="id"-->
+<!--                    select="com.simple.system.dao.MenuMapper.findMenuByParentId">-->
+<!--        </collection>-->
+    </resultMap>
+
+    <resultMap id="BaseWithChildrenResultMap" type="com.simple.system.model.dto.MenuDTO" extends="BaseResultMap">
+        <collection property="children" ofType="com.simple.system.model.entity.dto.MenuDTO" column="id"
+                    select="com.simple.system.dao.MenuMapper.listMenuByParentId">
+        </collection>
+    </resultMap>
+
+    <resultMap id="TreeResultMap" type="com.simple.system.model.dto.TreeDTO">
+        <id column="id" property="value"/>
+        <result column="label" property="label"/>
+        <collection property="children" ofType="com.simple.system.model.dto.TreeDTO" column="id"
+                    select="com.simple.system.dao.MenuMapper.listMenuTree">
+        </collection>
+        <!--        <collection property="leafList" ofType="com.simple.system.model.dto.TreeDTO" column="id"-->
+        <!--                    select="com.simple.system.dao.UserMapper.listUserTreeModelByDeptId">-->
+        <!--        </collection>-->
+    </resultMap>
+
+
+</mapper>
