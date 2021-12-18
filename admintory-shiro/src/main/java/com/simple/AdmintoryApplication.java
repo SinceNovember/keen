@@ -30,6 +30,7 @@ public class AdmintoryApplication  implements CommandLineRunner {
      * @param args
      * @throws Exception
      */
+
     @Override
     public void run(String... args) throws Exception {
         server.run(port);
