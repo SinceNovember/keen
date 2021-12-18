@@ -21,11 +21,9 @@ public class AdmintoryApplication  implements CommandLineRunner {
     @Resource
     private WebSocketChatServer server;
 
-
     public static void main(String[] args) {
         SpringApplication.run(AdmintoryApplication.class, args);
     }
-
 
     @Override
     public void run(String... args) throws Exception {
