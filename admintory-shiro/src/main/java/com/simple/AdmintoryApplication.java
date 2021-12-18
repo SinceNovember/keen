@@ -21,12 +21,15 @@ public class AdmintoryApplication  implements CommandLineRunner {
     @Resource
     private WebSocketChatServer server;
 
-
     public static void main(String[] args) {
         SpringApplication.run(AdmintoryApplication.class, args);
     }
 
-
+    /**
+     * 启动netty服务
+     * @param args
+     * @throws Exception
+     */
     @Override
     public void run(String... args) throws Exception {
         server.run(port);
