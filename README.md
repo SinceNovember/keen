@@ -52,15 +52,15 @@
 
 #### 前端
 
-|      | 技术名称   | 说明           |
-| ---- | ---------- | -------------- |
-| 1    | vue        | 前端框架       |
-| 2    | vuex       | 状态管理       |
-| 3    | vue-router | 路由管理       |
-| 4    | axios      | HTTP 库        |
-| 5    | element-ui | 组件库         |
-| 6    | js-cookie  | Cookie存储工具 |
-| 7    | echarts    | 图标组件       |
+|      | 技术名称     | 说明           |
+| ---- | ------------ | -------------- |
+| 1    | vue          | 前端框架       |
+| 2    | vuex         | 状态管理       |
+| 3    | vue-router   | 路由管理       |
+| 4    | axios        | HTTP 库        |
+| 5    | element-ui   | 组件库         |
+| 6    | js-cookie    | Cookie存储工具 |
+| 7    | echarts      | 图标组件       |
 
 ## 界面
 
