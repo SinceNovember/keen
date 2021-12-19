@@ -46,11 +46,11 @@
           </div>
         </div>
         <div class="left-nav-bottom">
-          <span class="tab">Login With</span>
+          <span class="tab">Contact With</span>
           <div class="other">
-            <span class="link">facebook</span>
-            <span class="link">twitter</span>
-            <span class="link">google</span>
+            <a target="_blank" href="http://www.github.com/SinceNovember" class="link"><i class='bx bxl-github'></i></a>
+            <a class="link"><i class='bx bxl-twitter'></i></a>
+            <a class="link"><i class='bx bxl-telegram' ></i></a>
           </div>
         </div>
       </div>
@@ -223,7 +223,8 @@ export default {
 
         .other {
           .link {
-            color: #2d4fdb;
+            // color: #2d4fdb;
+            font-size: 24px;
             margin-left: 10px;
             cursor: pointer;
           }
