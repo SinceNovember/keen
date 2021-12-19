@@ -1,0 +1,68 @@
+@import "./themes.scss";
+
+//遍历主题map
+@mixin themeify {
+@each $theme-name, $theme-map in $themes {
+//!global 把局部变量强升为全局变量
+$theme-map: $theme-map !global;
+//判断html的data-theme的属性值  #{}是sass的插值表达式
+//& sass嵌套里的父容器标识   @content是混合器插槽，像vue的slot
+[data-theme="#{$theme-name}"] & {
+@content;
+}
+}
+}
+
+//声明一个根据Key获取颜色的function
+@function themed($key) {
+@return map-get($theme-map, $key);
+}
+
+//获取背景颜色
+@mixin background_color($color) {
+@include themeify {
+background-color: themed($color)!important;
+}
+}
+@mixin background($color) {
+    @include themeify {
+    background: themed($color)!important;
+}
+}
+
+//获取字体颜色
+@mixin font_color($color) {
+@include themeify {
+color: themed($color)!important;
+}
+}
+
+//获取边框颜色
+@mixin border_color($color) {
+@include themeify {
+border-color: themed($color)!important;
+}
+}
+
+
+//获取边框颜色
+@mixin border_top_color($color) {
+    @include themeify {
+    border-top-color: themed($color)!important;
+    }
+}
+@mixin border_bottom_color($color) {
+    @include themeify {
+    border-bottom-color: themed($color)!important;
+    }
+}
+@mixin border_left_color($color) {
+    @include themeify {
+    border-left-color: themed($color)!important;
+    }
+}
+@mixin border_right_color($color) {
+    @include themeify {
+    border-right-color: themed($color)!important;
+    }
+}

@@ -1,0 +1,112 @@
+// .app-main {
+//   position: relative;
+//   left: 335px;
+//   /* min-height: 200px; */
+//   min-height: calc(100vh - 100px);
+//   overflow: hidden;
+//   width: calc(100% - 335px);
+// }
+
+.container {
+  @include background("--theme-container-bg-color");
+
+  .layout-body-container {
+    width: calc(100% - 335px);
+    position: absolute;
+    left: 335px;
+    transition: all 0.5s ease;
+
+    .mask {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .main-container {
+      position: relative;
+      height: calc(100vh - 100px);
+      transition: all 0.5s ease;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 12px !important;
+  }
+
+  .left-nav {
+    width: 100% !important;
+  }
+
+  .right-nav {
+    display: none;
+  }
+
+
+  .chat-container{
+    .chat-sidebar{
+      animation: l2r 0.2s;
+    }
+    .chat-main{
+      animation: r2l 0.2s;
+      
+      .back{
+        display: block !important;
+      }
+    }
+    .close{
+      display: none;
+    }
+    .show{
+      display: block;
+      width: 100% !important;
+    }
+
+  }
+
+  .container {
+    .close {
+      display: none;
+
+
+      ~ .layout-body-container {
+        .mask {
+          display: none;
+        }
+      }
+    }
+
+    .layout-body-container {
+      left: 0px !important;
+      width: 100% !important;
+
+      .mask {
+        display: block;
+      }
+
+      .navbar{
+        .el-dialog{
+          width: 40rem !important;
+        }
+      }
+
+      .main-container {
+        .btn-header {
+          margin-top: 10px;
+          justify-content: flex-start;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 10px !important;
+  }
+}
