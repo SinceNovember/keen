@@ -117,10 +117,10 @@ export default {
   methods: {
     search() {
       var params = {
-          nickname: _this.nickname,
-          ssex: _this.sex,
-          status: _this.status,
-          deptId: _this.deptId
+          nickname: this.nickname,
+          ssex: this.sex,
+          status: this.status,
+          deptId: this.deptId
         };
       this.$emit("search", params);
     },
@@ -171,23 +171,21 @@ export default {
       });
     },
     clearForm() {
-      var _this = this;
-      _this.userInfo.avatar =
+      this.userInfo.avatar =
         "http://47.104.70.138:8080/febs/images/avatar/cnrhVkzwxjPwAaCfPbdc.png";
-      _this.userInfo.username = "";
-      _this.userInfo.password = "";
-      _this.userInfo.nickname = "";
-      _this.userInfo.mobile = "";
-      _this.userInfo.email = "";
-      _this.userInfo.ssex = "";
-      _this.userInfo.status = "VALID";
-      _this.userInfo.deptId = "";
-      _this.userInfo.roleId = "";
-      _this.userInfo.description = "";
+      this.userInfo.username = "";
+      this.userInfo.password = "";
+      this.userInfo.nickname = "";
+      this.userInfo.mobile = "";
+      this.userInfo.email = "";
+      this.userInfo.ssex = "";
+      this.userInfo.status = "VALID";
+      this.userInfo.deptId = "";
+      this.userInfo.roleId = "";
+      this.userInfo.description = "";
     },
     popoverHide(key, value) {
-      var _this = this;
-      _this.deptId = key;
+      this.deptId = key;
     }
   }
 };

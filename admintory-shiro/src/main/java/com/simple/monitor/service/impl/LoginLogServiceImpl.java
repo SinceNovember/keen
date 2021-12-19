@@ -47,7 +47,7 @@ public class LoginLogServiceImpl extends ServiceImpl<LoginLogMapper, LoginLog> i
     public List<Map<String, Object>> countLoginLogByDateScope(Date startDate, Date endDate) {
         List<Map<String, Object>> dataList = new ArrayList<>();
         for (Date date = startDate; date.before(endDate); date = DateUtils.addDays(date, 1)) {
-            Map<String, Object> map = new LinkedHashMap<>();
+            Map<String, Object> map = new HashMap<>();
             map.put("date", DateFormatUtils.format(date, DateFormatUtils.ISO_DATE_FORMAT.getPattern()));
             map.put("count", loginLogMapper.countLoginLogByLoginDate(date));
             dataList.add(map);

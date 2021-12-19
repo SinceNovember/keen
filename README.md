@@ -1,74 +1,72 @@
-# Blog
+<p align="center">
+    <a href="#" target="_blank" rel="noopener noreferrer">
+        <img width="100" src="http://r43gtz94v.hd-bkt.clouddn.com/slack-logo-84.png" alt="admintory logo" />
+    </a>
+</p>
+
+
+> admintory是一个通过shiro认证并包含用户之间聊天功能的前后端分离的权限管理系统。
+
+
+------------------------------
+
 ## 简介
-> 一个使用SSM开发得一个精美、小巧得博客系统:bowtie:<br>
-预览站点:[sincenovember.top](http://www.sincenovember.top)<br>
-后台地址:/login<br>
-账号:admin<br>
-密码:321<br>
 
-## 主要技术
->框架:`SpringMVC+Spring+Mybatis`<br>
-后台UI:`layui`<br>
-安全认证:`shiro`<br>
-全文检索：`lucence`<br>
-文本编辑器:`editor.md`<br>
-前端主题:`hexo-theme-melody`<br>
-开发环境:`eclipse`<br>
-
+**admintory** 通过`springboot` `vue` `netty` `shiro` 等技术开发的一个前后端分离的权限管理系统，开箱即用，可迅速搭建后台`用户聊天`、`权限认证`、`权限控制`、`按钮控制`、`动态路由`等功能。 
 
 ## 功能
-- Markdown/Emoji
-- 白天模式/夜晚模式
-- 自定义主页图片/标签信息
-- 自己选择标签颜色/大小
-- 文章归档/分类
-- 自定义个人头像/个性签名/个人标签
-- 实时搜索文章
-- Shiro验证登陆
-- 后台界面颜色更换
-- 文章评论回复/修改
-- 个人信息修改/展示
 
+- **控制台**
+- **系统管理**
+  - **用户管理**
+  - **角色管理**
+  - **部门管理**
+  - **菜单管理**
+- **系统监控**
+  - **操作日志**
+  - **登陆日志**
+  - **在线用户**
+- **元数据管理**
+  - **系统参数**
+  - **代码管理**
+- **主题管理**
+- **聊天系统**
 
-# 界面展示
+## 技术
 
-![](https://github.com/SinceNovember/Blog/blob/master/upload/1.png)
+#### 后端
 
-![](https://github.com/SinceNovember/Blog/blob/master/upload/2.png)
+| 序号 | 技术名称     | 说明             |
+| ---- | ------------ | ---------------- |
+| 1    | SpringBoot2  | 项目框架         |
+| 2    | Mybatis      | 持久层框架       |
+| 3    | Mybatis-plus | 持久层增强       |
+| 4    | Druid        | 数据库连接池     |
+| 5    | Redis        | 缓存             |
+| 6    | Mysql        | 数据库           |
+| 7    | Apache Shiro | 权限控制安全框架 |
+| 8    | Lombok       | 注解工具         |
+| 9    | 七牛云       | 图床             |
+| 10   | Netty        | 通信框架         |
+| 11   | Guava        | 谷歌工具         |
 
+#### 前端
 
-![](https://github.com/SinceNovember/Blog/blob/master/upload/night.png)
+|      | 技术名称   | 说明           |
+| ---- | ---------- | -------------- |
+| 1    | vue        | 前端框架       |
+| 2    | vuex       | 状态管理       |
+| 3    | vue-router | 路由管理       |
+| 4    | axios      | HTTP 库        |
+| 5    | element-ui | 组件库         |
+| 6    | js-cookie  | Cookie存储工具 |
+| 7    | echarts    | 图标组件       |
 
-![](https://github.com/SinceNovember/Blog/blob/master/upload/3.png)
+## 界面
 
-![](https://github.com/SinceNovember/Blog/blob/master/upload/4.png)
+| <img width="100" src="http://r43gtz94v.hd-bkt.clouddn.com/slack-logo-84.png" alt="admintory logo" /> | ![](http://r43gtz94v.hd-bkt.clouddn.com/slack-logo-84.png) |
+| ------------------------------------------------------------ | ---------------------------------------------------------- |
+|                                                              |                                                            |
+|                                                              |                                                            |
+|                                                              |                                                            |
 
-![](https://github.com/SinceNovember/Blog/blob/master/upload/5.png)
-
-![](https://github.com/SinceNovember/Blog/blob/master/upload/6.png)
-![](https://github.com/SinceNovember/Blog/blob/master/upload/login.png)
-
-![](https://github.com/SinceNovember/Blog/blob/master/upload/7.png)
-
-![](https://github.com/SinceNovember/Blog/blob/master/upload/8.png)
-
-![](https://github.com/SinceNovember/Blog/blob/master/upload/9.png)
-![](https://github.com/SinceNovember/Blog/blob/master/upload/10.png)
-![](https://github.com/SinceNovember/Blog/blob/master/upload/11.png)
-![](https://github.com/SinceNovember/Blog/blob/master/upload/12.png)
-![](https://github.com/SinceNovember/Blog/blob/master/upload/13.png)
-![](https://github.com/SinceNovember/Blog/blob/master/upload/14.png)
-
-## 使用方法
-下载后导入到IDE中，项目使用到`MAVEN`，请确保安装好MAVEN，修改resource下得db.properties下得数据库密码，导入数据库文件。<br>
-登陆后台:/login.jsp<br>
-#### 各图片上传文件：
-- editor.md文章内图片:`/static/pic` <br>
-- 评论者头像:`/static/pic/comment` <br>
-- 文章缩略图:`/static/bgpic` <br>
-- 个人图片以及页面图片:`/static/images` <br>
-
-### 使用注意
->下载好得没法进行搜索,需要讲`article_Index`文件夹放入到D盘中即可，可以在Test类中运行测试建立索引，但新发表得文章可以搜索到。<br>
-许多图片被删除，需要自己重重新上传。<br>
-有什么问题可以联系QQ：`83428190`。

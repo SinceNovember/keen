@@ -12,7 +12,6 @@
   "dependencies": {
     "axios": "^0.22.0",
     "echarts": "^5.2.2",
-    "el-select-tree": "^2.0.1",
     "element-ui": "^2.15.6",
     "js-cookie": "^3.0.1",
     "node-sass": "^4.13.0",
