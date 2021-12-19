@@ -11,14 +11,17 @@
   },
   "dependencies": {
     "axios": "^0.22.0",
+    "echarts": "^5.2.2",
     "el-select-tree": "^2.0.1",
     "element-ui": "^2.15.6",
+    "js-cookie": "^3.0.1",
     "node-sass": "^4.13.0",
     "nprogress": "^0.2.0",
     "sass-loader": "^7.1.0",
     "sass-resources-loader": "^2.0.1",
     "vue": "^2.5.2",
     "vue-axios": "^3.3.7",
+    "vue-count-to": "^1.0.13",
     "vue-router": "^3.0.1",
     "vuex": "^3.6.2"
   },
