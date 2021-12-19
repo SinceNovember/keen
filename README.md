@@ -10,7 +10,7 @@
 
 ------------------------------
 
-## 简介1
+## 简介
 
 **admintory** 通过`springboot` `vue` `netty` `shiro` 等技术开发的一个前后端分离的权限管理系统，开箱即用，可迅速搭建后台`用户聊天`、`权限认证`、`权限控制`、`按钮控制`、`动态路由`等功能。 
 
@@ -62,7 +62,6 @@
 | 6    | js-cookie    | Cookie存储工具 |
 | 7    | echarts      | 图标组件       |
 
-111
 ## 界面
 
 | <img width="100" src="http://r43gtz94v.hd-bkt.clouddn.com/slack-logo-84.png" alt="admintory logo" /> | ![](http://r43gtz94v.hd-bkt.clouddn.com/slack-logo-84.png) |
