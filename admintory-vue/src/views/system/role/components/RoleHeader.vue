@@ -31,7 +31,6 @@
               :value="item.value"
             ></el-option>
           </el-select>
-          <!-- <el-button  type="primary" plain icon="el-icon-search"  @click="search" ></el-button> -->
         </div>
       </el-col>
       <el-col :xs="24" :sm="12">
@@ -46,7 +45,7 @@
       </el-col>
     </el-row>
 
-    <el-dialog :visible.sync="dialogVisible" v-if="dialogVisible" width="50rem" height="500px">
+    <el-dialog :visible.sync="dialogVisible" v-if="dialogVisible" width="50rem">
       <role-add :roleInfo="roleInfo" @closeDialog="closeRoleDialog"></role-add>
     </el-dialog>
   </div>
@@ -138,8 +137,7 @@ export default {
 .search-input {
   width: 28%;
 }
-.el-row{
+.el-row {
   width: 100%;
 }
-
 </style>

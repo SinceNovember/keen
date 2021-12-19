@@ -20,10 +20,8 @@
           <div class="avatar-item" :class="{online:item.online}">
             <img class="avatar" :src="item.avatar" />
           </div>
-
           <span class="title">{{item.nickname}}</span>
           <span class="sub-title">{{item.deptName}}</span>
-
           <div class="other" @click="openActiveUserInfo(item)">
             <i class="el-icon-more"></i>
           </div>
@@ -61,9 +59,7 @@ export default {
     };
   },
   mounted() {
-    // this.loadUsers();
     this.loadDeptOptions();
-
   },
   methods: {
     loadUsers() {

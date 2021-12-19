@@ -1,5 +1,6 @@
 package com.simple.system.model.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -20,7 +21,7 @@ public class Dept  extends BaseEntity {
     /**
      * Id
      */
-    @TableId("dept_id")
+    @TableId(value = "dept_id", type = IdType.AUTO)
     private Integer deptId;
 
     /**

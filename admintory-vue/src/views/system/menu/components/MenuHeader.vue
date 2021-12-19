@@ -10,7 +10,6 @@
             clearable
             @change="search"
           ></el-input>
-          <!-- <el-button  type="primary" plain icon="el-icon-search"  @click="search" ></el-button> -->
         </div>
       </el-col>
       <el-col :xs="24" :sm="12">
@@ -72,9 +71,8 @@ export default {
   },
   methods: {
     search() {
-      var _this = this,
-        params = {
-          title: _this.title
+      var params = {
+          title: this.title
         };
       this.$emit("search", params);
     },
@@ -86,7 +84,6 @@ export default {
     },
     openMenuDialog(menuId) {
       if (menuId) {
-        // _this.menuId = menuId;
         getMenu({
           menuId: menuId
         }).then(res => {
@@ -105,22 +102,21 @@ export default {
       this.$emit("deleteSelect");
     },
     clearForm() {
-      var _this = this;
-      _this.defaultCheckedKeys = [];
-      _this.menuInfo.id = "";
-      _this.menuInfo.menuType = "DIRECTORY";
-      _this.menuInfo.path = "";
-      _this.menuInfo.component = "";
-      _this.menuInfo.parentId = "";
-      _this.menuInfo.name = "";
-      _this.menuInfo.redirect = "";
-      _this.menuInfo.orderNum = "";
-      _this.menuInfo.hidden = false;
-      _this.menuInfo.isExpand = false;
-      _this.menuInfo.alwaysShow = false;
-      _this.menuInfo.meta.title = "";
-      _this.menuInfo.meta.icon = "";
-      _this.menuInfo.meta.affix = false;
+      this.defaultCheckedKeys = [];
+      this.menuInfo.id = "";
+      this.menuInfo.menuType = "DIRECTORY";
+      this.menuInfo.path = "";
+      this.menuInfo.component = "";
+      this.menuInfo.parentId = "";
+      this.menuInfo.name = "";
+      this.menuInfo.redirect = "";
+      this.menuInfo.orderNum = "";
+      this.menuInfo.hidden = false;
+      this.menuInfo.isExpand = false;
+      this.menuInfo.alwaysShow = false;
+      this.menuInfo.meta.title = "";
+      this.menuInfo.meta.icon = "";
+      this.menuInfo.meta.affix = false;
     }
   }
 };

@@ -6,7 +6,7 @@
         <div class="upload-avatar">
           <el-upload
             class="upload-demo"
-            action="http://localhost:8099/upload/image"
+            action=""
             :on-success="handleUpload"
             :before-upload="beforeAvatarUpload"
           >
@@ -83,10 +83,6 @@
           <el-col :span="12">
             <div class="sub-title">部门</div>
             <el-form-item>
-              <!-- <el-cascader class="inline-input" v-model="userInfo.deptId"
-                        :options="deptOptions"
-                        :props="{ checkStrictly: true }"
-              clearable></el-cascader>-->
               <tree-select
                 v-model="userInfo.deptId"
                 :width="340"
@@ -190,9 +186,7 @@ export default {
     addUser(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          var _this = this;
-          // _this.userInfo.deptId = _this.userInfo.deptId[_this.userInfo.deptId.length - 1];
-          saveUser(_this.userInfo).then(res => {
+          saveUser(this.userInfo).then(res => {
             this.$emit("closeDialog", 1);
             this.$message({
               message: "添加成功",
@@ -234,8 +228,7 @@ export default {
       this.$emit("closeDialog");
     },
     popoverHide(key, value) {
-      var _this = this;
-      _this.userInfo.deptId = key;
+      this.userInfo.deptId = key;
     }
   }
 };
@@ -249,8 +242,6 @@ export default {
     width: 36%;
     float: left;
     height: 100%;
-    // @include background-color('--theme-user-avatar-container');
-    // background: linear-gradient(0deg, #e5f3fe, #2788d4);
     display: flex;
     align-items: center;
     justify-content: center;

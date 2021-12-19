@@ -1,43 +1,35 @@
 <template>
   <div class="container">
-      <system-config-header ref="configHeader" @search="refreshTable" @deleteSelect="deleteSelect" ></system-config-header>
-      <system-config-table ref="configTable" @openEditDialog="openEditDialog"></system-config-table>
-    </div>
+    <system-config-header ref="configHeader" @search="refreshTable" @deleteSelect="deleteSelect"></system-config-header>
+    <system-config-table ref="configTable" @openEditDialog="openEditDialog"></system-config-table>
+  </div>
 </template>
 <script>
-import SystemConfigHeader from './components/SystemConfigHeader';
-import SystemConfigTable from './components/SystemConfigTable';
+import SystemConfigHeader from "./components/SystemConfigHeader";
+import SystemConfigTable from "./components/SystemConfigTable";
 
 export default {
-  components:{
+  components: {
     SystemConfigHeader,
     SystemConfigTable
   },
-  methods:{
-    refreshTable(params){
+  methods: {
+    refreshTable(params) {
       this.$refs.configTable.searchTable(params);
     },
-    deleteSelect(){
+    deleteSelect() {
       this.$refs.configTable.deleteSelect();
     },
 
-    openEditDialog(configId){
+    openEditDialog(configId) {
       this.$refs.configHeader.openConfigDialog(configId);
     }
   }
-
-
-}
-
+};
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style  lang="scss" scoped>
-.container{
-  padding:20px 40px;
-
-
-
+.container {
+  padding: 20px 40px;
 }
-
-  
 </style>

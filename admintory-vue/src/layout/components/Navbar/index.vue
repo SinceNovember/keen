@@ -2,7 +2,6 @@
   <div class="navbar">
     <div class="home-content">
       <i class="bx bx-menu" @click="toggleSidebar()"></i>
-      <!-- <span class="text">Drop Down Sidebar</span> -->
     </div>
 
     <div class="navbar-actions-area">
@@ -21,44 +20,43 @@
         <div class="action-icon">
           <i class="bx bx-help-circle"></i>
         </div>
-              <div class="user-dropdown">
-        <el-dropdown trigger="click" @command="handleCommand">
-          <div class="user-info">
-            <img :src="user.avatar" />
-            <span class="user-info-name">{{user.nickname}}</span>
-          </div>
-          <el-dropdown-menu split-button slot="dropdown">
-            <div class="user-summary">
-              <div class="user-summary-img">
-                <img :src="user.avatar" />
-              </div>
-              <div class="user-summary-info">
-                <div class="user-summary-info-name">{{user.nickname}}</div>
-                <div class="user-summary-info-dept">{{user.deptName}}</div>
-              </div>
+        <div class="user-dropdown">
+          <el-dropdown trigger="click" @command="handleCommand">
+            <div class="user-info">
+              <img :src="user.avatar" />
+              <span class="user-info-name">{{user.nickname}}</span>
             </div>
-            <el-dropdown-item command="info" divided>
-              <i class="bx bx-user"></i>个人信息
-            </el-dropdown-item>
-            <el-dropdown-item command="setting">
-              <i class="bx bxs-wrench"></i>系统设置
-            </el-dropdown-item>
-            <el-dropdown-item divided command="logout">
-              <i class="bx bx-power-off"></i>注销登陆
-            </el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
+            <el-dropdown-menu split-button slot="dropdown">
+              <div class="user-summary">
+                <div class="user-summary-img">
+                  <img :src="user.avatar" />
+                </div>
+                <div class="user-summary-info">
+                  <div class="user-summary-info-name">{{user.nickname}}</div>
+                  <div class="user-summary-info-dept">{{user.deptName}}</div>
+                </div>
+              </div>
+              <el-dropdown-item command="info" divided>
+                <i class="bx bx-user"></i>个人信息
+              </el-dropdown-item>
+              <el-dropdown-item command="setting">
+                <i class="bx bxs-wrench"></i>系统设置
+              </el-dropdown-item>
+              <el-dropdown-item divided command="logout">
+                <i class="bx bx-power-off"></i>注销登陆
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
       </div>
-      </div>
-
     </div>
 
     <el-dialog :visible.sync="dialogVisible" width="60%" height="500px">
       <chat :user="user" @updateUnreadCount="updateUnreadCount" ref="chat"></chat>
     </el-dialog>
 
-    <el-dialog :visible.sync="themeDialogVisible" v-if="themeDialogVisible" width="70rem" >
-      <theme ></theme>
+    <el-dialog :visible.sync="themeDialogVisible" v-if="themeDialogVisible" width="70rem">
+      <theme></theme>
     </el-dialog>
   </div>
 </template>

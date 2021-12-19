@@ -5,12 +5,12 @@
 <script>
 import * as echarts from "echarts";
 require("echarts/theme/macarons"); // echarts theme
-import resize from './mixins/resize'
+import resize from "./mixins/resize";
 
 const colorList = ["#9E87FF", "#73DDFF", "#fe9a8b", "#F56948", "#9E87FF"];
 
 export default {
-    mixins: [resize],
+  mixins: [resize],
   props: {
     className: {
       type: String,
@@ -31,7 +31,7 @@ export default {
     chartData: {
       type: Object,
       required: true
-    },
+    }
   },
   data() {
     return {
@@ -44,9 +44,7 @@ export default {
       handler(val) {
         this.setOptions(val);
       }
-    },
-
-    
+    }
   },
   mounted() {
     this.$nextTick(() => {
@@ -68,7 +66,7 @@ export default {
 
     setOptions({ nameList, dataList } = {}) {
       this.chart.setOption({
-        backgroundColor: '',
+        backgroundColor: "",
         legend: {
           icon: "circle",
           // top: '5%',
@@ -251,8 +249,7 @@ export default {
                   offset: 1,
                   color: "#5db3e9 "
                 }
-              ]),
-
+              ])
             },
             itemStyle: {
               normal: {

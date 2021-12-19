@@ -97,11 +97,10 @@ export default {
     }
   },
   mounted() {
-    var _this = this;
-    _this.loadMenuPermission();
-    _this.loadDeptTree();
-    _this.loadDeptUserTree();
-    _this.loadRoleList();
+    this.loadMenuPermission();
+    this.loadDeptTree();
+    this.loadDeptUserTree();
+    this.loadRoleList();
   },
   methods: {
     recursiveNode(tree, arr, toArr) {
@@ -115,67 +114,62 @@ export default {
       });
     },
     loadMenuPermission() {
-      var _this = this;
       fetchMenuPermission({
-        menuId: _this.menuId
+        menuId: this.menuId
       }).then(res => {
         var data = res.data;
         if (data.ROLE) {
-          _this.roleSelectedKeyList = data.ROLE;
+          this.roleSelectedKeyList = data.ROLE;
         }
         if (data.DEPT) {
-          _this.deptSelectedKeyList = data.DEPT;
+          this.deptSelectedKeyList = data.DEPT;
         }
         if (data.USER) {
-          _this.userSelectedKeyList = data.USER;
+          this.userSelectedKeyList = data.USER;
         }
       });
     },
     loadDeptTree() {
-      var _this = this;
       fetchDeptOptions().then(res => {
-        _this.deptTree = res.data;
-        _this.recursiveNode(
-          _this.deptTree,
-          _this.deptSelectedKeyList,
-          _this.deptSelectedList
+        this.deptTree = res.data;
+        this.recursiveNode(
+          this.deptTree,
+          this.deptSelectedKeyList,
+          this.deptSelectedList
         );
       });
     },
     loadDeptUserTree() {
-      var _this = this;
       fetchDeptWithUserTreeModel().then(res => {
-        _this.deptUserTree = res.data;
-        _this.recursiveNode(
-          _this.deptUserTree,
-          _this.userSelectedKeyList,
-          _this.userSelectedList
+        this.deptUserTree = res.data;
+        this.recursiveNode(
+          this.deptUserTree,
+          this.userSelectedKeyList,
+          this.userSelectedList
         );
       });
     },
     loadRoleList() {
-      var _this = this;
       fetchRoleOptions().then(res => {
-        _this.roleList = res.data;
-        _this._roleList = _this.roleList;
+        this.roleList = res.data;
+        this._roleList = this.roleList;
       });
     },
     handleClick(tab, event) {
       this.activeName = tab.name;
     },
     addMenuPermission() {
-      var _this = this,
-        checkedKeys = [];
-      if (_this.activeName == "ROLE") {
-        checkedKeys = _this.roleSelectedKeyList;
-      } else if (_this.activeName == "DEPT") {
+      var checkedKeys = [];
+      if (this.activeName == "ROLE") {
+        checkedKeys = this.roleSelectedKeyList;
+      } else if (this.activeName == "DEPT") {
         checkedKeys = this.$refs.deptTree.getCheckedKeys();
       } else {
         checkedKeys = this.$refs.deptUserTree.getCheckedKeys();
       }
       updateMenuPermission({
-        menuId: _this.menuId,
-        type: _this.activeName,
+        menuId: this.menuId,
+        type: this.activeName,
         permissionIdList: checkedKeys
       }).then(res => {
         this.closeDialog();
@@ -194,7 +188,6 @@ export default {
 
 <style lang="scss" scoped>
 .menu-permission-container {
-
   .dialog-title {
     font-size: 20px;
     padding: 10px 20px;

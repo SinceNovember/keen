@@ -1,14 +1,15 @@
 import router from './router'
-const _import = require('./router/_import_' + process.env.NODE_ENV)//获取组件的方法
 import { Message } from 'element-ui'
+const _import = require('./router/_import_' + process.env.NODE_ENV)//获取组件的方法
 import Layout from '@/layout'
 import { getToken, removeToken } from '@/utils/auth' // get token from cookie
-import NProgress from 'nprogress' // progress bar
-import 'nprogress/nprogress.css' // progress bar style
 import { fetchAllMenus } from './api/menu'
 
+import NProgress from 'nprogress' // progress bar
+import 'nprogress/nprogress.css' // progress bar style
+
 var getRouter
-const whiteList = ['/login', '/auth-redirect'] // no redirect whitelist
+const whiteList = ['/login'] // no redirect whitelist
 
 router.beforeEach(async (to, from, next) => {
   //从Cookie中获取token
@@ -16,47 +17,34 @@ router.beforeEach(async (to, from, next) => {
   NProgress.start() //加载进度条
   if (hasToken) {
     if (to.path === '/login') {
-      // if is logged in, redirect to the home page
       next({ path: '/' })
     } else {
-
       if (!getRouter) {
-        if (!getRouter) {
-          fetchAllMenus().then(res => {//从数据库获取菜单列表
-            if (res.data && res.data.length > 0) {
-              getRouter = res.data
-              //后台拿到路由
-              saveObjArr('router', getRouter) //存储路由到localStorage
-              routerGo(to, next)
-            } else {
-              removeToken()
-              next(`/login`)
-            }
-
-          })
-
-        } else {
-          getRouter = getObjectArr('router')
-          routerGo(to, next)
-
-        }
+        fetchAllMenus().then(res => {//从数据库获取菜单列表
+          if (res.data && res.data.length > 0) {
+            getRouter = res.data
+            //后台拿到路由
+            saveObjArr('router', getRouter) //存储路由到localStorage
+            routerGo(to, next)
+          } else {
+            removeToken()
+            next(`/login`)
+          }
+        })
       } else {
         next()
       }
     }
   } else {
-    /* has no token*/
     if (whiteList.indexOf(to.path) !== -1) {
-      // in the free login whitelist, go directly
+      //白名单中的地址，直接跳转
       next()
     } else {
-      // other pages that do not have permission to access are redirected to the login page.
+      //没有权限的页面跳转的到登陆页面
       next(`/login?redirect=${to.path}`)
     }
   }
-
   NProgress.done()//结束进度条
-
 })
 
 export function resetRouter() {

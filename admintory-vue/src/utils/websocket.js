@@ -1,6 +1,5 @@
 import { Message } from 'element-ui'
 import { getToken, getUserId } from '@/utils/auth'
-// import { getToken } from '@/utils/authToken' // 与后端的协商，websocket请求需要带上token参数
 let websock = null
 let messageCallback = null
 let receiveCallback = null
@@ -41,7 +40,7 @@ export function websocketSend(agentData) {
   }, 500)
 }
 
-export function sendLogoutMsg(){
+export function sendLogoutMsg() {
   websocketSend({
     fromId: getUserId(),
     type: 'LOGOUT_MSG'
@@ -50,6 +49,7 @@ export function sendLogoutMsg(){
 
 // 关闭ws连接
 function websocketclose(e) {
+  console.log('ws连接关闭')
   // e.code === 1000  表示正常关闭。 无论为何目的而创建, 该链接都已成功完成任务。
   // e.code !== 1000  表示非正常关闭。
   // if(e){
@@ -62,7 +62,7 @@ function websocketclose(e) {
 }
 // 建立ws连接
 function websocketOpen(e) {
-  // console.log('ws连接成功')
+  console.log('ws连接成功')
 }
 
 // 初始化weosocket
@@ -71,9 +71,6 @@ function initWebSocket() {
     Message.error('您的浏览器不支持WebSocket，无法获取数据')
     return false
   }
-
-  //   const token = 'JWT=' + getToken()
-  // ws请求完整地址
   let requstWsUrl = wsUrl + getToken()
   websock = new WebSocket(requstWsUrl)
 
@@ -85,6 +82,7 @@ function initWebSocket() {
     websocketOpen()
   }
   websock.onerror = function () {
+    console.log('error')
     Message.error('ws连接异常，请稍候重试')
     errorCallback()
   }

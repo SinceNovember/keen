@@ -1,7 +1,7 @@
 import { login, logout } from "@/api/user"
 import { getToken, setToken, removeToken, getUserId, setUserId } from '@/utils/auth'
 import { resetRouter } from '@/promission'
-import { websocketSend, closeWebsocket } from "@/utils/websocket.js";
+import { closeWebsocket } from "@/utils/websocket.js";
 
 const state = {
   userId: getUserId(),

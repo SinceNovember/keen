@@ -10,7 +10,7 @@
         ref="configInfo"
       >
         <el-form-item label="参数名称" prop="configName">
-          <el-input v-model="configInfo.configName" ></el-input>
+          <el-input v-model="configInfo.configName"></el-input>
         </el-form-item>
         <el-form-item label="参数值" prop="configValue">
           <el-input v-model="configInfo.configValue"></el-input>
@@ -81,5 +81,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 </style>

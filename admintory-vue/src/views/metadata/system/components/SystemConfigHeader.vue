@@ -59,8 +59,8 @@ export default {
   methods: {
     search() {
       var params = {
-        configName: _this.configName,
-        description: _this.description
+        configName: this.configName,
+        description: this.description
       };
       this.$emit("search", params);
     },

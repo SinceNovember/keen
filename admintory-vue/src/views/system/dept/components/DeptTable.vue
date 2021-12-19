@@ -55,18 +55,16 @@
         :total="total"
       ></el-pagination>
     </div>
-    <el-dialog :visible.sync="dialogVisible" v-if="dialogVisible" width="18%" height="300px">
-      <dept-user-list
-        :userList="userList"
-      ></dept-user-list>
+    <el-dialog :visible.sync="dialogVisible" v-if="dialogVisible" width="25rem">
+      <dept-user-list :userList="userList"></dept-user-list>
     </el-dialog>
   </div>
 </template>
 
 <script>
-import { fetchDepts, deleteDept } from '@/api/dept'
-import DeptInfo from './DeptInfo'
-import DeptUserList from './DeptUserList'
+import { fetchDepts, deleteDept } from "@/api/dept";
+import DeptInfo from "./DeptInfo";
+import DeptUserList from "./DeptUserList";
 
 export default {
   components: {
@@ -87,7 +85,7 @@ export default {
       },
       multipleSelection: [],
       dialogVisible: false,
-      userList: [],
+      userList: []
     };
   },
   mounted() {
@@ -95,33 +93,31 @@ export default {
   },
   methods: {
     searchTable(params) {
-      var _this = this;
       if (params) {
-        _this.params.deptName = params.deptName
-        _this.params.username = params.username
+        this.params.deptName = params.deptName;
+        this.params.username = params.username;
       }
-      _this.loadDepts(_this.currentPage, _this.pageSize);
+      this.loadDepts(this.currentPage, this.pageSize);
     },
     loadDepts(currentPage, pageSize) {
-      var _this = this
-      _this.params.currentPage = currentPage
-      _this.params.pageSize = pageSize
-      fetchDepts(_this.params).then(res => {
-        _this.depts = res.data.records
-        _this.total = res.data.total
+      this.params.currentPage = currentPage;
+      this.params.pageSize = pageSize;
+      fetchDepts(this.params).then(res => {
+        this.depts = res.data.records;
+        this.total = res.data.total;
       });
     },
 
     handleSelectionChange(val) {
-      this.multipleSelection = val
+      this.multipleSelection = val;
     },
     handleSizeChange(pageSize) {
-      this.pageSize = pageSize
-      this.loadDepts(this.currentPage, pageSize)
+      this.pageSize = pageSize;
+      this.loadDepts(this.currentPage, pageSize);
     },
     handleCurrentChange(currentPage) {
-      this.currentPage = currentPage
-      this.loadDepts(currentPage, this.pageSize)
+      this.currentPage = currentPage;
+      this.loadDepts(currentPage, this.pageSize);
     },
     deleteOne(row) {
       this.$confirm("确定要删除该部门?", "提示", {
@@ -129,22 +125,22 @@ export default {
         cancelButtonText: "取消",
         type: "warning"
       }).then(() => {
-        this.handleDelete(row.deptId)
+        this.handleDelete(row.deptId);
       });
     },
     handleDelete(id) {
       deleteDept({
         id: id
       }).then(res => {
-        this.loadDepts(this.currentPage, this.pageSize)
+        this.loadDepts(this.currentPage, this.pageSize);
         this.$message({
           message: res.msg,
           type: "success"
-        })
-      })
+        });
+      });
     },
     edit(row) {
-      this.$emit("openEditDialog", row.deptId)
+      this.$emit("openEditDialog", row.deptId);
     },
     updateUserStatus() {
       var idList = new Array();
@@ -174,9 +170,9 @@ export default {
         });
       }
     },
-    openUserListDialog(row){
-      this.dialogVisible = true
-      this.userList = row.memberList
+    openUserListDialog(row) {
+      this.dialogVisible = true;
+      this.userList = row.memberList;
     }
   }
 };
@@ -184,7 +180,6 @@ export default {
 
 <style lang="scss" scoped>
 .form-container {
-
   .dept-form-table {
     .bxs-folder {
       color: #4f46e5;
@@ -206,8 +201,6 @@ export default {
     .more {
       cursor: pointer;
     }
-
   }
 }
-
 </style>

@@ -50,8 +50,8 @@ export default {
       total: 0,
       codeItemInfo: "",
       params: {
-        codeId: '',
-        itemText: '',
+        codeId: "",
+        itemText: "",
         currentPage: 1,
         pageSize: 10
       },
@@ -59,7 +59,7 @@ export default {
       dialogVisible: false
     };
   },
-  props:{
+  props: {
     codeId: Number
   },
   mounted() {

@@ -64,10 +64,9 @@ export default {
   },
   methods: {
     search() {
-      var _this = this,
-        params = {
-          deptName: _this.deptName,
-          username: _this.username
+      var params = {
+          deptName: this.deptName,
+          username: this.username
         };
       this.$emit("search", params);
     },
@@ -78,30 +77,28 @@ export default {
       this.dialogVisible = false;
     },
     openDeptDialog(deptId) {
-      var _this = this;
       if (deptId) {
-        _this.deptId = deptId;
+        this.deptId = deptId;
         getDept({
           deptId: deptId
         }).then(res => {
-          _this.deptInfo = res.data;
-          _this.defaultCheckedKeys = [];
-          _this.defaultCheckedKeys.push(_this.deptInfo.parentId);
+          this.deptInfo = res.data;
+          this.defaultCheckedKeys = [];
+          this.defaultCheckedKeys.push(this.deptInfo.parentId);
         });
       } else {
-        _this.clearForm();
+        this.clearForm();
       }
-      _this.dialogVisible = true;
+      this.dialogVisible = true;
     },
     clearForm() {
-      var _this = this;
-      _this.deptInfo.deptId = "";
-      _this.deptInfo.deptName = "";
-      _this.deptInfo.deptShortName = "";
-      _this.deptInfo.orderNum = "";
-      _this.deptInfo.parentId = "";
-      _this.deptInfo.description = "";
-      _this.defaultCheckedKeys = [];
+      this.deptInfo.deptId = "";
+      this.deptInfo.deptName = "";
+      this.deptInfo.deptShortName = "";
+      this.deptInfo.orderNum = "";
+      this.deptInfo.parentId = "";
+      this.deptInfo.description = "";
+      this.defaultCheckedKeys = [];
     }
   }
 };
@@ -111,8 +108,7 @@ export default {
 .search-input {
   width: 30%;
 }
-.el-row{
+.el-row {
   width: 100%;
 }
-
 </style>

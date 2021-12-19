@@ -14,7 +14,7 @@
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="handleSetLineChartData('messages')">
         <div class="card-panel-icon-wrapper icon-message">
-          <i class='bx bx-message-dots'></i>
+          <i class="bx bx-message-dots"></i>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">未读消息</div>
@@ -25,7 +25,7 @@
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="handleSetLineChartData('purchases')">
         <div class="card-panel-icon-wrapper icon-money">
-          <i class='bx bx-user-check'></i>
+          <i class="bx bx-user-check"></i>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">在线人数</div>
@@ -36,11 +36,11 @@
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="handleSetLineChartData('shoppings')">
         <div class="card-panel-icon-wrapper icon-shopping">
-          <i class='bx bx-user-check'></i>
+          <i class='bx bx-sun'></i>
         </div>
         <div class="card-panel-description">
-          <div class="card-panel-text">Shoppings</div>
-          <count-to :start-val="0" :end-val="13600" :duration="3600" class="card-panel-num" />
+          <div class="card-panel-text">今日访问</div>
+          <count-to :start-val="0" :end-val="10" :duration="3600" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -53,10 +53,10 @@ export default {
   components: {
     CountTo
   },
-  props:{
-   visitCount: Number,
-   messageCount: Number,
-   onlineCount: Number,   
+  props: {
+    visitCount: Number,
+    messageCount: Number,
+    onlineCount: Number
   },
   methods: {
     handleSetLineChartData(type) {
@@ -84,7 +84,6 @@ export default {
     background: #fff;
     box-shadow: 4px 4px 40px rgba(0, 0, 0, 0.05);
     border-color: rgba(0, 0, 0, 0.05);
-
 
     .icon-people {
       background-color: #8ccc40;

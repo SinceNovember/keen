@@ -17,7 +17,6 @@
           <div class="sub-title">所属部门</div>
           <div class="sub-content">{{userInfo.deptName}}</div>
         </div>
-
       </div>
 
       <div class="info-content">
@@ -63,13 +62,13 @@
           </div>
         </div>
       </div>
-      
+
       <div class="info-content role-content">
         <div class="info-content-line">
           <div class="sub-title">角色</div>
-          <div class="sub-content ">
-            <template v-for="role in userInfo.roleNameList">
-              <el-tag>{{role}}</el-tag>
+          <div class="sub-content">
+            <template v-for="(role, index) in userInfo.roleNameList">
+              <el-tag :key="index">{{role}}</el-tag>
             </template>
           </div>
         </div>
@@ -88,7 +87,6 @@ export default {
 
 <style lang="scss" scoped>
 .user-info-detail {
-  // height: 280px;
   background-color: #fdfdfd;
   .detail-avatar {
     margin: 20px 0px 0px 40px;
@@ -136,21 +134,20 @@ export default {
           }
         }
 
-        .role-content{
+        .role-content {
           width: 170px;
         }
       }
     }
-    .role-content{
+    .role-content {
       width: 100%;
       margin: 0px 175px;
-      
-      .info-content-line{
+
+      .info-content-line {
         .sub-content {
           float: left;
         }
       }
-
     }
   }
 }

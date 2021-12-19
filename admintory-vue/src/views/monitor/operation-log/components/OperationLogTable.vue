@@ -10,7 +10,7 @@
       >
         <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column label="操作人" prop="nickname" width="100"></el-table-column>
-        <el-table-column label="操作描述" prop="operation" width="120"></el-table-column>
+        <el-table-column label="操作描述" prop="operation" width="150"></el-table-column>
         <el-table-column label="耗时" width="80">
           <template slot-scope="{row}">{{row.time}}ms</template>
         </el-table-column>

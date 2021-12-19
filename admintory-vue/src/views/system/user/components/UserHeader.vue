@@ -1,7 +1,7 @@
 <template>
   <div class="form-header">
-    <el-row >
-      <el-col  :xs="24" :sm="12">
+    <el-row>
+      <el-col :xs="24" :sm="12">
         <div class="search-header">
           <el-input
             v-model="nickname"
@@ -55,7 +55,7 @@
       </el-col>
     </el-row>
 
-    <el-dialog :visible.sync="dialogVisible" v-if="dialogVisible" width="75rem" >
+    <el-dialog :visible.sync="dialogVisible" v-if="dialogVisible" width="75rem">
       <user-add
         :userInfo="userInfo"
         :deptOptions="deptOptions"
@@ -116,8 +116,7 @@ export default {
   },
   methods: {
     search() {
-      var _this = this,
-        params = {
+      var params = {
           nickname: _this.nickname,
           ssex: _this.sex,
           status: _this.status,
@@ -195,7 +194,7 @@ export default {
 </script>
 
 <style  lang="scss" scoped>
-.el-row{
+.el-row {
   width: 100%;
 }
 .search-input {

@@ -10,7 +10,6 @@
       <el-form-item label="确认密码" prop="checkPass">
         <el-input type="password" v-model="form.checkPass" autocomplete="off"></el-input>
       </el-form-item>
-
       <el-form-item>
         <el-button type="primary" @click="saveForm('form')">保存修改</el-button>
         <el-button @click="resetForm('form')">重置</el-button>
@@ -66,10 +65,10 @@ export default {
             password: _this.form.pass,
             newPassword: _this.form.newPass
           }).then(res => {
-              this.$message({
-                message: "修改成功",
-                type: "success"
-              });
+            this.$message({
+              message: "修改成功",
+              type: "success"
+            });
           });
         }
       });

@@ -4,7 +4,7 @@
       <div class="upload-avatar">
         <el-upload
           class="avatar-uploader"
-          action="http://localhost:8099/upload/image"
+          action
           :show-file-list="false"
           :on-success="handleUpload"
           :before-upload="beforeAvatarUpload"
@@ -13,7 +13,6 @@
         </el-upload>
       </div>
     </div>
-
     <el-form :model="userInfo" ref="userInfo">
       <el-row class="demo-autocomplete">
         <el-col :span="12">
@@ -48,7 +47,7 @@
           <el-form-item prop="status">
             <el-select v-model="userInfo.status" disabled placeholder="请选择">
               <el-option
-                v-for="item in StatusOptions"
+                v-for="item in statusOptions"
                 :key="item.value"
                 :label="item.label"
                 :value="item.value"
@@ -76,15 +75,6 @@
           <div class="sub-title">部门</div>
           <el-form-item>
             <el-input v-model="userInfo.deptName" disabled></el-input>
-            <!-- <tree-select
-              disabled
-              v-model="userInfo.deptId"
-              :width="540"
-              :data="deptOptions"
-              class="inline-input"
-              :checkedKeys="defaultCheckedKeys"
-              @popoverHide="popoverHide"
-            ></tree-select>-->
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -119,6 +109,7 @@
 import { getCurrentUser, updateUser, uploadImg } from "@/api/user";
 import { fetchDeptOptions } from "@/api/dept";
 import { fetchRoleOptions } from "@/api/role";
+import { getSexOption, getStatusOption } from "@/api/option";
 import TreeSelect from "@/components/TreeSelect.vue";
 
 export default {
@@ -142,30 +133,8 @@ export default {
         description: ""
       },
       defaultCheckedKeys: [],
-      sexOptions: [
-        {
-          value: "MALE",
-          label: "男"
-        },
-        {
-          value: "FEMALE",
-          label: "女"
-        },
-        {
-          value: "UNKNOWN",
-          label: "未知"
-        }
-      ],
-      StatusOptions: [
-        {
-          value: "LOCK",
-          label: "禁用"
-        },
-        {
-          value: "VALID",
-          label: "启用"
-        }
-      ],
+      sexOptions: [],
+      statusOptions: [],
       deptOptions: [],
       roleOptions: [],
       rules: {
@@ -186,6 +155,8 @@ export default {
     };
   },
   mounted() {
+    this.loadSexOption();
+    this.loadStatusOption();
     this.loadUserInfo();
     this.loadDeptOptions();
     this.loadRoleOptions();
@@ -207,6 +178,16 @@ export default {
       getCurrentUser().then(res => {
         this.userInfo = res.data;
         this.defaultCheckedKeys = [this.userInfo.deptId];
+      });
+    },
+    loadSexOption() {
+      getSexOption().then(res => {
+        this.sexOptions = res.data;
+      });
+    },
+    loadStatusOption() {
+      getStatusOption().then(res => {
+        this.statusOptions = res.data;
       });
     },
     loadDeptOptions() {

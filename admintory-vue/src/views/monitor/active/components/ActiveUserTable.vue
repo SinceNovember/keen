@@ -9,18 +9,15 @@
         <span class="title">{{item.user.nickname}}</span>
         <span class="sub-title">{{item.user.deptName}}</span>
         <span class="sub-title intro-title">{{item.user.description}}</span>
-
         <div class="other" @click="openActiveUserInfo(item)">
           <i class="el-icon-more"></i>
         </div>
       </div>
-
       <div class="card-bottom" v-if="!item.current" @click="forceLogout(item)">
         <i class="bx bx-log-out"></i>
         <span class="title">强制退出</span>
       </div>
     </div>
-
     <el-dialog :visible.sync="dialogVisible" v-if="dialogVisible" width="30rem">
       <active-user-info :activeUserInfo="activeUserInfo" @closeDialog="closeDeptDialog"></active-user-info>
     </el-dialog>
@@ -78,7 +75,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card-list{
+.card-list {
   margin-top: 10px;
 }
 </style>

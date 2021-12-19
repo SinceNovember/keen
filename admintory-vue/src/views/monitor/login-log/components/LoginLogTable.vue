@@ -15,7 +15,7 @@
         <el-table-column label="登陆时间" prop="loginTime" width="180" show-overflow-tooltip></el-table-column>
         <el-table-column label="登陆系统" prop="system" width="180" show-overflow-tooltip></el-table-column>
         <el-table-column label="浏览器" prop="browser" width="180" show-overflow-tooltip></el-table-column>
-      </el-table> 
+      </el-table>
     </div>
     <div class="form-pagination">
       <el-pagination
@@ -31,11 +31,9 @@
 </template>
 
 <script>
-import { fetchLoginLogs, deleteLoginLog } from '@/api/monitor'
-
+import { fetchLoginLogs, deleteLoginLog } from "@/api/monitor";
 
 export default {
-
   data() {
     return {
       logs: [],
@@ -49,7 +47,7 @@ export default {
         currentPage: 1,
         pageSize: 10
       },
-      multipleSelection: [],
+      multipleSelection: []
     };
   },
   mounted() {
@@ -113,11 +111,10 @@ export default {
         });
         this.loadLogs(this.currentPage, this.pageSize);
       });
-    },
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-
 </style>

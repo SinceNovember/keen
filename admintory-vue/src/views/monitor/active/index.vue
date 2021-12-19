@@ -1,7 +1,7 @@
 <template>
   <div class="active-container">
-    <h3>在线用户</h3> 
-      <active-user-table></active-user-table>
+    <h3>在线用户</h3>
+    <active-user-table></active-user-table>
   </div>
 </template>
 <script>
@@ -22,7 +22,7 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style  lang="scss" scoped>
-.active-container{
+.active-container {
   // height: 100%;
   padding: 20px;
 }

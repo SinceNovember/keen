@@ -132,9 +132,7 @@ export default {
   },
   methods: {
     handleSelect(key, keyPath) {
-      var _this = this;
-      _this.activeIndex = key;
-      // _this.menuInfo.menuType = key;
+      this.activeIndex = key;
     },
     popoverHide(key, value) {
       this.menuInfo.parentId = key;
@@ -143,10 +141,9 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.menuInfo.menuType = this.activeIndex;
-          if (this.menuInfo.menuType == "DIRECTORY") {
+          if (this.menuInfo.menuType === "DIRECTORY") {
             this.menuInfo.parentId = "";
           }
-          // _this.menuInfo.meta.title = _this.menuInfo.title;
           if (this.menuInfo.id) {
             updateMenu(this.menuInfo).then(res => {
               this.$emit("closeDialog", 1);
@@ -178,7 +175,6 @@ export default {
     getDefaultTree(arr) {
       fetchMenuTreeModel().then(res => {
         arr = res.data;
-        // remove_empty_children(_this.menuOptions);
       });
     }
   }

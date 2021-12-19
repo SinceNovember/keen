@@ -11,11 +11,7 @@
         @selection-change="handleSelectionChange"
       >
         <el-table-column type="selection" width="55"></el-table-column>
-        <el-table-column label="菜单名称" width="200" prop="meta.title">
-          <!-- <template slot-scope="{row}">
-                    <i class="ico bx " :class="row.meta.icon"></i>{{row.meta.title}}
-          </template>-->
-        </el-table-column>
+        <el-table-column label="菜单名称" width="200" prop="meta.title"></el-table-column>
         <el-table-column label="图标" width="80">
           <template slot-scope="{row}">
             <i class="ico bx" :class="row.meta.icon"></i>
@@ -109,24 +105,21 @@ export default {
     };
   },
   mounted() {
-    var _this = this;
-    _this.loadMenus();
+    this.loadMenus();
   },
   methods: {
     searchTable(params) {
-      var _this = this;
       if (params) {
-        _this.params.title = params.title;
+        this.params.title = params.title;
       }
-      _this.loadMenus(_this.currentPage, _this.pageSize);
+      this.loadMenus(this.currentPage, this.pageSize);
     },
     loadMenus(currentPage, pageSize) {
-      var _this = this;
-      _this.params.currentPage = currentPage;
-      _this.params.pageSize = pageSize;
-      fetchMenus(_this.params).then(res => {
-        _this.menus = res.data.records;
-        _this.total = res.data.total;
+      this.params.currentPage = currentPage;
+      this.params.pageSize = pageSize;
+      fetchMenus(this.params).then(res => {
+        this.menus = res.data.records;
+        this.total = res.data.total;
       });
     },
 
@@ -193,13 +186,11 @@ export default {
       });
     },
     handleCommand(row) {
-      var _this = this;
-      _this.menuId = row.id;
-      _this.dialogVisible = true;
+      this.menuId = row.id;
+      this.dialogVisible = true;
     },
     closeAssignDialog() {
-      var _this = this;
-      _this.dialogVisible = false;
+      this.dialogVisible = false;
     }
   }
 };

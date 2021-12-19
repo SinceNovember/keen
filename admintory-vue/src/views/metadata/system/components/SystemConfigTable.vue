@@ -133,8 +133,7 @@ export default {
     },
     edit(row) {
       this.$emit("openEditDialog", row.id);
-    },
-
+    }
   }
 };
 </script>

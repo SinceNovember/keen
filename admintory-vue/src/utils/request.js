@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
-import { getToken, getUserId } from '@/utils/auth'
-import { websocketSendLogout, websocketSend, sendLogoutMsg } from '@/utils/websocket'
+import { getToken } from '@/utils/auth'
+import { sendLogoutMsg } from '@/utils/websocket'
 
 let config = {
   baseURL: "/api",//配置生产环境路径和开发路径

@@ -10,7 +10,7 @@
       ></el-input>
     </div>
     <ul>
-      <li v-for="user in userList">
+      <li v-for="(user, index) in userList" :key="index">
         <img class="avatar" :src="user.avatar" />
         <div class>
           <span class="item">{{user.nickname}}</span>

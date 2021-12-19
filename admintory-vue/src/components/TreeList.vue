@@ -133,8 +133,7 @@ export default {
           item => item.nodeType == 1
         );
       }
-        _this.setCheckedNodes(_this.selectedList);
-
+      _this.setCheckedNodes(_this.selectedList);
     },
     clearSelected() {
       var _this = this;

@@ -2,31 +2,51 @@
 <template>
   <div class="tree-select-container">
     <div class="mask" v-show="isShowSelect" @click="isShowSelect = !isShowSelect"></div>
-    <el-popover placement="bottom-start" :width="width" trigger="manual"
-                v-model="isShowSelect" @hide="popoverHide">
-      <el-tree class="common-tree" :style="style" ref="tree" :data="data" :props="defaultProps"
-               :show-checkbox="multiple"
-               :node-key="nodeKey"
-               :check-strictly="checkStrictly"
-               default-expand-all
-               icon-class="el-icon-arrow-right"
-               :expand-on-click-node="false"
-               :check-on-click-node="multiple"
-               :highlight-current="true"
-               @node-click="handleNodeClick"
-               @check-change="handleCheckChange"></el-tree>
-      <el-select :style="selectStyle" slot="reference" ref="select"
-                 v-model="selectedData"
-                 :multiple="multiple"
-                 :clearable="clearable"
-                 :placeholder="placeholder"
-                 :collapse-tags="collapseTags"
-                 @click.native="isShowSelect = !isShowSelect"
-                 @remove-tag="removeSelectedNodes"
-                 @clear="removeSelectedNode"
-                 @change="changeSelectedNodes"
-                 class="tree-select">
-        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
+    <el-popover
+      placement="bottom-start"
+      :width="width"
+      trigger="manual"
+      v-model="isShowSelect"
+      @hide="popoverHide"
+    >
+      <el-tree
+        class="common-tree"
+        :style="style"
+        ref="tree"
+        :data="data"
+        :props="defaultProps"
+        :show-checkbox="multiple"
+        :node-key="nodeKey"
+        :check-strictly="checkStrictly"
+        default-expand-all
+        icon-class="el-icon-arrow-right"
+        :expand-on-click-node="false"
+        :check-on-click-node="multiple"
+        :highlight-current="true"
+        @node-click="handleNodeClick"
+        @check-change="handleCheckChange"
+      ></el-tree>
+      <el-select
+        :style="selectStyle"
+        slot="reference"
+        ref="select"
+        v-model="selectedData"
+        :multiple="multiple"
+        :clearable="clearable"
+        :placeholder="placeholder"
+        :collapse-tags="collapseTags"
+        @click.native="isShowSelect = !isShowSelect"
+        @remove-tag="removeSelectedNodes"
+        @clear="removeSelectedNode"
+        @change="changeSelectedNodes"
+        class="tree-select"
+      >
+        <el-option
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        ></el-option>
       </el-select>
     </el-popover>
   </div>
@@ -34,168 +54,166 @@
  
 <script>
 export default {
-  name: 'tree-select',
+  name: "tree-select",
   props: {
-  // 子组件接收函数
+    // 子组件接收函数
     loadDefaultTree: {
-        type: Function
+      type: Function
     },
-// 树结构数据
+    // 树结构数据
     data: {
       type: Array,
-      default () {
+      default() {
         return [];
       }
     },
     defaultProps: {
       type: Object,
-      default () {
+      default() {
         return {};
       }
     },
     // 配置是否可多选
     multiple: {
       type: Boolean,
-      default () {
+      default() {
         return false;
       }
     },
     // 配置是否可清空选择
     clearable: {
       type: Boolean,
-      default () {
+      default() {
         return false;
       }
     },
     disabled: {
       type: Boolean,
-      default(){
+      default() {
         return false;
       }
     },
     // 配置多选时是否将选中值按文字的形式展示
     collapseTags: {
       type: Boolean,
-      default () {
+      default() {
         return false;
       }
     },
     nodeKey: {
       type: String,
-      default () {
-        return 'value';
+      default() {
+        return "value";
       }
     },
     // 显示复选框情况下，是否严格遵循父子不互相关联
     checkStrictly: {
       type: Boolean,
-      default () {
+      default() {
         return false;
       }
     },
     // 默认选中的节点key数组
     checkedKeys: {
       type: Array,
-      default () {
+      default() {
         return [];
       }
     },
     size: {
       type: String,
-      default () {
-        return 'medium';
+      default() {
+        return "medium";
       }
     },
     width: {
       type: Number,
-      default () {
+      default() {
         return 250;
       }
     },
     height: {
       type: Number,
-      default () {
+      default() {
         return 300;
       }
     },
     placeholder: {
       type: String,
-      default (){
-        return '部门';
+      default() {
+        return "部门";
       }
     }
   },
-  data () {
+  data() {
     return {
       isShowSelect: false, // 是否显示树状选择器
       options: [],
       selectedData: [], // 选中的节点
-      style: 'width: 100%;' + 'height:' + this.height + 'px;',
+      style: "width: 100%;" + "height:" + this.height + "px;",
       // selectStyle: 'width:' + (this.width + 40) + 'px;',
       // style: 'width: 100%',
-      selectStyle: 'width: 100%',
+      selectStyle: "width: 100%",
       checkedIds: [],
       checkedData: []
     };
   },
-  mounted () {
-      // this.initCheckedData();
-
+  mounted() {
+    // this.initCheckedData();
   },
   methods: {
-      recursiveNode(tree, arr, toArr){
-        tree.forEach(node => {
-            if(arr.indexOf(node.value) != -1){
-                toArr.push(node)
-            }
-            if(node.children.length > 0){
-                this.recursiveNode(node.children, arr, toArr);
-            }
-        });
-      },
+    recursiveNode(tree, arr, toArr) {
+      tree.forEach(node => {
+        if (arr.indexOf(node.value) != -1) {
+          toArr.push(node);
+        }
+        if (node.children.length > 0) {
+          this.recursiveNode(node.children, arr, toArr);
+        }
+      });
+    },
     // 单选时点击tree节点，设置select选项
-    setSelectOption (node) {
+    setSelectOption(node) {
       let tmpMap = {};
-        tmpMap.value = node.key;
-        tmpMap.label = node.label;
-        this.options = [];
-        this.options.push(tmpMap);
-        this.selectedData = node.key;
+      tmpMap.value = node.key;
+      tmpMap.label = node.label;
+      this.options = [];
+      this.options.push(tmpMap);
+      this.selectedData = node.key;
     },
     // 单选，选中传进来的节点
-    checkSelectedNode (checkedKeys) {
+    checkSelectedNode(checkedKeys) {
       var item = checkedKeys[0];
       this.$refs.tree.setCurrentKey(item);
-      console.log(this.$refs.tree);
       var node = this.$refs.tree.getNode(item);
       //无法从树上获取节点，则从传入的data获取
-      if(!node){
+      if (!node) {
         node = [];
         this.recursiveNode(this.data, checkedKeys, node);
-        if(node.length > 0){
+        if (node.length > 0) {
           node = node[0];
         }
       }
       this.setSelectOption(node);
     },
     // 多选，勾选上传进来的节点
-    checkSelectedNodes (checkedKeys) {
+    checkSelectedNodes(checkedKeys) {
       this.$refs.tree.setCheckedKeys(checkedKeys);
     },
     // 单选，清空选中
-    clearSelectedNode () {
-      this.selectedData = '';
+    clearSelectedNode() {
+      this.selectedData = "";
       this.$refs.tree.setCurrentKey(null);
     },
     // 多选，清空所有勾选
-    clearSelectedNodes () {
+    clearSelectedNodes() {
       var checkedKeys = this.$refs.tree.getCheckedKeys(); // 所有被选中的节点的 key 所组成的数组数据
       for (let i = 0; i < checkedKeys.length; i++) {
         this.$refs.tree.setChecked(checkedKeys[i], false);
       }
     },
-    initCheckedData (data) {
-      if(data){
+    initCheckedData(data) {
+      if (data) {
         this.data = data;
       }
       if (this.multiple) {
@@ -214,7 +232,7 @@ export default {
         }
       }
     },
-    popoverHide () {
+    popoverHide() {
       if (this.multiple) {
         this.checkedIds = this.$refs.tree.getCheckedKeys(); // 所有被选中的节点的 key 所组成的数组数据
         this.checkedData = this.$refs.tree.getCheckedNodes(); // 所有被选中的节点所组成的数组数据
@@ -222,33 +240,33 @@ export default {
         this.checkedIds = this.$refs.tree.getCurrentKey();
         this.checkedData = this.$refs.tree.getCurrentNode();
       }
-      this.$emit('popoverHide', this.checkedIds, this.checkedData);
+      this.$emit("popoverHide", this.checkedIds, this.checkedData);
     },
     // 单选，节点被点击时的回调,返回被点击的节点数据
-    handleNodeClick (data, node) {
+    handleNodeClick(data, node) {
       if (!this.multiple) {
         this.setSelectOption(node);
         this.isShowSelect = !this.isShowSelect;
-        this.$emit('change', this.selectedData);
+        this.$emit("change", this.selectedData);
       }
     },
     // 多选，节点勾选状态发生变化时的回调
-    handleCheckChange () {
+    handleCheckChange() {
       var checkedKeys = this.$refs.tree.getCheckedKeys(); // 所有被选中的节点的 key 所组成的数组数据
-      this.options = checkedKeys.map((item) => {
+      this.options = checkedKeys.map(item => {
         var node = this.$refs.tree.getNode(item); // 所有被选中的节点对应的node
         let tmpMap = {};
         tmpMap.value = node.key;
         tmpMap.label = node.label;
         return tmpMap;
       });
-      this.selectedData = this.options.map((item) => {
+      this.selectedData = this.options.map(item => {
         return item.value;
       });
-      this.$emit('change', this.selectedData);
+      this.$emit("change", this.selectedData);
     },
     // 多选,删除任一select选项的回调
-    removeSelectedNodes (val) {
+    removeSelectedNodes(val) {
       this.$refs.tree.setChecked(val, false);
       var node = this.$refs.tree.getNode(val);
       if (!this.checkStrictly && node.childNodes.length > 0) {
@@ -259,9 +277,9 @@ export default {
         });
         this.handleCheckChange();
       }
-      this.$emit('change', this.selectedData);
+      this.$emit("change", this.selectedData);
     },
-    treeToList (tree) {
+    treeToList(tree) {
       var queen = [];
       var out = [];
       queen = queen.concat(tree);
@@ -275,53 +293,51 @@ export default {
       return out;
     },
     // 单选,清空select输入框的回调
-    removeSelectedNode () {
+    removeSelectedNode() {
       this.clearSelectedNode();
-      this.$emit('clear', this.selectedData);
+      this.$emit("clear", this.selectedData);
     },
     // 选中的select选项改变的回调
-    changeSelectedNodes (selectedData) {
+    changeSelectedNodes(selectedData) {
       // 多选,清空select输入框时，清除树勾选
       if (this.multiple && selectedData.length <= 0) {
         this.clearSelectedNodes();
       }
-      this.$emit('change', this.selectedData);
+      this.$emit("change", this.selectedData);
     }
   },
   watch: {
-    isShowSelect (val) {
+    isShowSelect(val) {
       // 隐藏select自带的下拉框
       this.$refs.select.blur();
     },
-    checkedKeys (val) {
+    checkedKeys(val) {
       if (!val) return;
       this.checkedKeys = val;
       this.initCheckedData();
     },
-    data(val){
+    data(val) {
       this.data = val;
       this.initCheckedData(val);
-
     }
   }
 };
 </script>
  
 <style lang="scss" scoped>
-  .mask{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    z-index: 11;
-  }
-  .common-tree{
-    overflow: auto;
-  }
-  .tree-select{
-    z-index: 111;
-  }
-
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 11;
+}
+.common-tree {
+  overflow: auto;
+}
+.tree-select {
+  z-index: 111;
+}
 </style>

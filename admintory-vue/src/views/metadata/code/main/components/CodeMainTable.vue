@@ -39,7 +39,7 @@
       ></el-pagination>
     </div>
 
-    <el-dialog :visible.sync="dialogVisible" v-if="dialogVisible" width="50rem"   >
+    <el-dialog :visible.sync="dialogVisible" v-if="dialogVisible" width="50rem">
       <code-item :codeId="codeId" @closeDialog="closeCodeItemDialog"></code-item>
     </el-dialog>
   </div>

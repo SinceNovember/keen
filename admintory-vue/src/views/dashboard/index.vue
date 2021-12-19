@@ -44,7 +44,6 @@
           </div>
           <div class="msg-list">
             <div v-if="messageList.length === 0" class="no-msg">
-              <!-- <img src="https://img1.baidu.com/it/u=1325859801,1164331943&fm=26&fmt=auto" /> -->
               <i class="el-icon-chat-line-round"></i>
               您暂时还没有收到任何消息
             </div>
@@ -106,7 +105,7 @@ export default {
       messageCount: 0,
       onlineCount: 0,
       messageList: [],
-      chartBackgroundColor: '#fff',
+      chartBackgroundColor: "#fff",
       // lineChartData: lineChartData.newVisitis,
 
       size: 48
@@ -160,7 +159,7 @@ export default {
   .chart-panel-group {
     height: 450px;
 
-    .box-card{
+    .box-card {
       margin-bottom: 32px;
     }
 
@@ -226,7 +225,7 @@ export default {
         height: 100%;
         color: #6d6c72bf;
 
-        i{
+        i {
           font-size: 80px;
           margin-bottom: 10px;
         }

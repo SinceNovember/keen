@@ -5,12 +5,12 @@
 <script>
 import * as echarts from "echarts";
 require("echarts/theme/macarons"); // echarts theme
-// import resize from './mixins/resize'
+import resize from "./mixins/resize";
 
 const colorList = ["#9E87FF", "#73DDFF", "#fe9a8b", "#F56948", "#9E87FF"];
 
 export default {
-  //   mixins: [resize],
+  mixins: [resize],
   props: {
     className: {
       type: String,
@@ -82,7 +82,6 @@ export default {
             color: "#5c6c7c"
           },
           extraCssText: "box-shadow: 1px 0 2px 0 rgba(163,163,163,0.5)"
-
         },
         series: [
           {

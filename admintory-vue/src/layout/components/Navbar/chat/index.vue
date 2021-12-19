@@ -50,7 +50,6 @@ export default {
   },
   mounted() {
     this.loadUsers();
-    // this.loadOnlineUsers();
   },
   methods: {
     loadUsers() {
@@ -80,13 +79,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  
-
 .chat-container {
   background: #ffffff;
   height: 80vh;
-
-
 
   .el-tabs {
     height: 100%;
@@ -95,7 +90,6 @@ export default {
     .el-tab-pane {
       width: 100%;
       height: 100%;
-
     }
   }
 }

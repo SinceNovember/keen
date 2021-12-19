@@ -1,7 +1,7 @@
 
 const state = {
   sidebar: {
-    opened:false,
+    opened: false,
     withoutAnimation: false
   },
   device: 'desktop',
@@ -21,7 +21,7 @@ const mutations = {
   TOGGLE_DEVICE: (state, device) => {
     state.device = device
   },
-  CHANGE_THEME: (state, theme) =>{
+  CHANGE_THEME: (state, theme) => {
     state.theme = theme
   }
 
@@ -29,7 +29,7 @@ const mutations = {
 
 const actions = {
   toggleSideBar({ commit }) {
-    commit('TOGGLE_SIDEBAR','1')
+    commit('TOGGLE_SIDEBAR', '1')
   },
   closeSideBar({ commit }, { withoutAnimation }) {
     commit('CLOSE_SIDEBAR', withoutAnimation)
@@ -37,7 +37,7 @@ const actions = {
   toggleDevice({ commit }, device) {
     commit('TOGGLE_DEVICE', device)
   },
-  changeTheme({commit}, theme){
+  changeTheme({ commit }, theme) {
     commit('CHANGE_THEME', theme)
   }
 

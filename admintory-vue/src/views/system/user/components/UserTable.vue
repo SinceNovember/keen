@@ -33,20 +33,17 @@
           <template slot-scope="{row}">
             <span class="status-tag" :class="row.status =='LOCK' ? 'danger' : '' "></span>
             {{row.status | StatusInfoFilter}}
-            <!-- <el-tag :type="row.status | StatusFilter">{{row.status | StatusInfoFilter}}</el-tag> -->
           </template>
         </el-table-column>
         <el-table-column prop="createTime" label="创建时间" sortable show-overflow-tooltip></el-table-column>
         <el-table-column label="操作" width="120" show-overflow-tooltip>
           <template slot-scope="{row}">
-            <!-- <div class='handle-icon'><i class='bx bxs-edit-alt' @click="edit(row)"></i></div> -->
             <div class="handle-icon">
               <i class="bx bx-x" @click="deleteOne(row)"></i>
             </div>
             <div class="handle-icon">
               <i class="bx bx-refresh" @click="resetPass(row)"></i>
             </div>
-            <!-- <el-dropdown @command="openRelateDialog(row)"> -->
             <el-dropdown @command="handleCommand" trigger="click">
               <div class="handle-icon">
                 <i class="bx bx-dots-vertical-rounded"></i>
@@ -79,11 +76,7 @@
     <el-dialog v-if="dialogVisible==true" :visible.sync="dialogVisible" width="50rem">
       <user-role-relate ref="userRoleInfo" :userInfo="userInfo" @closeDialog="dialogVisible=false"></user-role-relate>
     </el-dialog>
-    <el-dialog
-      v-if="deptDialogVisible==true"
-      :visible.sync="deptDialogVisible"
-      width="50rem"
-    >
+    <el-dialog v-if="deptDialogVisible==true" :visible.sync="deptDialogVisible" width="50rem">
       <user-dept-relate ref="userDeptInfo" :userInfo="userInfo" @closeDialog="closeDeptDialog"></user-dept-relate>
     </el-dialog>
   </div>
@@ -127,27 +120,24 @@ export default {
     };
   },
   mounted() {
-    var _this = this;
-    _this.loadUsers();
+    this.loadUsers();
   },
   methods: {
     searchTable(params) {
-      var _this = this;
       if (params) {
-        _this.params.nickname = params.nickname;
-        _this.params.deptId = params.deptId;
-        _this.params.ssex = params.ssex;
-        _this.params.status = params.status;
+        this.params.nickname = params.nickname;
+        this.params.deptId = params.deptId;
+        this.params.ssex = params.ssex;
+        this.params.status = params.status;
       }
-      _this.loadUsers(_this.currentPage, _this.pageSize);
+      this.loadUsers(this.currentPage, this.pageSize);
     },
     loadUsers(currentPage, pageSize) {
-      var _this = this;
-      _this.params.currentPage = currentPage;
-      _this.params.pageSize = pageSize;
-      fetchUsers(_this.params).then(res => {
-        _this.users = res.data.records;
-        _this.total = res.data.total;
+      this.params.currentPage = currentPage;
+      this.params.pageSize = pageSize;
+      fetchUsers(this.params).then(res => {
+        this.users = res.data.records;
+        this.total = res.data.total;
       });
     },
     handleSelectionChange(val) {
@@ -255,10 +245,10 @@ export default {
     },
     handleCommand(command) {
       switch (command.command) {
-        case "role": //编辑
+        case "role": //角色
           this.openRoleRelateDialog(command.row);
           break;
-        case "dept": //删除
+        case "dept": //部门
           this.openDeptRelateDialog(command.row);
           break;
       }

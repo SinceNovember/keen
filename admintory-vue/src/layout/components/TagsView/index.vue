@@ -22,13 +22,18 @@
       </ul>
     </div>
     <ul v-show="visible" :style="{left:left+'px',top:top+'px'}" class="context-menu">
-      <li @click="refreshSelectedTag(selectedTag)"><i class='bx bx-refresh'></i>重新加载</li>
-      <li
-        v-if="!(selectedTag.meta&&selectedTag.meta.affix)"
-        @click="closeSelectedTag(selectedTag)"
-      ><i class='bx bx-x'></i>关闭</li>
-      <li @click="closeOthersTags"><i class='bx bx-transfer'></i>关闭其他</li>
-      <li @click="closeAllTags(selectedTag)"><i class='bx bx-minus'></i>关闭全部</li>
+      <li @click="refreshSelectedTag(selectedTag)">
+        <i class="bx bx-refresh"></i>重新加载
+      </li>
+      <li v-if="!(selectedTag.meta&&selectedTag.meta.affix)" @click="closeSelectedTag(selectedTag)">
+        <i class="bx bx-x"></i>关闭
+      </li>
+      <li @click="closeOthersTags">
+        <i class="bx bx-transfer"></i>关闭其他
+      </li>
+      <li @click="closeAllTags(selectedTag)">
+        <i class="bx bx-minus"></i>关闭全部
+      </li>
     </ul>
   </div>
 </template>
@@ -127,7 +132,7 @@ export default {
         const { fullPath } = view;
         this.$nextTick(() => {
           this.$router.replace({
-            path: "/redirect" + fullPath,
+            path: "/redirect" + fullPath
           });
         });
       });

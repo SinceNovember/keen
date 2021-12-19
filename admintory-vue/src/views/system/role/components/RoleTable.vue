@@ -16,7 +16,6 @@
           <template slot-scope="{row}">
             <span class="status-tag" :class="row.status =='LOCK' ? 'danger' : '' "></span>
             {{row.status | StatusInfoFilter}}
-            <!-- <el-tag :type="row.status | StatusFilter">{{row.status | StatusInfoFilter}}</el-tag> -->
           </template>
         </el-table-column>
         <el-table-column prop="orderNum" label="排序号" width="180" sortable show-overflow-tooltip></el-table-column>
@@ -37,7 +36,6 @@
                 <el-dropdown-item icon="el-icon-copy-document">角色分配</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
-            <!-- <div class='handle-icon'><i class='bx bx-add-to-queue' @click="openRelateDialog(row)"></i></div> -->
           </template>
         </el-table-column>
       </el-table>
@@ -61,12 +59,7 @@
 
 <script>
 import { fetchDeptWithUserTreeModel } from "@/api/dept";
-import {
-  fetchRoles,
-  deleteRole,
-  toggleRoleStatus,
-  fetchRoleUserRelate
-} from "@/api/role";
+import { fetchRoles, deleteRole, toggleRoleStatus, fetchRoleUserRelate } from "@/api/role";
 import RoleInfo from "./RoleInfo";
 import RoleUserRelate from "./RoleUserRelate";
 
@@ -140,13 +133,12 @@ export default {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
-        })
-          .then(() => {
-            this.multipleSelection.map(item => {
-              idList.push(item.roleId);
-            });
-            this.handleDelete(idList.toString());
-          })
+        }).then(() => {
+          this.multipleSelection.map(item => {
+            idList.push(item.roleId);
+          });
+          this.handleDelete(idList.toString());
+        });
       } else {
         this.$message({
           message: "未选择角色",

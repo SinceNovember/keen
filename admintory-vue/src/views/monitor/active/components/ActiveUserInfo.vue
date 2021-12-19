@@ -2,7 +2,7 @@
   <div class="info-container">
     <div class="info-summary">
       <img class="avatar" :src="activeUserInfo.user.avatar" />
-      <span class="title">{{activeUserInfo.user.nickname}} </span>
+      <span class="title">{{activeUserInfo.user.nickname}}</span>
     </div>
     <span class="sub-title">
       <i class="bx bxs-group"></i>

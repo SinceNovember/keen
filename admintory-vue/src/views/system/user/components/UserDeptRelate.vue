@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import {  updateUserDept } from "@/api/user";
-import { fetchDeptOptions} from "@/api/dept";
+import { updateUserDept } from "@/api/user";
+import { fetchDeptOptions } from "@/api/dept";
 import TreeSelect from "@/components/TreeSelect.vue";
 
 export default {
@@ -61,10 +61,9 @@ export default {
       });
     },
     modifyDept() {
-      var _this = this;
       updateUserDept({
-        userId: _this.userInfo.userId,
-        deptId: _this.deptId
+        userId: this.userInfo.userId,
+        deptId: this.deptId
       }).then(res => {
         this.$message({
           message: "修改成功",
@@ -74,7 +73,7 @@ export default {
       });
     },
     popoverHide(key, value) {
-      this.deptId = key
+      this.deptId = key;
     },
     closeDialog() {
       this.$emit("closeDialog");
