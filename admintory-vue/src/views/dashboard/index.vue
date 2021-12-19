@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-container">
     <h2>控制台</h2>
-    <panel-group :visitCount="visitCount" :messageCount="messageCount" :onlineCount="onlineCount"></panel-group>
+    <panel-group :visitCount="visitCount" :todayCount="todayCount" :messageCount="messageCount" :onlineCount="onlineCount"></panel-group>
     <el-row :gutter="40" class="chart-panel-group">
       <el-col :lg="17" :xs="24" :sm="24" class="card-panel-col">
         <el-row :gutter="40" class="chart-panel-group history-chart">
@@ -102,6 +102,7 @@ export default {
       },
       roleMember: {},
       visitCount: 0,
+      todayCount: 0,
       messageCount: 0,
       onlineCount: 0,
       messageList: [],
@@ -130,6 +131,8 @@ export default {
         const { data } = res;
         this.visitHistory.nameList = data.map(item => item.date);
         this.visitHistory.dataList = data.map(item => item.count);
+        this.todayCount = this.visitHistory.dataList[this.visitHistory.dataList.length - 1];
+        console.log(this.todayCount);
       });
       fetchDeptMemberCountTop6().then(res => {
         const { data } = res;
