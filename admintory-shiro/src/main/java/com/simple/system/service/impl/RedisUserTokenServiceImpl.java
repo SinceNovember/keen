@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.ImmutableMap;
 import com.simple.common.exception.AdmintoryException;
 import com.simple.common.model.constant.PropertyConstant;
-import com.simple.common.utils.HttpContextUtils;
 import com.simple.common.utils.RedisUtils;
 import com.simple.common.utils.StringUtils;
 import com.simple.metadata.service.SystemConfigService;
@@ -15,19 +14,19 @@ import com.simple.system.model.entity.UserToken;
 import com.simple.system.oauth2.TokenGenerator;
 import com.simple.system.service.UserService;
 import com.simple.system.service.UserTokenService;
-import jdk.nashorn.internal.objects.annotations.Property;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.ExpiredCredentialsException;
-import org.springframework.stereotype.Service;
-import static com.simple.common.utils.StringUtils.*;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.swing.text.html.Option;
-import java.util.*;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+
+import static com.simple.common.utils.StringUtils.keyGenerate;
+import static com.simple.common.utils.StringUtils.relateKeyGenerate;
 
 /**
  * Redis的Token生成器
@@ -50,7 +49,7 @@ public class RedisUserTokenServiceImpl extends ServiceImpl<UserTokenMapper, User
         //生成一个Token
         String token = TokenGenerator.generateValue();
         redisUtils.set(keyGenerate(token), userId, getExpireTime());
-        return ImmutableMap.of("token", token, "expire", getExpireTime());
+        return ImmutableMap.of("token", token, "expire", getExpireTime(), "userId", userId);
     }
 
     @Override

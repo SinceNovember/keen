@@ -24,35 +24,38 @@
           ></el-input>
         </div>
         <ul class="user-list">
-          <li
-            class="user-item"
-            :class="activeClass == user.userDTO.userId ? 'active' :''"
-            :id="index"
-            v-trigger
-            v-for="(user,index) in relatedUserList"
-            :key="index"
-            @click="openMsg(user)"
-          >
-            <div class="tab-content">
-              <div class="avatar-item" :class="{online: user.userDTO.online}">
-                <img :src="user.userDTO.avatar" class="avatar" />
+          <template v-for="(user,index) in relatedUserList">
+            <li
+              class="user-item"
+              :class="activeClass == user.userDTO.userId ? 'active' :''"
+              :id="index"
+              v-trigger
+              v-if="!user.hidden"
+              :key="index"
+              @click="openMsg(user)"
+              @contextmenu.prevent="openMenu(user, $event)"
+            >
+              <div class="tab-content">
+                <div class="avatar-item" :class="{online: user.userDTO.online}">
+                  <img :src="user.userDTO.avatar" class="avatar" />
+                </div>
+                <div class="info-group">
+                  <span class="name">{{user.userDTO.nickname}}</span>
+                  <span
+                    class="msg"
+                  >{{user.msgList.length > 0 ? user.msgList[user.msgList.length - 1].content : ''}}</span>
+                </div>
+                <div class="time">
+                  <template
+                    v-if="user.unreadMsgCount == 0"
+                  >{{user.msgList.length > 0 ? user.msgList[user.msgList.length - 1].createTime : ''| dateStrFilter}}</template>
+                  <template v-else>
+                    <span class="msg-num">{{user.unreadMsgCount}}</span>
+                  </template>
+                </div>
               </div>
-              <div class="info-group">
-                <span class="name">{{user.userDTO.nickname}}</span>
-                <span
-                  class="msg"
-                >{{user.msgList.length > 0 ? user.msgList[user.msgList.length - 1].content : ''}}</span>
-              </div>
-              <div class="time">
-                <template
-                  v-if="user.unreadMsgCount == 0"
-                >{{user.msgList.length > 0 ? user.msgList[user.msgList.length - 1].createTime : ''| dateStrFilter}}</template>
-                <template v-else>
-                  <span class="msg-num">{{user.unreadMsgCount}}</span>
-                </template>
-              </div>
-            </div>
-          </li>
+            </li>
+          </template>
         </ul>
       </div>
     </div>
@@ -67,7 +70,7 @@
           <div class="info">
             <span class="info-name">
               <span class="name">{{toUser.nickname}}</span>
-              <span v-if="toUser.online" class="online-text">[在线]</span>
+              <span v-if="toUser.online" class="o nline-text">[在线]</span>
               <span v-else class="online-text">[离线]</span>
             </span>
             <span class="info-dept">{{toUser.deptName}}</span>
@@ -98,7 +101,7 @@
         <div class="send-content">
           <img
             class="user-avatar"
-            src="http://47.104.70.138:8080/febs/images/avatar/cnrhVkzwxjPwAaCfPbdc.png"
+            :src="user.avatar"
           />
           <input v-model="content" placeholder="Please Enter..." />
           <i class="bx bx-paperclip"></i>
@@ -106,6 +109,15 @@
         </div>
       </div>
     </div>
+
+    <ul v-show="visible" :style="{left:left+'px',top:top+'px'}" class="context-menu">
+      <li @click="closeTab()">
+        <i class="bx bx-x"></i>关闭
+      </li>
+      <li @click="closeOtherTab()">
+        <i class="bx bx-transfer" @click="closeOtherTab()"></i>关闭其他
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -114,9 +126,11 @@ import { websocketSend, setMessageCallback } from "@/utils/websocket";
 import { fetchMsgs, fetchRelatedUsers, clearUnreadMsg } from "@/api/msg";
 import { fetchOnlineUsers } from "@/api/user";
 import { dateFormat, nowTimeStr, getTimeLine } from "@/utils/utils";
+
 export default {
   props: {
     user: Object,
+    userList: Array,
     onlineUserList: Array
   },
   data() {
@@ -132,12 +146,15 @@ export default {
         content: "",
         type: "SINGLE_MSG"
       },
-      //   onlineUserList: [],
       relatedUserList: [],
       _relatedUserList: [],
       messageList: [],
       activeClass: 0,
       filterText: "",
+      selectedUser: "",
+      top: 0,
+      left: 0,
+      visible: false,
       back: true
     };
   },
@@ -156,6 +173,13 @@ export default {
         });
       } else {
         this.relatedUserList = this._relatedUserList;
+      }
+    },
+    visible(value) {
+      if (value) {
+        document.body.addEventListener("click", this.closeMenu);
+      } else {
+        document.body.removeEventListener("click", this.closeMenu);
       }
     }
   },
@@ -200,6 +224,15 @@ export default {
     },
     //接受消息方法
     wsMessage(data) {
+      //接受的消息来源不在列表中，添加用户到列表中
+      if (
+        !this.relatedUserList.some(item => item.userDTO.userId == data.fromId)
+      ) {
+        const user = this.userList.find(item => item.userId == data.fromId);
+        this.addUserChat(
+          this.userList.find(item => item.userId == data.fromId)
+        );
+      }
       this.relatedUserList.forEach(user => {
         if (user.userDTO.userId == data.fromId) {
           if (data.type == "SINGLE_MSG") {
@@ -210,9 +243,8 @@ export default {
               timeLine: getTimeLine(user.msgList[user.msgList.length - 1]),
               createTime: nowTimeStr()
             });
-            // if (this.toUser.userId != data.fromId) {
+            user.hidden = false;
             user.unreadMsgCount += 1;
-            // }
             this.refreshUnreadCount();
             this.sortRelatedUserList(data.fromId);
             this.scrollToBottom();
@@ -222,9 +254,9 @@ export default {
               //给用户列表通知用户上线
             } else if (data.type == "LOGOUT_MSG") {
               user.userDTO.online = false;
-              this.onlineUserList = this.onlineUserList.filter(
-                user => user.userId != data.fromId
-              );
+              // this.onlineUserList = this.onlineUserList.filter(
+              //   user => user.userId != data.fromId
+              // );
             }
             this.$emit("changeOnlineStatus", data.fromId, user.userDTO.online);
           }
@@ -236,18 +268,21 @@ export default {
       // 比如取消页面的loading
     },
     openMsg(user) {
-      this.activeClass = user.userDTO.userId; // 把当前点击元素的index，赋值给activeClass
-      this.toUser = user.userDTO;
-      this.messageList = user.msgList;
-      //设置消息已读
-      clearUnreadMsg({
-        fromId: user.userDTO.userId
-      }).then(res => {
-        user.unreadMsgCount = 0;
-
-        this.refreshUnreadCount();
-      });
-
+      if (!user) {
+        this.toUser = "";
+        this.messageList = "";
+      } else {
+        this.activeClass = user.userDTO.userId; // 把当前点击元素的index，赋值给activeClass
+        this.toUser = user.userDTO;
+        this.messageList = user.msgList;
+        //设置消息已读
+        clearUnreadMsg({
+          fromId: user.userDTO.userId
+        }).then(res => {
+          user.unreadMsgCount = 0;
+          this.refreshUnreadCount();
+        });
+      }
       this.scrollToBottom();
       this.back = false;
     },
@@ -261,6 +296,7 @@ export default {
         if (item.userDTO.userId == user.userId) {
           this.toUser = item.userDTO;
           this.messageList = item.msgList;
+          item.hidden = false;
           newUser = false;
           this.scrollToBottom();
         }
@@ -282,6 +318,32 @@ export default {
         totalUnread += user.unreadMsgCount;
       });
       this.$emit("updateUnreadCount", totalUnread);
+    },
+    closeTab() {
+      var candidateUser = "";
+      this.relatedUserList.forEach(item => {
+        if (item.userDTO.userId === this.selectedUser.userDTO.userId) {
+          item.hidden = true;
+        } else {
+          if (!item.hidden && !candidateUser) {
+            candidateUser = item;
+          }
+        }
+      });
+      this.openMsg(candidateUser);
+    },
+    closeOtherTab() {
+      var candidateUser = "";
+      this.relatedUserList.forEach(item => {
+        if (item.userDTO.userId !== this.selectedUser.userDTO.userId) {
+          item.hidden = true;
+        } else {
+          if (!candidateUser) {
+            candidateUser = item;
+          }
+        }
+      });
+      this.openMsg(candidateUser);
     },
     //将滚动条置于底部
     scrollToBottom() {
@@ -307,6 +369,25 @@ export default {
           );
         }
       });
+    },
+    openMenu(user, e) {
+      const menuMinWidth = 105;
+      const offsetLeft = this.$el.getBoundingClientRect().left; // container margin left
+      const offsetWidth = this.$el.offsetWidth; // container width
+      const maxLeft = offsetWidth - menuMinWidth; // left boundary
+      const left = e.clientX - offsetLeft + 15; // 15: margin right
+
+      if (left > maxLeft) {
+        this.left = maxLeft;
+      } else {
+        this.left = left;
+      }
+      this.top = e.clientY - 140;
+      this.selectedUser = user;
+      this.visible = true;
+    },
+    closeMenu() {
+      this.visible = false;
     }
   }
 };
@@ -386,8 +467,25 @@ export default {
           cursor: pointer;
 
           .tab-content {
+            position: relative;
             display: flex;
             align-items: center;
+
+            .close-tab {
+              z-index: 999;
+              display: none;
+              position: absolute;
+              right: -5px;
+              top: -5px;
+              font-size: 16px;
+              color: #999;
+            }
+
+            &:hover {
+              .close-tab {
+                display: block;
+              }
+            }
 
             .online {
               &::after {
@@ -630,5 +728,4 @@ export default {
     }
   }
 }
-
 </style>

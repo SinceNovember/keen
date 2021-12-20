@@ -52,4 +52,5 @@ public class UserDTO implements OutputConverter<UserDTO, User> {
     private boolean online;
 
 
+
 }

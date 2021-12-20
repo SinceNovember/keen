@@ -11,6 +11,7 @@
           :user="user"
           ref="chat"
           :onlineUserList="onlineUserList"
+          :userList="userList"
           @changeOnlineStatus="changeOnlineStatus"
           @updateUnreadCount="updateUnreadCount"
         ></chat>
@@ -57,6 +58,7 @@ export default {
         this.users = res.data.records;
         this.userList = this.users;
         this.onlineUserList = this.users.filter(user => user.online);
+
       });
     },
     addUserChat(user) {

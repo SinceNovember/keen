@@ -5,6 +5,7 @@
 </p>
 
 
+
 > admintory是一个通过shiro认证并包含用户之间聊天功能的前后端分离的权限管理系统。
 
 
@@ -13,6 +14,8 @@
 ## 简介
 
 **admintory** 通过`springboot` `vue` `netty` `shiro` 等技术开发的一个前后端分离的权限管理系统，开箱即用，可迅速搭建后台`用户聊天`、`权限认证`、`权限控制`、`按钮控制`、`动态路由`等功能。 
+
+:star:
 
 ## 功能
 
@@ -64,9 +67,21 @@
 
 ## 界面
 
-| <img width="100" src="http://r43gtz94v.hd-bkt.clouddn.com/slack-logo-84.png" alt="admintory logo" /> | ![](http://r43gtz94v.hd-bkt.clouddn.com/slack-logo-84.png) |
-| ------------------------------------------------------------ | ---------------------------------------------------------- |
-|                                                              |                                                            |
-|                                                              |                                                            |
-|                                                              |                                                            |
+| 控制台       | ![1640007303(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640007303(1).jpg) | ![1640007343(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640007343(1).jpg) |
+| ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 聊天         | ![1640016007(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640016007(1).jpg) | ![1640016174(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640016174(1).jpg) |
+| 聊天用户列表 | ![1640005343](http://r43gtz94v.hd-bkt.clouddn.com/1640005343.jpg) | ![1640005357](http://r43gtz94v.hd-bkt.clouddn.com/1640005357.jpg) |
+| 用户列表     | ![1640004300(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004300(1).jpg) | ![1640004323(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004323(1).jpg) |
+| 添加用户     | ![1640004524(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004524(1).jpg) | ![1640004541](http://r43gtz94v.hd-bkt.clouddn.com/1640004541.jpg) |
+| 角色列表     | ![1640004568(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004568(1).jpg) | ![1640004580(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004580(1).jpg) |
+| 添加角色     | ![1640004596(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004596(1).jpg) | ![1640004614(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004614(1).jpg) |
+| 部门列表     | ![1640004634(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004634(1).jpg) | ![1640004648(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004648(1).jpg) |
+| 菜单列表     | ![1640004690(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004690(1).jpg) | ![1640004727(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004727(1).jpg) |
+| 添加菜单     | ![1640004746](http://r43gtz94v.hd-bkt.clouddn.com/1640004746.jpg) | ![1640004763(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004763(1).jpg) |
+| 菜单权限分配 | ![1640004837(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004837(1).jpg) | ![1640004863(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004863(1).jpg) |
+| 操作日志     | ![1640004969(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004969(1).jpg) | ![1640004906(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004906(1).jpg) |
+| 登陆日志     | ![1640004969(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004969(1).jpg) | ![1640004983(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004983(1).jpg) |
+| 在线用户     | ![1640005039(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640005039(1).jpg) | ![1640005051(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640005051(1).jpg) |
+| 系统参数     | ![1640005074(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640005074(1).jpg) | ![1640005112(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640005112(1).jpg) |
+| 元数据       | ![1640005149(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640005149(1).jpg) | ![1640005160(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640005160(1).jpg) |
 
