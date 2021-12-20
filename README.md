@@ -65,12 +65,11 @@
 | 6    | js-cookie  | Cookie存储工具 |
 | 7    | echarts    | 图标组件       |
 
-
 ## 界面
 
 | 控制台       | ![1640007303(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640007303(1).jpg) | ![1640007343(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640007343(1).jpg) |
 | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 聊天         | ![1640005296(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640005296(1).jpg) | ![1640006136(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640006136(1).jpg) |
+| 聊天         | ![1640016007(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640016007(1).jpg) | ![1640016174(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640016174(1).jpg) |
 | 聊天用户列表 | ![1640005343](http://r43gtz94v.hd-bkt.clouddn.com/1640005343.jpg) | ![1640005357](http://r43gtz94v.hd-bkt.clouddn.com/1640005357.jpg) |
 | 用户列表     | ![1640004300(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004300(1).jpg) | ![1640004323(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004323(1).jpg) |
 | 添加用户     | ![1640004524(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640004524(1).jpg) | ![1640004541](http://r43gtz94v.hd-bkt.clouddn.com/1640004541.jpg) |

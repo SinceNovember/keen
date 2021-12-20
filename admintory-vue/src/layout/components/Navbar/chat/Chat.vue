@@ -101,7 +101,7 @@
         <div class="send-content">
           <img
             class="user-avatar"
-            src="http://47.104.70.138:8080/febs/images/avatar/cnrhVkzwxjPwAaCfPbdc.png"
+            :src="user.avatar"
           />
           <input v-model="content" placeholder="Please Enter..." />
           <i class="bx bx-paperclip"></i>
@@ -126,6 +126,7 @@ import { websocketSend, setMessageCallback } from "@/utils/websocket";
 import { fetchMsgs, fetchRelatedUsers, clearUnreadMsg } from "@/api/msg";
 import { fetchOnlineUsers } from "@/api/user";
 import { dateFormat, nowTimeStr, getTimeLine } from "@/utils/utils";
+
 export default {
   props: {
     user: Object,
@@ -154,7 +155,7 @@ export default {
       top: 0,
       left: 0,
       visible: false,
-      back: true,
+      back: true
     };
   },
   directives: {
@@ -196,7 +197,6 @@ export default {
       });
     },
     sendMsg() {
-      console.log('123');
       if (this.content) {
         //发送消息
         this.message.fromId = this.user.userId;
@@ -224,11 +224,14 @@ export default {
     },
     //接受消息方法
     wsMessage(data) {
-
       //接受的消息来源不在列表中，添加用户到列表中
-      if(!this.relatedUserList.some(item => item.userDTO.userId == data.fromId)){
+      if (
+        !this.relatedUserList.some(item => item.userDTO.userId == data.fromId)
+      ) {
         const user = this.userList.find(item => item.userId == data.fromId);
-        this.addUserChat(this.userList.find(item => item.userId == data.fromId));
+        this.addUserChat(
+          this.userList.find(item => item.userId == data.fromId)
+        );
       }
       this.relatedUserList.forEach(user => {
         if (user.userDTO.userId == data.fromId) {
