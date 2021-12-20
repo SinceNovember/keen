@@ -83,7 +83,7 @@ export default {
     return {
       userInfo: {
         avatar:
-          "http://47.104.70.138:8080/febs/images/avatar/cnrhVkzwxjPwAaCfPbdc.png",
+          "http://r401m0osl.hn-bkt.clouddn.com/code/duck/2021-12-20-c25baf8151744b25a9e9826153e6017b.jpg",
         username: "",
         password: "",
         nickname: "",
@@ -172,7 +172,7 @@ export default {
     },
     clearForm() {
       this.userInfo.avatar =
-        "http://47.104.70.138:8080/febs/images/avatar/cnrhVkzwxjPwAaCfPbdc.png";
+        "http://r401m0osl.hn-bkt.clouddn.com/code/duck/2021-12-20-c25baf8151744b25a9e9826153e6017b.jpg";
       this.userInfo.username = "";
       this.userInfo.password = "";
       this.userInfo.nickname = "";

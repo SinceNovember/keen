@@ -11,6 +11,7 @@
           :user="user"
           ref="chat"
           :onlineUserList="onlineUserList"
+          :userList="userList"
           @changeOnlineStatus="changeOnlineStatus"
           @updateUnreadCount="updateUnreadCount"
         ></chat>

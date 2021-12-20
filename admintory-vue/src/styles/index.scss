@@ -206,6 +206,10 @@ li {
     @include font-color("--theme-card-title-color");
   
   }
+
+  .msg-item{
+    @include border-bottom-color("--theme-el-input-border-color");
+  }
 }
 
 .card-list {

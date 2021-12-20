@@ -23,4 +23,7 @@ public class RelateMsgUserDTO {
 
     @JsonFormat(pattern="HH:MM")
     private Date lastMsgTime;
+
+    private Boolean hidden = false;
+
 }

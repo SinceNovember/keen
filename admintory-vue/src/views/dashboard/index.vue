@@ -106,9 +106,6 @@ export default {
       messageCount: 0,
       onlineCount: 0,
       messageList: [],
-      chartBackgroundColor: "#fff",
-      // lineChartData: lineChartData.newVisitis,
-
       size: 48
     };
   },
@@ -132,7 +129,6 @@ export default {
         this.visitHistory.nameList = data.map(item => item.date);
         this.visitHistory.dataList = data.map(item => item.count);
         this.todayCount = this.visitHistory.dataList[this.visitHistory.dataList.length - 1];
-        console.log(this.todayCount);
       });
       fetchDeptMemberCountTop6().then(res => {
         const { data } = res;
@@ -143,7 +139,7 @@ export default {
         this.roleMember = res.data;
       });
       fetchUnreadAllMsg().then(res => {
-        this.messageList = res.data;
+        this.messageList = res.data.slice(0, 7);
       });
     }
   }
@@ -178,7 +174,7 @@ export default {
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid ;
         padding-bottom: 10px;
         margin-bottom: 20px;
 
