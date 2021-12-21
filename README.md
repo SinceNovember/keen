@@ -55,15 +55,16 @@
 
 #### 前端
 
-|      | 技术名称     | 说明           |
-| ---- | ------------ | -------------- |
-| 1    | vue          | 前端框架       |
-| 2    | vuex         | 状态管理       |
-| 3    | vue-router   | 路由管理       |
-| 4    | axios        | HTTP 库        |
-| 5    | element-ui   | 组件库         |
-| 6    | js-cookie    | Cookie存储工具 |
-| 7    | echarts      | 图标组件       |
+| 序号 | 技术名称   | 说明           |
+| ---- | ---------- | -------------- |
+| 1    | vue        | 前端框架       |
+| 2    | vuex       | 状态管理       |
+| 3    | vue-router | 路由管理       |
+| 4    | axios      | HTTP 库        |
+| 5    | element-ui | 组件库         |
+| 6    | js-cookie  | Cookie存储工具 |
+| 7    | echarts    | 图表组件       |
+| 8    | boxicons   | 图标库         |
 
 ## 界面
 
@@ -85,3 +86,20 @@
 | 系统参数     | ![1640005074(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640005074(1).jpg) | ![1640005112(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640005112(1).jpg) |
 | 元数据       | ![1640005149(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640005149(1).jpg) | ![1640005160(1)](http://r43gtz94v.hd-bkt.clouddn.com/1640005160(1).jpg) |
 
+## 安装
+
+#### 前端运行
+
+在`admintory-vue`文件夹下运行
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+```
+
+#### 后端运行
+
+启动`admintory-shiro`文件夹内的`AdmintoryApplication` 即可
