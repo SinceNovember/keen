@@ -2,6 +2,7 @@ package com.simple.system.controller.api;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.simple.common.annotation.ControllerEndpoint;
+import com.simple.common.controller.AbstractController;
 import com.simple.common.model.constant.CommonConstant;
 import com.simple.common.model.entity.Response;
 import com.simple.common.model.entity.ResponseData;
@@ -20,7 +21,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/system/dept")
-public class DeptController {
+public class DeptController extends AbstractController {
 
     @Resource
     private DeptService deptService;
@@ -60,7 +61,7 @@ public class DeptController {
     public ResponseData addDept(@RequestBody DeptParam deptParam){
         Dept dept = deptParam.convertTo();
         dept.setCreateTime(new Date());
-        dept.setCreateUserId(1);
+        dept.setCreateUserId(getUserId());
         deptService.save(dept);
         return Response.ok();
     }

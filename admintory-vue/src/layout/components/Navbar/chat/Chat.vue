@@ -137,8 +137,7 @@ export default {
     return {
       content: "",
       toUser: {
-        avatar:
-          "http://47.104.70.138:8080/febs/images/avatar/cnrhVkzwxjPwAaCfPbdc.png"
+        avatar:"",
       },
       message: {
         fromId: "",

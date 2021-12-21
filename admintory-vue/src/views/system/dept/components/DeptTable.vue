@@ -15,7 +15,7 @@
         </el-table-column>
         <el-table-column prop="deptName" label="部门名称" width="240"></el-table-column>
         <el-table-column prop="deptShortName" label="部门简称" width="200"></el-table-column>
-        <el-table-column prop="createUser.username" label="创建者" width="220"></el-table-column>
+        <el-table-column prop="createUser.nickname" label="创建者" width="220"></el-table-column>
         <el-table-column prop="address" label="部门成员" width="240">
           <template slot-scope="{row}">
             <template v-for="(member, idx) in row.memberList">
