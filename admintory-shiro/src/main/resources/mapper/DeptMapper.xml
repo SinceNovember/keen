@@ -8,15 +8,8 @@
         <result column="create_user_id" property="createUserId"/>
         <result column="order_num" property="orderNum"/>
         <result column="create_time" property="createTime"/>
-<!--        <result column="update_time" property="updateTime"/>-->
-<!--        <result column="deleted" property="deleted"/>-->
         <association property="createUser" column="create_user_id" javaType="com.simple.system.model.dto.UserDTO"
                      select="com.simple.system.dao.UserMapper.getUserDetailById" >
-<!--            <result column="title" property="title"/>-->
-<!--            <result column="icon" property="icon"/>-->
-<!--            <result column="affix" property="affix"/>-->
-<!--            <result column="no_cache" property="noCache"/>-->
-<!--            <result column="bread_crumb" property="breadCrumb"/>-->
         </association>
         <collection property="memberList" ofType="com.simple.system.model.dto.UserDTO" column="dept_id"
                     select="com.simple.system.dao.UserMapper.getUserDetailByDeptId">

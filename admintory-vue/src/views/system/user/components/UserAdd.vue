@@ -27,7 +27,7 @@
           <el-col :span="12">
             <div class="sub-title">密码</div>
             <el-form-item prop="password">
-              <el-input v-model="userInfo.password" class="inline-input" placeholder="请输入密码"></el-input>
+              <el-input type="password" v-model="userInfo.password" class="inline-input" placeholder="请输入密码"></el-input>
             </el-form-item>
           </el-col>
         </el-row>

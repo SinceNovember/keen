@@ -49,7 +49,7 @@ public class RedisUserTokenServiceImpl extends ServiceImpl<UserTokenMapper, User
         //生成一个Token
         String token = TokenGenerator.generateValue();
         redisUtils.set(keyGenerate(token), userId, getExpireTime());
-        return ImmutableMap.of("token", token, "expire", getExpireTime(), "userId", userId);
+        return ImmutableMap.of("token", token, "expire", getExpireTime());
     }
 
     @Override
