@@ -2,6 +2,10 @@ package com.simple.system.model.enums;
 
 import lombok.AllArgsConstructor;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
+
 /**
  * 授权类别
  */
@@ -17,6 +21,7 @@ public enum PermissionType implements ValueEnum<Integer>{
 
     @Override
     public Integer getValue() {
+        BufferedInputStream
         return value;
     }
 
