@@ -1,0 +1,56 @@
+.el-tabs {
+    .el-tabs__header {
+
+        .el-tabs__nav-wrap {
+            &::after {
+                height: 1px;
+                background-color: var(--bs-primary);
+                border: var(--bs-border-width) solid var(--bs-card-border-color);
+            }
+
+            .el-tabs__nav {
+                margin: 0 2.25rem;
+                min-height: 60px;
+                display: flex;
+                align-items: center;
+
+                .el-tabs__active-bar {
+                    height: 1px;
+                    background-color: var(--bs-primary);
+                }
+
+                .el-tabs__item {
+                    color: var(--bs-gray-500);
+                }
+            }
+        }
+    }
+
+    .el-tabs__content {
+        margin: 1.25rem 2.25rem;
+    }
+
+}
+
+.el-radio {
+    .el-radio__inner {
+        width: 20px;
+        height: 20px;
+        background-color: var(--bs-gray-200);
+        border-color: var(--bs-gray-200);
+
+        &::after {
+            width: 8px;
+            height: 8px;
+        }
+    }
+}
+
+.el-switch
+{
+    .el-switch__core {
+        border-color: var(--bs-gray-200);
+        background-color: var(--bs-gray-200);
+    }
+}
+
