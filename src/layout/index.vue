@@ -6,21 +6,23 @@
             <sidebar></sidebar>
             <app-main></app-main>
         </div>
+        <page-footer></page-footer>
         <settings></settings>
+
     </div>
 </template>
 <script>
-import { PageHeader, Sidebar, AppMain, Settings } from './components'
+import { getLoginUserInfo } from '@/api/user'
+import { PageHeader, Sidebar, AppMain, Settings, PageFooter } from './components'
+import { mapGetters } from "vuex"
 export default {
     name: "Layout",
     components: {
         PageHeader,
         Sidebar,
         AppMain,
-        Settings
-        // Navbar,
-        // Topnav,
-        // AppMain,
+        Settings,
+        PageFooter
     },
     mounted() {
     },

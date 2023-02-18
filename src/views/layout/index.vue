@@ -1,16 +1,16 @@
 <template>
     <div class="card">
-        <el-tabs v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane label="Main" name="first">
+        <el-tabs v-model="activeName">
+            <el-tab-pane label="Main" name="main">
                 <main-builder></main-builder>
             </el-tab-pane>
-            <el-tab-pane label="Sidebar" name="third">
+            <el-tab-pane label="Sidebar" name="sidebar">
                 <sidebar-builder></sidebar-builder>
             </el-tab-pane>
-            <el-tab-pane label="Header" name="fourth">
+            <el-tab-pane label="Header" name="header">
                 <header-builder></header-builder>
             </el-tab-pane>
-            <el-tab-pane label="Toolbar" name="second">
+            <el-tab-pane label="Toolbar" name="toolbar">
                 <toolbar-builder></toolbar-builder>
             </el-tab-pane>
         </el-tabs>
@@ -30,9 +30,12 @@ export default {
         HeaderBuilder
     },
     data() {
-        return {}
+        return {
+            activeName: 'main'
+        }
     },
-    methods: {}
+    methods: {
+    }
 }
 </script>
 <style>

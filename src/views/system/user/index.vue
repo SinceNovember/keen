@@ -1,789 +1,251 @@
 <template>
-    <div class="card">
-        <el-tabs v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane label="Main" name="first">
-                <div class="tab-content pt-3">
-                    <div class="tab-pane active show" id="kt_builder_main" role="tabpanel">
-                        <div class="row">
-                            <div class="col-lg-6 pe-lg-15">
-                                <div class="form-group">
-                                    <div class="mb-6">
-                                        <h4 class="fw-semibold text-dark">Theme Mode</h4>
-                                        <div class="fw-semibold text-muted fs-7 d-block lh-1">
-                                            Enjoy Dark &amp; Light modes.
-
-                                            <a class="" href="@/assets/media/misc/layout/demo1-light.png"
-                                                target="_blank">See docs</a>
-                                        </div>
-                                    </div>
-                                    <div class="row" data-kt-buttons="true"
-                                        data-kt-buttons-target=".form-check-image,.form-check-input"
-                                        data-kt-initialized="1">
-                                        <div class="col-6">
-                                            <label class="form-check-image form-check-success">
-                                                <div class="form-check-wrapper">
-                                                    <img src="@/assets/media/misc/layout/demo1-light.png" class="mw-100"
-                                                        alt="">
-                                                </div>
-                                                <div
-                                                    class="form-check form-check-custom form-check-solid form-check-sm form-check-success">
-                                                    <input class="form-check-input" type="radio" value="light"
-                                                        name="theme_mode" id="kt_layout_builder_theme_mode_light">
-                                                    <div class="form-check-label text-gray-700">
-                                                        Light </div>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="form-check-image form-check-success active">
-                                                <div class="form-check-wrapper">
-                                                    <img src="@/assets/media/misc/layout/demo1-dark.png" class="mw-100"
-                                                        alt="">
-                                                </div>
-                                                <div
-                                                    class="form-check form-check-custom form-check-solid form-check-sm form-check-success">
-                                                    <input class="form-check-input" type="radio" value="dark"
-                                                        name="theme_mode" id="kt_layout_builder_theme_mode_dark">
-
-                                                    <div class="form-check-label text-gray-700">
-                                                        Dark </div>
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="separator separator-dashed my-6"></div>
-                        <div class="form-group d-flex flex-stack">
-                            <div class="d-flex flex-column">
-                                <h4 class="fw-semibold text-dark">RTL Mode</h4>
-                                <div class="fs-7 fw-semibold text-muted">
-                                    Change Language Direction.
-
-                                    <a class="" href="https://preview.keenthemes.com/html/keen/docs/getting-started/rtl"
-                                        target="_blank">See docs</a>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-end">
-                                <div
-                                    class="form-check form-check-custom form-check-solid form-check-success form-switch">
-                                    <input type="hidden" value="false" name="layout-builder[layout][app][general][rtl]">
-                                    <input class="form-check-input w-45px h-30px" type="checkbox" value="true"
-                                        name="layout-builder[layout][app][general][rtl]" id="kt_builder_rtl">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="separator separator-dashed my-6"></div>
-
-                        <!--begin::Form group-->
-                        <div class="form-group d-flex flex-stack">
-                            <!--begin::Heading-->
-                            <div class="d-flex flex-column">
-                                <h4 class="fw-semibold text-dark">Width Mode</h4>
-                                <div class="fs-7 fw-semibold text-muted">Page width options</div>
-                            </div>
-                            <!--end::Heading-->
-
-                            <!--begin::Options-->
-                            <div class="d-flex">
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-success form-check-solid form-check-sm me-7">
-                                    <input class="form-check-input" type="radio" checked="" value="default"
-                                        id="kt_builder_page_width_default"
-                                        name="layout-builder[layout][app][general][page-width]">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-semibold text-nowrap"
-                                        for="kt_builder_page_width_default">
-                                        Default </label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-success form-check-solid form-check-sm me-7">
-                                    <input class="form-check-input" type="radio" value="fluid"
-                                        id="kt_builder_page_width_fluid"
-                                        name="layout-builder[layout][app][general][page-width]">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-semibold text-nowrap"
-                                        for="kt_builder_page_width_fluid">
-                                        Fluid </label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-success form-check-solid form-check-sm me-7">
-                                    <input class="form-check-input" type="radio" value="fixed"
-                                        id="kt_builder_page_width_fixed"
-                                        name="layout-builder[layout][app][general][page-width]">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-semibold text-nowrap"
-                                        for="kt_builder_page_width_fixed">
-                                        Fixed </label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-                            </div>
-                            <!--end::Options-->
-                        </div>
-                        <!--end::Form group-->
-
-                        <!--begin::Separator-->
-                        <div class="separator separator-dashed my-6"></div>
-                        <!--end::Separator-->
-
-                        <!--begin::Form group-->
-                        <div class="form-group d-flex flex-stack">
-                            <!--begin::Heading-->
-                            <div class="d-flex flex-column">
-                                <h4 class="fw-semibold text-dark">Menu Icon</h4>
-                                <div class="fs-7 fw-semibold text-muted">Sidebar menu icon options</div>
-                            </div>
-                            <!--end::Heading-->
-
-                            <!--begin::Option-->
-                            <div class="d-flex justify-content-end">
-                                <!--begin::Check-->
-                                <div class="form-check form-check-custom form-check-success form-check-solid me-7">
-                                    <input class="form-check-input w-20px h-20px" type="radio" checked="" value="svg"
-                                        id="kt_builder_icon_svg"
-                                        name="layout-builder[layout][app][sidebar][default][menu][icon-type]">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-semibold text-nowrap"
-                                        for="kt_builder_icon_svg">
-                                        SVG Duotone </label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-                                <!--begin::Check-->
-                                <div class="form-check form-check-custom form-check-success form-check-solid me-7">
-                                    <input class="form-check-input w-20px h-20px" type="radio" value="font"
-                                        id="kt_builder_icon_font"
-                                        name="layout-builder[layout][app][sidebar][default][menu][icon-type]">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-semibold text-nowrap"
-                                        for="kt_builder_icon_font">
-                                        Font Icons </label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-                            </div>
-                            <!--end::Option-->
-                        </div>
-                        <!--end::Form group-->
-
-                        <!--begin::Separator-->
-                        <div class="separator separator-dashed my-6"></div>
-                        <!--end::Separator-->
-
-                        <!--begin::Form group-->
-                        <div class="form-group d-flex flex-stack">
-                            <!--begin::Heading-->
-                            <div class="d-flex flex-column">
-                                <h4 class="fw-semibold text-dark">Page Loader</h4>
-                                <div class="fs-7 fw-semibold text-muted">Display page loading indicator</div>
-                            </div>
-                            <!--end::Heading-->
-
-                            <!--begin::Option-->
-                            <div class="d-flex justify-content-end">
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-success form-check-solid form-check-sm me-7">
-                                    <input class="form-check-input" type="radio" checked="" value="none"
-                                        id="kt_builder_page_loader_type_none"
-                                        name="layout-builder[layout][app][page-loader][type]">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-semibold text-nowrap"
-                                        for="kt_builder_page_loader_type_none">
-                                        None </label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-success form-check-solid form-check-sm me-7">
-                                    <input class="form-check-input" type="radio" value="default"
-                                        id="kt_builder_page_loader_type_default"
-                                        name="layout-builder[layout][app][page-loader][type]">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-semibold text-nowrap"
-                                        for="kt_builder_page_loader_type_default">
-                                        Default </label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-success form-check-solid form-check-sm me-7">
-                                    <input class="form-check-input" type="radio" value="spinner-message"
-                                        id="kt_builder_page_loader_type_spinner-message"
-                                        name="layout-builder[layout][app][page-loader][type]">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-semibold text-nowrap"
-                                        for="kt_builder_page_loader_type_spinner-message">
-                                        Message </label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-success form-check-solid form-check-sm me-7">
-                                    <input class="form-check-input" type="radio" value="spinner-logo"
-                                        id="kt_builder_page_loader_type_spinner-logo"
-                                        name="layout-builder[layout][app][page-loader][type]">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-semibold text-nowrap"
-                                        for="kt_builder_page_loader_type_spinner-logo">
-                                        Logo </label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-                            </div>
-                            <!--end::Option-->
-                        </div>
-                        <!--end::Form group-->
-                    </div>
-                    <!--end::Tab pane-->
-
-                    <!--begin::Tab pane-->
-                    <div class="tab-pane" id="kt_builder_layout" role="tabpanel">
-                        <!--begin::Heading-->
-                        <div class="mb-6">
-                            <h4 class="fw-semibold text-dark">Layouts</h4>
-                            <span class="fw-semibold text-muted fs-7 lh-1">
-                                4 main layout options.
+    <div class="d-flex flex-column flex-lg-row">
+        <!--begin::Content-->
+        <div class="flex-lg-row-fluid">
+            <el-card shadow="never">
+                <div slot="header" class="progress-vertical">
+                    <div class="progress-vertical gap-2">
+                        <el-input v-model="input1" style="width: 200px;" small prefix-icon="el-icon-search"
+                            placeholder="请输入内容"></el-input>
+                        <a href="#" class="btn btn-sm btn-icon btn-color-primary btn-light  btn-active-light-primary">
+                            <span class="svg-icon svg-icon-3 m-0"><svg width="16" height="15" viewBox="0 0 16 15"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect y="6" width="16" height="3" rx="1.5" fill="currentColor"></rect>
+                                    <rect opacity="0.3" y="12" width="8" height="3" rx="1.5" fill="currentColor"></rect>
+                                    <rect opacity="0.3" width="12" height="3" rx="1.5" fill="currentColor"></rect>
+                                </svg>
                             </span>
-                        </div>
-                        <!--end::Heading-->
-
-                        <!--begin::Options-->
-                        <div class="row gy-5" data-kt-buttons="true"
-                            data-kt-buttons-target=".form-check-image:not(.disabled),.form-check-input:not([disabled])"
-                            data-kt-initialized="1">
-                            <!--begin::Col-->
-                            <div class="col-lg-3">
-                                <!--begin::Option-->
-                                <label class="form-check-image form-check-success active  ">
-                                    <!--begin::Image-->
-                                    <div class="form-check-wrapper">
-                                        <img src="/keen/demo1/assets/media/misc/layout/dark-sidebar.png" class="mw-100"
-                                            alt="">
-                                    </div>
-                                    <!--end::Image-->
-
-                                    <!--begin::Check-->
-                                    <div
-                                        class="form-check form-check-custom form-check-success form-check-sm form-check-solid">
-                                        <input class="form-check-input" type="radio" checked="" value="dark-sidebar"
-                                            name="layout-builder[layout][app][general][layout]">
-
-                                        <!--begin::Label-->
-                                        <div class="form-check-label text-gray-800">
-                                            Dark Sidebar </div>
-                                        <!--end::Label-->
-                                    </div>
-                                    <!--end::Check-->
-                                </label>
-                                <!--end::Option-->
-                            </div>
-                            <!--end::Col-->
-                            <!--begin::Col-->
-                            <div class="col-lg-3">
-                                <!--begin::Option-->
-                                <label class="form-check-image form-check-success   ">
-                                    <!--begin::Image-->
-                                    <div class="form-check-wrapper">
-                                        <img src="/keen/demo1/assets/media/misc/layout/light-sidebar.png" class="mw-100"
-                                            alt="">
-                                    </div>
-                                    <!--end::Image-->
-
-                                    <!--begin::Check-->
-                                    <div
-                                        class="form-check form-check-custom form-check-success form-check-sm form-check-solid">
-                                        <input class="form-check-input" type="radio" value="light-sidebar"
-                                            name="layout-builder[layout][app][general][layout]">
-
-                                        <!--begin::Label-->
-                                        <div class="form-check-label text-gray-800">
-                                            Light Sidebar </div>
-                                        <!--end::Label-->
-                                    </div>
-                                    <!--end::Check-->
-                                </label>
-                                <!--end::Option-->
-                            </div>
-                            <!--end::Col-->
-                            <!--begin::Col-->
-                            <div class="col-lg-3">
-                                <!--begin::Option-->
-                                <label class="form-check-image form-check-success   ">
-                                    <!--begin::Image-->
-                                    <div class="form-check-wrapper">
-                                        <img src="/keen/demo1/assets/media/misc/layout/dark-header.png" class="mw-100"
-                                            alt="">
-                                    </div>
-                                    <!--end::Image-->
-
-                                    <!--begin::Check-->
-                                    <div
-                                        class="form-check form-check-custom form-check-success form-check-sm form-check-solid">
-                                        <input class="form-check-input" type="radio" value="dark-header"
-                                            name="layout-builder[layout][app][general][layout]">
-
-                                        <!--begin::Label-->
-                                        <div class="form-check-label text-gray-800">
-                                            Dark Header </div>
-                                        <!--end::Label-->
-                                    </div>
-                                    <!--end::Check-->
-                                </label>
-                                <!--end::Option-->
-                            </div>
-                            <!--end::Col-->
-                            <!--begin::Col-->
-                            <div class="col-lg-3">
-                                <!--begin::Option-->
-                                <label class="form-check-image form-check-success   ">
-                                    <!--begin::Image-->
-                                    <div class="form-check-wrapper">
-                                        <img src="/keen/demo1/assets/media/misc/layout/light-header.png" class="mw-100"
-                                            alt="">
-                                    </div>
-                                    <!--end::Image-->
-
-                                    <!--begin::Check-->
-                                    <div
-                                        class="form-check form-check-custom form-check-success form-check-sm form-check-solid">
-                                        <input class="form-check-input" type="radio" value="light-header"
-                                            name="layout-builder[layout][app][general][layout]">
-
-                                        <!--begin::Label-->
-                                        <div class="form-check-label text-gray-800">
-                                            Light Header </div>
-                                        <!--end::Label-->
-                                    </div>
-                                    <!--end::Check-->
-                                </label>
-                                <!--end::Option-->
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                        <!--end::Options-->
+                        </a>
                     </div>
-                    <!--end::Tab pane-->
 
-                    <!--begin::Tab pane-->
-                    <div class="tab-pane" id="kt_builder_sidebar" role="tabpanel">
+                    <!--begin::Actions-->
+                    <div class="d-flex flex-wrap gap-2">
+                        <!--begin::Reload-->
+                        <a href="#" class="btn btn-sm btn-icon btn-light btn-active-light-primary">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr029.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M14.5 20.7259C14.6 21.2259 14.2 21.826 13.7 21.926C13.2 22.026 12.6 22.0259 12.1 22.0259C9.5 22.0259 6.9 21.0259 5 19.1259C1.4 15.5259 1.09998 9.72592 4.29998 5.82592L5.70001 7.22595C3.30001 10.3259 3.59999 14.8259 6.39999 17.7259C8.19999 19.5259 10.8 20.426 13.4 19.926C13.9 19.826 14.4 20.2259 14.5 20.7259ZM18.4 16.8259L19.8 18.2259C22.9 14.3259 22.7 8.52593 19 4.92593C16.7 2.62593 13.5 1.62594 10.3 2.12594C9.79998 2.22594 9.4 2.72595 9.5 3.22595C9.6 3.72595 10.1 4.12594 10.6 4.02594C13.1 3.62594 15.7 4.42595 17.6 6.22595C20.5 9.22595 20.7 13.7259 18.4 16.8259Z"
+                                        fill="currentColor"></path>
+                                    <path opacity="0.3"
+                                        d="M2 3.62592H7C7.6 3.62592 8 4.02592 8 4.62592V9.62589L2 3.62592ZM16 14.4259V19.4259C16 20.0259 16.4 20.4259 17 20.4259H22L16 14.4259Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                            </span>
+                        </a>
+                        <!--end::Reload-->
 
-                        <!--begin::Form group-->
-                        <div class="form-group d-flex flex-stack d-none">
-                            <!--begin::Heading-->
-                            <div class="d-flex flex-column">
-                                <h4 class="fw-bold text-dark">Fixed</h4>
-                                <div class="fs-7 fw-semibold text-muted">
-                                    Fixed sidebar mode
-                                </div>
-                            </div>
-                            <!--end::Heading-->
+                        <!--begin::Archive-->
+                        <a href="#" class="btn btn-sm btn-icon btn-light btn-active-light-primary"
+                            @click="dialogVisible = true">
+                            <!--begin::Svg Icon | path: icons/duotune/communication/com010.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect opacity="0.5" x="11" y="18" width="12" height="2" rx="1"
+                                        transform="rotate(-90 11 18)" fill="currentColor"></rect>
+                                    <rect x="6" y="11" width="12" height="2" rx="1" fill="currentColor"></rect>
+                                </svg>
+                            </span>
+                        </a>
+                        <!--end::Archive-->
+                        <a href="#" class="btn btn-sm btn-icon btn-light btn-active-light-primary">
+                            <span class="svg-icon svg-icon-2">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z"
+                                        fill="currentColor"></path>
+                                    <path opacity="0.5"
+                                        d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z"
+                                        fill="currentColor"></path>
+                                    <path opacity="0.5"
+                                        d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                            </span>
+                        </a>
 
-                            <!--begin::Option-->
-                            <div class="d-flex justify-content-end">
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-solid form-check-success form-switch">
-                                    <input type="hidden" value="false"
-                                        name="layout-builder[layout][app][sidebar][default][fixed][desktop]">
-                                    <input class="form-check-input w-45px h-30px" type="checkbox" checked=""
-                                        value="true"
-                                        name="layout-builder[layout][app][sidebar][default][fixed][desktop]"
-                                        id="kt_builder_sidebar_fixed_desktop">
+                        <!--begin::Filter-->
+                        <div>
+                            <a href="#" class="btn btn-sm btn-icon btn-light btn-active-light-primary">
+                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
+                                <span class="svg-icon svg-icon-2"><svg width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon--> </a>
 
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-bold"
-                                        for="kt_builder_sidebar_fixed_desktop"></label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-                            </div>
-                            <!--end::Option-->
                         </div>
-                        <!--end::Form group-->
+                        <!--end::Filter-->
 
-                        <!--begin::Separator-->
-                        <div class="separator separator-dashed my-6 d-none"></div>
-                        <!--end::Separator-->
+                        <!--begin::Sort-->
+                        <span>
+                            <a href="#" class="btn btn-sm btn-icon btn-light btn-active-light-primary">
+                                <!--begin::Svg Icon | path: icons/duotune/general/gen052.svg-->
+                                <span class="svg-icon svg-icon-3 m-0"><svg width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="10" y="10" width="4" height="4" rx="2" fill="currentColor"></rect>
+                                        <rect x="17" y="10" width="4" height="4" rx="2" fill="currentColor"></rect>
+                                        <rect x="3" y="10" width="4" height="4" rx="2" fill="currentColor"></rect>
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon--> </a>
 
-
-                        <!--begin::Form group-->
-                        <div class="form-group d-flex flex-stack">
-                            <!--begin::Heading-->
-                            <div class="d-flex flex-column">
-                                <h4 class="fw-bold text-dark">Minimize</h4>
-                                <div class="fs-7 fw-semibold text-muted">
-                                    Sidebar minimize mode
-                                </div>
-                            </div>
-                            <!--end::Heading-->
-
-                            <!--begin::Option-->
-                            <div class="d-flex align-items-center justify-content-end">
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-solid form-check-success form-switch">
-                                    <input type="hidden" value="false"
-                                        name="layout-builder[layout][app][sidebar][default][minimize][desktop][enabled]">
-                                    <input class="form-check-input w-45px h-30px" type="checkbox" checked=""
-                                        value="true"
-                                        name="layout-builder[layout][app][sidebar][default][minimize][desktop][enabled]"
-                                        id="kt_builder_sidebar_minimize_desktop_enabled">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-bold"
-                                        for="kt_builder_sidebar_minimize_desktop_enabled" data-bs-toggle="tooltip"
-                                        data-bs-original-title="Enable Sidebar minimize toggle"
-                                        data-kt-initialized="1">Minimize Toggle</label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-solid form-check-success form-switch ms-10">
-                                    <input type="hidden" value="false"
-                                        name="layout-builder[layout][app][sidebar][default][minimize][desktop][hoverable]">
-                                    <input class="form-check-input w-45px h-30px" type="checkbox" value="true"
-                                        name="layout-builder[layout][app][sidebar][default][minimize][desktop][hoverable]"
-                                        id="kt_builder_sidebar_minimize_desktop_hoverable">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-bold"
-                                        for="kt_builder_sidebar_minimize_desktop_hoverable" data-bs-toggle="tooltip"
-                                        data-bs-original-title="Expand minimized sidebar on hover"
-                                        data-kt-initialized="1">Hoverable</label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-
-                                <!--begin::Check info-->
-                                <i class="fas fa-exclamation-circle text-gray-400 ms-2 fs-7" data-bs-toggle="popover"
-                                    data-bs-placement="top" data-bs-html="true" data-bs-trigger="hover focus"
-                                    data-bs-content="Add <code>data-kt-app-sidebar-hoverable=&quot;on&quot;</code> attribute to the body element to enable the hoverable sidebar menu."
-                                    data-kt-initialized="1">
-                                </i>
-                                <!--end::Check info-->
-
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-solid form-check-success form-switch ms-10">
-                                    <input type="hidden" value="false"
-                                        name="layout-builder[layout][app][sidebar][default][minimize][desktop][default]">
-                                    <input class="form-check-input w-45px h-30px" type="checkbox" value="true"
-                                        name="layout-builder[layout][app][sidebar][default][minimize][desktop][default]"
-                                        id="kt_builder_sidebar_minimize_desktop_default">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-bold"
-                                        for="kt_builder_sidebar_minimize_desktop_default" data-bs-toggle="tooltip"
-                                        data-bs-original-title="Set Sidebar minimized by default"
-                                        data-kt-initialized="1">Default Minimized</label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-
-                                <!--begin::Check info-->
-                                <i class="fas fa-exclamation-circle text-gray-400 ms-2 fs-7" data-bs-toggle="popover"
-                                    data-bs-placement="top" data-bs-html="true" data-bs-trigger="hover focus"
-                                    data-bs-content="<ul class=&quot;px-5 py-0 m-0&quot;>
-                <li class=&quot;py-2&quot;>Add <code>data-kt-app-sidebar-minimize=&quot;on&quot;</code> attribute on the body element.</li>
-                <li class=&quot;py-2&quot;>Add <code>active</code> class on the toggle element.</li>
-                <li class=&quot;py-2&quot;>Set <code>data-kt-toggle-state=&quot;active&quot;</code> attribute on the toggle element.</li>
-            </ul>" data-kt-initialized="1">
-                                </i>
-                                <!--end::Check info-->
-                            </div>
-                            <!--end::Option-->
-                        </div>
-                        <!--end::Form group-->
+                        </span>
+                        <!--end::Sort-->
                     </div>
-                    <!--end::Tab pane-->
+                    <!--end::Actions-->
 
-                    <!--begin::Tab pane-->
-                    <div class="tab-pane" id="kt_builder_header" role="tabpanel">
-
-                        <!--begin::Form group-->
-                        <div class="form-group d-flex flex-stack">
-                            <!--begin::Heading-->
-                            <div class="d-flex flex-column">
-                                <h4 class="fw-bold text-dark">Fixed</h4>
-                                <div class="fs-7 fw-semibold text-muted">
-                                    Fixed toolbar mode
-                                </div>
-                            </div>
-                            <!--end::Heading-->
-
-                            <!--begin::Option-->
-                            <div class="d-flex justify-content-end">
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-solid form-check-success form-switch me-10">
-                                    <input type="hidden" value="false"
-                                        name="layout-builder[layout][app][header][default][fixed][desktop]">
-                                    <input class="form-check-input w-45px h-30px" type="checkbox" checked=""
-                                        value="true" name="layout-builder[layout][app][header][default][fixed][desktop]"
-                                        id="kt_builder_header_fixed_desktop">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-bold"
-                                        for="kt_builder_header_fixed_desktop">Desktop Mode</label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-solid form-check-success form-switch">
-                                    <input type="hidden" value="false"
-                                        name="layout-builder[layout][app][header][default][fixed][mobile]">
-                                    <input class="form-check-input w-45px h-30px" type="checkbox" value="true"
-                                        name="layout-builder[layout][app][header][default][fixed][mobile]"
-                                        id="kt_builder_header_fixed_mobile">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-bold"
-                                        for="kt_builder_header_fixed_mobile">Mobile Mode</label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-                            </div>
-                            <!--end::Option-->
-                        </div>
-                        <!--end::Form group-->
-
-                        <!--begin::Separator-->
-                        <div class="separator separator-dashed my-6"></div>
-                        <!--end::Separator-->
-
-                        <!--begin::Form group-->
-                        <div class="form-group d-flex flex-stack">
-                            <!--begin::Heading-->
-                            <div class="d-flex flex-column">
-                                <h4 class="fw-bold text-dark">Content</h4>
-                                <div class="fs-7 fw-semibold text-muted">
-                                    Header content type
-                                </div>
-                            </div>
-                            <!--end::Heading-->
-
-                            <!--begin::Option-->
-                            <div class="d-flex justify-content-end">
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-success form-check-solid form-check-sm ms-10">
-                                    <input class="form-check-input" type="radio" checked="" value="menu"
-                                        id="kt_builder_header_content_menu"
-                                        name="layout-builder[layout][app][header][default][content]">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-bold text-nowrap"
-                                        for="kt_builder_header_content_menu">
-                                        Menu </label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-success form-check-solid form-check-sm ms-10">
-                                    <input class="form-check-input" type="radio" value="page-title"
-                                        id="kt_builder_header_content_page-title"
-                                        name="layout-builder[layout][app][header][default][content]">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-bold text-nowrap"
-                                        for="kt_builder_header_content_page-title">
-                                        Page Title </label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-                            </div>
-                            <!--end::Option-->
-                        </div>
-                        <!--end::Form group-->
-
-                        <!--begin::Separator-->
-                        <div class="separator separator-dashed my-6"></div>
-                        <!--end::Separator-->
-
-                        <!--begin::Form group-->
-                        <div class="form-group d-flex flex-stack">
-                            <!--begin::Heading-->
-                            <div class="d-flex flex-column">
-                                <h4 class="fw-bold text-dark">Page Title</h4>
-                                <div class="fs-7 fw-semibold text-muted">
-                                    Page title layout options
-                                </div>
-                            </div>
-                            <!--end::Heading-->
-
-                            <!--begin::Option-->
-                            <div class="d-flex justify-content-end">
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-solid form-check-success form-check-sm me-10">
-                                    <input class="form-check-input" type="radio" checked="" value="column"
-                                        name="layout-builder[layout][app][page-title][direction]"
-                                        id="kt_builder_page_title_direction_column">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-bold"
-                                        for="kt_builder_page_title_direction_column" data-bs-toggle="tooltip"
-                                        data-bs-original-title="Page title, description and breadcrumbs are stacked"
-                                        data-kt-initialized="1">Column</label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-
-                                <!--begin::Check-->
-                                <div class="form-check form-check-custom form-check-solid form-check-success">
-                                    <input class="form-check-input" type="radio" value="row"
-                                        name="layout-builder[layout][app][page-title][direction]"
-                                        id="kt_builder_page_title_direction_row">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-bold"
-                                        for="kt_builder_page_title_direction_row" data-bs-toggle="tooltip"
-                                        data-bs-original-title="Page title, description and breadcrumbs are laid out&nbsp;in&nbsp;a&nbsp;line"
-                                        data-kt-initialized="1">Row</label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-                            </div>
-                            <!--end::Option-->
-                        </div>
-                        <!--end::Form group-->
-                    </div>
-                    <!--end::Tab pane-->
-
-                    <!--begin::Tab pane-->
-                    <div class="tab-pane " id="kt_builder_toolbar" role="tabpanel">
-                        <!--begin::Form group-->
-                        <div class="form-group d-flex flex-stack">
-                            <!--begin::Heading-->
-                            <div class="d-flex flex-column">
-                                <h4 class="fw-bold text-dark">Display</h4>
-                                <div class="fs-7 fw-semibold text-muted">
-                                    Enable or disable Toolbar
-                                </div>
-                            </div>
-                            <!--end::Heading-->
-
-                            <!--begin::Option-->
-                            <div class="d-flex justify-content-end">
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-solid form-check-success form-switch">
-                                    <input type="hidden" value="false"
-                                        name="layout-builder[layout][app][toolbar][display]">
-                                    <input class="form-check-input w-45px h-30px" type="checkbox" checked=""
-                                        value="true" name="layout-builder[layout][app][toolbar][display]"
-                                        id="kt_builder_toolbar_display">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-bold"
-                                        for="kt_builder_toolbar_display"></label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-                            </div>
-                            <!--end::Option-->
-                        </div>
-                        <!--end::Form group-->
-
-                        <!--begin::Separator-->
-                        <div class="separator separator-dashed my-6"></div>
-                        <!--end::Separator-->
-
-                        <!--begin::Form group-->
-                        <div class="form-group d-flex flex-stack">
-                            <!--begin::Heading-->
-                            <div class="d-flex flex-column">
-                                <h4 class="fw-bold text-dark">Fixed</h4>
-                                <div class="fs-7 fw-semibold text-muted">
-                                    Fixed toolbar mode
-                                </div>
-                            </div>
-                            <!--end::Heading-->
-
-                            <!--begin::Option-->
-                            <div class="d-flex justify-content-end">
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-solid form-check-success form-switch me-10">
-                                    <input type="hidden" value="false"
-                                        name="layout-builder[layout][app][toolbar][fixed][desktop]">
-                                    <input class="form-check-input w-45px h-30px" type="checkbox" value="true"
-                                        name="layout-builder[layout][app][toolbar][fixed][desktop]"
-                                        id="kt_builder_toolbar_fixed_desktop">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-bold"
-                                        for="kt_builder_toolbar_fixed_desktop">Desktop Mode</label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-
-                                <!--begin::Check-->
-                                <div
-                                    class="form-check form-check-custom form-check-solid form-check-success form-switch">
-                                    <input type="hidden" value="false"
-                                        name="layout-builder[layout][app][toolbar][fixed][mobile]">
-                                    <input class="form-check-input w-45px h-30px" type="checkbox" value="true"
-                                        name="layout-builder[layout][app][toolbar][fixed][mobile]"
-                                        id="kt_builder_toolbar_fixed_mobile">
-
-                                    <!--begin::Label-->
-                                    <label class="form-check-label text-gray-700 fw-bold"
-                                        for="kt_builder_toolbar_fixed_mobile">Mobile Mode</label>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Check-->
-                            </div>
-                            <!--end::Option-->
-                        </div>
-                        <!--end::Form group-->
-                    </div>
-                    <!--end::Tab pane-->
                 </div>
-
-            </el-tab-pane>
-            <el-tab-pane label="Layout" name="second">配置管理</el-tab-pane>
-            <el-tab-pane label="Sidebar" name="third">角色管理</el-tab-pane>
-            <el-tab-pane label="Header" name="fourth">定时任务补偿</el-tab-pane>
-        </el-tabs>
+                <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%">
+                    <el-table-column type="selection" width="55">
+                    </el-table-column>
+                    <el-table-column label="日期" width="120">
+                        <template slot-scope="scope">{{ scope.row.date }}</template>
+                    </el-table-column>
+                    <el-table-column prop="name" label="姓名" width="120">
+                    </el-table-column>
+                    <el-table-column prop="address" label="地址" show-overflow-tooltip>
+                    </el-table-column>
+                    <el-table-column label="操作" width="140" show-overflow-tooltip>
+                        <template slot-scope="{row}">
+                            <a href="#" class="btn btn-sm btn-icon btn-light btn-active-light-primary"
+                                @click="dialogVisible = true">
+                                <!--begin::Svg Icon | path: icons/duotune/communication/com010.svg-->
+                                <span class="svg-icon svg-icon-2">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect opacity="0.5" x="11" y="18" width="12" height="2" rx="1"
+                                            transform="rotate(-90 11 18)" fill="currentColor"></rect>
+                                        <rect x="6" y="11" width="12" height="2" rx="1" fill="currentColor"></rect>
+                                    </svg>
+                                </span>
+                            </a>
+                            <a href="#" class="btn btn-sm btn-icon btn-light btn-active-light-primary">
+                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr029.svg-->
+                                <span class="svg-icon svg-icon-2">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M14.5 20.7259C14.6 21.2259 14.2 21.826 13.7 21.926C13.2 22.026 12.6 22.0259 12.1 22.0259C9.5 22.0259 6.9 21.0259 5 19.1259C1.4 15.5259 1.09998 9.72592 4.29998 5.82592L5.70001 7.22595C3.30001 10.3259 3.59999 14.8259 6.39999 17.7259C8.19999 19.5259 10.8 20.426 13.4 19.926C13.9 19.826 14.4 20.2259 14.5 20.7259ZM18.4 16.8259L19.8 18.2259C22.9 14.3259 22.7 8.52593 19 4.92593C16.7 2.62593 13.5 1.62594 10.3 2.12594C9.79998 2.22594 9.4 2.72595 9.5 3.22595C9.6 3.72595 10.1 4.12594 10.6 4.02594C13.1 3.62594 15.7 4.42595 17.6 6.22595C20.5 9.22595 20.7 13.7259 18.4 16.8259Z"
+                                            fill="currentColor"></path>
+                                        <path opacity="0.3"
+                                            d="M2 3.62592H7C7.6 3.62592 8 4.02592 8 4.62592V9.62589L2 3.62592ZM16 14.4259V19.4259C16 20.0259 16.4 20.4259 17 20.4259H22L16 14.4259Z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </a>
+                            <a href="#" class="btn btn-sm btn-icon btn-light btn-active-light-primary">
+                                <span class="svg-icon svg-icon-2">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z"
+                                            fill="currentColor"></path>
+                                        <path opacity="0.5"
+                                            d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z"
+                                            fill="currentColor"></path>
+                                        <path opacity="0.5"
+                                            d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </a>
+                        </template>
+                    </el-table-column>
+                </el-table>
+                <div class="row py-7 float-end">
+                    <el-pagination layout="sizes, prev, pager, next" :total="1000">
+                    </el-pagination>
+                </div>
+            </el-card>
+        </div>
+        <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+            <div slot="title">
+                <img alt="Logo" src="@/assets/media/logos/default-small.svg">
+                <span class="header-title">
+                    添加用户
+                </span>
+            </div>
+            <span>这是一段信息</span>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible = false">取 消</el-button>
+                <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+            </span>
+        </el-dialog>
     </div>
 </template>
 <script>
+import { mapGetters } from "vuex"
 export default {
     name: 'index',
     data() {
-        return {}
+        return {
+            dialogVisible: false,
+            input1: '',
+            options: [{
+                value: '选项1',
+                label: '黄金糕'
+            }, {
+                value: '选项2',
+                label: '双皮奶'
+            }, {
+                value: '选项3',
+                label: '蚵仔煎'
+            }, {
+                value: '选项4',
+                label: '龙须面'
+            }, {
+                value: '选项5',
+                label: '北京烤鸭'
+            }],
+            value: '',
+            tableData: [{
+                date: '2016-05-03',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-02',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-04',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-01',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-08',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-06',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-07',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }],
+            multipleSelection: []
+        }
     },
-    methods: {}
+    computed: {
+        ...mapGetters(["settings"]),
+    },
+    methods: {
+
+    }
 }
 </script>
-<style>
+<style lang="scss" scoped>
 
 </style>

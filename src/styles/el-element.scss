@@ -1,3 +1,41 @@
+.el-card {
+    --bs-card-spacer-y: 1rem;
+    --bs-card-spacer-x: 1rem;
+    --bs-card-title-spacer-y: 0.5rem;
+    --bs-card-title-color: ;
+    --bs-card-subtitle-color: ;
+    --bs-card-border-width: var(--bs-border-width);
+    --bs-card-border-color: var(--bs-border-color);
+    --bs-card-border-radius: 0.625rem;
+    --bs-card-box-shadow: 0px 0px 20px 0px rgba(76, 87, 125, 0.02);
+    --bs-card-inner-border-radius: calc(0.625rem - (var(--bs-border-width)));
+    --bs-card-cap-padding-y: 0.5rem;
+    --bs-card-cap-padding-x: 1rem;
+    --bs-card-cap-bg: transparent;
+    --bs-card-cap-color: ;
+    --bs-card-height: ;
+    --bs-card-color: ;
+    --bs-card-bg: var(--bs-body-bg);
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+
+
+    border: none;
+    background-color: var(--bs-card-bg);
+    border-radius: var(--bs-card-border-radius);
+    box-shadow: var(--bs-card-box-shadow);
+
+    .el-card__header {
+        border-bottom: var(--bs-border-width) solid var(--bs-border-color);
+        border-radius: var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius) 0 0;
+
+    }
+
+    .el-card__body {
+        padding: 10px 20px;
+    }
+}
+
 .el-tabs {
     .el-tabs__header {
 
@@ -32,6 +70,35 @@
 
 }
 
+.el-input {
+    height: 100%;
+
+    .el-input__inner {
+        height: 100%;
+        min-height: 2.5rem;
+        line-height: 100%;
+        background-color: var(--bs-gray-100) !important;
+        border-color: var(--bs-gray-100) !important;
+        color: var(--bs-gray-700) !important;
+
+        &::placeholder {
+            color: var(--bs-gray-500);
+        }
+
+        &:hover,
+        &:focus {
+            background-color: var(--bs-gray-200);
+            color: var(--bs-gray-700);
+            border-color: var(--bs-gray-200) !important;
+        }
+    }
+
+    i {
+        color: var(--bs-text-muted) !important;
+        line-height: 2.75rem;
+    }
+}
+
 .el-radio {
     .el-radio__inner {
         width: 20px;
@@ -46,11 +113,244 @@
     }
 }
 
-.el-switch
-{
+.el-switch {
     .el-switch__core {
         border-color: var(--bs-gray-200);
         background-color: var(--bs-gray-200);
     }
 }
 
+.el-checkbox {
+    .el-checkbox__inner {
+        height: 1.55rem;
+        width: 1.55rem;
+        border-radius: 0.45em;
+        background-color: var(--bs-gray-200);
+        border-color: var(--bs-gray-200);
+
+        &::after {
+            left: 6px;
+            top: 3px;
+            height: 9px;
+            width: 4px;
+            border-width: 2px;
+        }
+    }
+
+    .el-checkbox__input.is-indeterminate {
+        .el-checkbox__inner::before {
+            top: 8px;
+            height: 3px;
+        }
+    }
+}
+
+.el-select {
+    .el-input__inner {
+        color: var(--bs-gray-600) !important;
+    }
+}
+
+
+.el-select-dropdown {
+    box-shadow: var(--bs-dropdown-box-shadow);
+    color: var(--bs-gray-700);
+    background-color: var(--bs-dropdown-bg);
+    border-radius: 0.475rem;
+    border-color: transparent;
+
+    .el-select-dropdown__item {
+
+        &.hover,
+        &.selected {
+            background-color: var(--bs-component-hover-bg);
+            color: var(--bs-component-hover-color);
+        }
+
+        &.selected {
+            font-weight: 500;
+        }
+
+    }
+}
+
+.el-table {
+    --bs-table-color: var(--bs-body-color);
+    --bs-table-bg: transparent;
+    --bs-table-border-color: var(--bs-border-color);
+    --bs-table-accent-bg: transparent;
+    --bs-table-striped-color: var(--bs-body-color);
+    --bs-table-striped-bg: rgba(var(--bs-gray-100-rgb), 0.75);
+    --bs-table-active-color: var(--bs-body-color);
+    --bs-table-active-bg: var(--bs-gray-100);
+    --bs-table-hover-color: var(--bs-body-color);
+    --bs-table-hover-bg: var(--bs-gray-100);
+
+    background-color: var(--bs-table-bg);
+
+    &::before {
+        background-color: var(--bs-table-bg);
+    }
+
+    .el-table__header {
+        tr {
+
+            background-color: var(--bs-table-bg);
+
+            th:first-child {
+                .cell {
+                    padding-left: 14px;
+                }
+            }
+
+            th {
+                .cell {
+                    color: var(--bs-text-muted);
+                }
+
+
+
+                &.el-table__cell {
+                    background-color: var(--bs-table-bg);
+                    border-bottom-width: 1px;
+                    border-bottom-style: dashed;
+                    border-bottom-color: var(--bs-border-color);
+                }
+
+            }
+
+
+        }
+
+    }
+
+    .el-table__body {
+        tr {
+            background-color: var(--bs-table-bg);
+
+            &:hover {
+                td.el-table__cell {
+                    background-color: var(--bs-table-hover-bg);
+                }
+            }
+
+            td {
+                .cell {
+                    color: var(--bs-gray-600);
+                }
+
+                &.el-table__cell {
+                    border-bottom: 1px dashed var(--bs-border-color);
+                }
+            }
+
+
+
+        }
+    }
+}
+
+
+
+
+.el-pagination {
+    --bs-pagination-padding-x: 0.75rem;
+    --bs-pagination-padding-y: 0.375rem;
+    --bs-pagination-font-size: 1.075rem;
+    --bs-pagination-color: var(--bs-gray-700);
+    --bs-pagination-bg: transparent;
+    --bs-pagination-border-width: 0;
+    --bs-pagination-border-color: transparent;
+    --bs-pagination-border-radius: 0.475rem;
+    --bs-pagination-hover-color: var(--bs-component-hover-color);
+    --bs-pagination-hover-bg: var(--bs-component-hover-bg);
+    --bs-pagination-hover-border-color: transparent;
+    --bs-pagination-focus-color: var(--bs-component-hover-color);
+    --bs-pagination-focus-bg: var(--bs-component-hover-bg);
+    --bs-pagination-focus-box-shadow: none;
+    --bs-pagination-active-color: var(--bs-component-active-color);
+    --bs-pagination-active-bg: var(--bs-component-active-bg);
+    --bs-pagination-active-border-color: transparent;
+    --bs-pagination-disabled-color: var(--bs-gray-400);
+    --bs-pagination-disabled-bg: transparent;
+    --bs-pagination-disabled-border-color: transparent;
+
+    span {
+        &:not([class*=suffix]) {
+            height: 2.5rem;
+            line-height: 2.5rem;
+        }
+    }
+
+    .btn-prev,
+    .btn-next,
+    button:disabled,
+    li {
+        height: 2.5rem;
+        min-width: 2.5rem;
+        line-height: 2.5rem;
+        margin-right: 0.5rem;
+        padding: 0 0.5rem;
+        border-radius: 0.475rem;
+        color: var(--bs-pagination-color);
+        font-weight: 500;
+        font-size: 14px;
+        background-color: var(--bs-pagination-bg);
+
+        &:hover {
+            color: var(--bs-pagination-hover-color);
+            background-color: var(--bs-pagination-hover-bg);
+            border-color: var(--bs-pagination-hover-border-color);
+        }
+
+        &.active {
+            color: var(--bs-pagination-active-color);
+            background-color: var(--bs-pagination-active-bg);
+            border-color: var(--bs-pagination-active-border-color);
+        }
+    }
+}
+
+.el-dialog {
+    --bs-dialog-bg: var(--bs-body-bg);
+    --bs-dialog-inner-border-radius: 0.475rem;
+
+
+    background: transparent;
+
+    .el-dialog__header,
+    .el-dialog__body,
+    .el-dialog__footer {
+        background-color: var(--bs-dialog-bg);
+    }
+
+    .el-dialog__header {
+        padding: 12px;
+        min-height: 2.5rem;
+        border-top-left-radius: var(--bs-dialog-inner-border-radius);
+        border-top-right-radius: var(--bs-dialog-inner-border-radius);
+        border-bottom: 1px dashed var(--bs-border-dashed-color);
+
+        .header-title {
+            margin-left: 6px;
+            color: var(--bs-text-gray-600);
+            line-height: 24px;
+            font-weight: 700;
+        }
+
+        .el-dialog__headerbtn {
+            top: 12px;
+
+            .el-dialog__close {
+                color: var(--bs-text-gray-600);
+            }
+        }
+    }
+
+    .el-dialog__footer {
+        border-bottom-left-radius: var(--bs-dialog-inner-border-radius);
+        border-bottom-right-radius: var(--bs-dialog-inner-border-radius);
+    }
+
+
+}
