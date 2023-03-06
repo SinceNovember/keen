@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column flex-root app-root">
+  <div class="d-flex flex-column flex-root app-root scroll">
     <router-view/>
   </div>
 </template>

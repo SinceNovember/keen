@@ -12,14 +12,27 @@ import 'font-awesome/css/font-awesome.min.css'
 import '@/assets/css/style.bundle.css'
 import '@/styles/index.scss'
 
-import '@/utils/utils.js'
-import '@/utils/filter.js'
-import '@/utils/request.js'
-import '@/promission.js'
+import '@/utils'
+import globalComponents from '@/utils/globalComponents.js'
 
 Vue.config.productionTip = false
 
-Vue.use(ElementUI);
+Vue.use(ElementUI)
+Vue.use(globalComponents)
+
+// 滚动加载更多
+Vue.directive('loadMore', {
+  bind(el, binding) {
+    // 获取element，定义scroll
+    let select_dom = el.querySelector('.el-select-dropdown .el-select-dropdown__wrap');
+    select_dom.addEventListener('scroll', function () {
+      let height = this.scrollHeight - this.scrollTop <= this.clientHeight;
+      if (height) {
+        binding.value()
+      }
+    })
+  }
+});
 
 /* eslint-disable no-new */
 new Vue({

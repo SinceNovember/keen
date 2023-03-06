@@ -4,5 +4,105 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
-  }
+    font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+}
+
+
+
+.menu-add-container {
+    padding: 0px 30px !important;
+
+    .menu-content {
+        margin: 8px 0px;
+    }
+
+}
+
+.layout-tabs {
+    .el-tabs__header {
+        .el-tabs__nav-wrap {
+
+            .el-tabs__nav {
+                margin: 0 1.25rem !important;
+                min-height: 60px !important;
+
+                .el-tabs__item {
+                    flex: 0 !important;
+                    color: var(--bs-gray-500) !important;
+                }
+            }
+        }
+    }
+
+    .el-tabs__content {
+        margin: 1.25rem;
+    }
+
+}
+
+.menu-icon-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 280px;
+    max-height: 230px;
+
+    .el-select-dropdown__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+
+        i {
+            font-size: 1.5rem;
+            color: var(--bs-gray-600);
+        }
+    }
+}
+
+.info-container {
+    padding: 4px 12px;
+    min-height: 380px;
+    color: var(--bs-text-gray-600);
+
+    .info-row {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 16px 0px;
+
+
+        .info-col {
+            display: flex;
+            width: 50%;
+
+            .info-title {
+                display: flex;
+                justify-content: flex-end;
+                width: 40%;
+            }
+
+            .info-content {
+                padding-left: 4px;
+                width: 60%;
+
+                i {
+                    margin-right: 4px;
+                    color: var(--bs-gray-600);
+                    font-size: 1.25rem;
+                }
+            }
+        }
+
+        
+        .line {
+            width: 100%;
+            .info-title {
+                width: 20%;
+            }
+            .info-content {
+                width: 80%;
+            }
+        }
+
+    }
+}

@@ -1,6 +1,6 @@
 <template>
-    <div class="kt_app_setting_wrapper">
-        <el-drawer  :visible.sync="settingsDrawer" :withHeader="false">
+    <div class="kt_app_setting_wrapper ">
+        <el-drawer :visible.sync="settingsDrawer" :withHeader="false">
             <layout-settings @closeDrawer="closeDrawer"></layout-settings>
         </el-drawer>
 
