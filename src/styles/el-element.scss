@@ -211,11 +211,15 @@
 }
 
 
-// .el-select {
-//     .el-input__inner {
-//         color: var(--bs-gray-600) !important;
-//     }
-// }
+.el-select {
+    
+    .el-input {
+        height: 100%;
+    }
+    // .el-input__inner {
+    //     color: var(--bs-gray-600) !important;
+    // }
+}
 
 
 .el-dropdown-menu {

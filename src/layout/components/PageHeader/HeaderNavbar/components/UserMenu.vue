@@ -44,7 +44,7 @@
 
                     <!--begin::Menu item-->
                     <div class="menu-item px-5">
-                        <a href="./keen/demo1/../demo1/account/overview.html" class="menu-link px-5">
+                        <a class="menu-link px-5" @click="toProfile">
                             My Profile
                         </a>
                     </div>
@@ -251,6 +251,9 @@ export default {
         return {}
     },
     methods: {
+        toProfile() {
+            this.$router.push({ name: 'overview' })
+        },
         async logout() {
             await this.$store.dispatch("user/logout");
             this.$router.push(`/login?redirect=${this.$route.fullPath}`);

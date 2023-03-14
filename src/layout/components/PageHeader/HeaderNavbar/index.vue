@@ -1818,7 +1818,7 @@
         <div class="app-navbar-item ms-1 ms-lg-3">
 
             <!--begin::Menu toggle-->
-            <a href="#"
+            <a href="#" @click="toggleTheme"
                 class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px"
                 data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-attach="parent"
                 data-kt-menu-placement="bottom-end">
@@ -2010,7 +2010,11 @@ export default {
     data() {
         return {}
     },
-    methods: {}
+    methods: {
+        toggleTheme() {
+            this.$store.dispatch("app/toggleTheme")
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>

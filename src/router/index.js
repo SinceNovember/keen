@@ -5,9 +5,9 @@ import Login from '@/views/login/'
 Vue.use(Router)
 
 export const constantRoutes = [
-    { path: '/login', component: Login },
+  { path: '/login', component: Login }
 
-  ]
+]
 const createRouter = () => new Router({
   mode: 'history',
   // mode: 'history', // require service support

@@ -7,7 +7,7 @@
             <el-table-column label="昵称" width="160">
                 <template slot-scope="scope">
                     <div class="anchor">
-                        <el-avatar :size="40" class="me-4" fit="contain" :src="scope.row.avatar"></el-avatar>
+                        <el-avatar :size="40" class="avatar me-4" fit="contain" :src="scope.row.avatar"></el-avatar>
                         {{ scope.row.nickname }}
                     </div>
                 </template>
@@ -38,7 +38,7 @@
             <el-table-column label="操作" width="120" show-overflow-tooltip>
                 <template slot-scope="{row}">
                     <div class="d-flex my-2 flex-center">
-                        <a class="btn btn-icon btn-active-light-primary w-30px h-30px me-2">
+                        <a class="btn btn-icon btn-active-light-primary w-30px h-30px me-2" @click="openDetail(row)">
                             <span class="svg-icon svg-icon-2"><svg width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1"
@@ -50,8 +50,7 @@
                             </span>
                         </a>
 
-                        <a class="btn btn-icon btn-active-light-primary w-30px h-30px me-2"
-                            @click="openEdit(row)">
+                        <a class="btn btn-icon btn-active-light-primary w-30px h-30px me-2" @click="openEdit(row)">
                             <span class="svg-icon svg-icon-2"><svg width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path opacity="0.3" fill-rule="evenodd" clip-rule="evenodd"
@@ -67,8 +66,7 @@
                             </span>
                         </a>
 
-                        <a class="btn btn-icon btn-active-light-primary w-30px h-30px me-2"
-                            @click="deleteOne(row)">
+                        <a class="btn btn-icon btn-active-light-primary w-30px h-30px me-2" @click="deleteOne(row)">
                             <span class="svg-icon svg-icon-2"><svg width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -92,15 +90,23 @@
                 @current-change="handleCurrentChange" :total="total">
             </el-pagination>
         </div>
-    </div>
 
+        <keen-dialog :visible.sync="infoDialog" :width="1200">
+            <user-info></user-info>
+        </keen-dialog>
+    </div>
 </template>
 <script>
 import { fetchPageUsers, getUser, deleteUser } from "@/api/system/user"
+import UserInfo from "./UserInfo"
 export default {
     name: 'UserTable',
+    components: {
+        UserInfo
+    },
     data() {
         return {
+            infoDialog: false,
             list: [],
             total: 0,
             loading: false,
@@ -152,15 +158,9 @@ export default {
             this.refreshTable()
         },
         openDetail(row) {
-            getUser({
-                id: row.id
-            }).then(res => {
-                this.dataInfo = res.data
-                this.infoModal = true
-            })
+            this.$router.push({ path: 'overview', query: { id: row.id } })
         },
         openEdit(row) {
-            console.log(row)
             getUser({
                 id: row.id
             }).then(res => {
@@ -205,5 +205,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+.avatar {
+    min-height: 40px;
+    min-width: 40px;
+}
 </style>

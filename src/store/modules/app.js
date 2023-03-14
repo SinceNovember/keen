@@ -51,9 +51,17 @@ const mutations = {
   TOGGLE_SIDEBAR_TOGGLE: state => {
     state.settings.sidebar.toggle = !state.settings.sidebar.toggle
   },
-  FIXED_SIDEBAR: (state) => {
+  FIXED_SIDEBAR: state => {
     state.settings.sidebar.fixed = !state.settings.sidebar.fixed
     changeElementVal('data-kt-app-sidebar-minimize', state.settings.sidebar.fixed ? 'sm-hover-active' : 'sm-hover')
+  },
+  TOGGLE_THEME: state => {
+    if (state.settings.theme == 'light') {
+      state.settings.theme = 'dark'
+    } else {
+      state.settings.theme = 'light'
+    }
+    changeHtmlVal('data-bs-theme', state.settings.theme)
   },
   CHANGE_THEME: (state, val) => {
     state.settings.theme = val
@@ -77,7 +85,6 @@ const mutations = {
   },
   CHANGE_WIDTH_MODE: (state, val) => {
     if (val == 'fluid') {
-      console.log(state.settings.widthMode)
       state.settings.widthMode.name = 'fluid'
       state.settings.widthMode.val = 'container-fluid'
     } else if (val == 'fixed') {
@@ -103,7 +110,6 @@ const mutations = {
     changeElementVal('data-kt-app-header-fixed', state.settings.header.fixed.desktop)
   },
   TOGGLE_FIXED_MOBILE_HEADER: (state) => {
-    console.log(state.settings.header.fixed.mobile)
     // state.settings.header.fixed.mobile = !state.settings.header.fixed.mobile
     changeElementVal('data-kt-app-header-fixed-mobile', state.settings.header.fixed.mobile)
   },
@@ -138,6 +144,9 @@ const actions = {
   },
   fixedSidebar({ commit }) {
     commit('FIXED_SIDEBAR')
+  },
+  toggleTheme({ commit }) {
+    commit('TOGGLE_THEME')
   },
   changeTheme({ commit }, data) {
     commit('CHANGE_THEME', data)

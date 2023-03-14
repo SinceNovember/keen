@@ -1,9 +1,5 @@
 <template>
     <el-form :model="userInfo" ref="formValidate" label-width="80px" class="form-container">
-        <!-- <cropper
-		:src="img"
-		@change="change"
-	/> -->
         <div class="image-input image-input-outline image-input-placeholder image-input-position">
             <img class="image-input-wrapper w-150px h-150px" :src="userInfo.avatar" />
             <el-upload class="upload-demo" action="" :auto-upload="false" :show-file-list="false"
@@ -98,8 +94,7 @@
                 <el-input v-model="userInfo.description" type="textarea" :row="4"></el-input>
             </el-form-item>
         </el-row>
-        <cropper :dialogVisible="dialogVisible" :cropperImg="cropperImg" @upload-img="uploadImg"
-            @colse-dialog="closeDialog"></cropper>
+        <cropper ref="cropper" :cropperImg="cropperImg" @upload-img="uploadImg"></cropper>
     </el-form>
 </template>
 <script>
@@ -121,7 +116,6 @@ export default {
     },
     data() {
         return {
-            dialogVisible: false,
             loading: false,
             fileName: "",
             cropperImg: '', // 需要裁剪的图片
@@ -166,7 +160,7 @@ export default {
     mounted() {
         this.loadTreeModel()
         this.loadRoleOptionModel()
-        this.loadUserSexOptionModel()
+        this.loadSexOptionModel()
         this.loadStatusOptionModel()
     },
     methods: {
@@ -180,7 +174,7 @@ export default {
                 this.roleOptions = res.data
             })
         },
-        loadUserSexOptionModel() {
+        loadSexOptionModel() {
             getSexOption().then(res => {
                 if (res.data) {
                     this.sexOptions = res.data
@@ -209,28 +203,6 @@ export default {
                 }
             })
         },
-        beforeAvatarUpload(file) {
-            const isImg = file.type === "image/jpeg" || file.type === "image/png";
-            const isLt2M = file.size / 1024 / 1024 < 2;
-
-            if (!isImg) {
-                this.$message.error("上传头像图片只能是 JPG/PNG 格式!");
-            }
-            if (!isLt2M) {
-                this.$message.error("上传头像图片大小不能超过 2MB!");
-            }
-            if (isImg && isLt2M) {
-                let param = new FormData(); // 创建form对象
-                param.append("file", file, file.name); // file对象是 beforeUpload参数
-                let config = {
-                    headers: { "Content-Type": "multipart/form-data" }
-                };
-                uploadImg(param, config).then(res => {
-                    this.userInfo.avatar = res.data;
-                });
-            }
-            return false;
-        },
         cancelAvatar() {
             this.userInfo.avatar = 'https://preview.keenthemes.com/craft/assets/media/avatars/300-1.jpg'
         },
@@ -249,12 +221,11 @@ export default {
             // 上传成功后将图片地址赋值给裁剪框显示图片
             this.$nextTick(() => {
                 this.cropperImg = url
-                this.dialogVisible = true
+                this.$refs.cropper.openDialog()
             })
         },
         uploadImg(data) {
             let file = new window.File([data], this.fileName, { type: 'image/jpeg' })
-            console.log(file)
             var formData = new FormData();
             formData.append('file', file);
             let config = {
@@ -262,13 +233,9 @@ export default {
             };
             uploadImg(formData, config).then(res => {
                 this.userInfo.avatar = res.data;
-                this.dialogVisible = false
             });
         },
-        // 关闭窗口
-        closeDialog() {
-            this.dialogVisible = false;
-        }
+
     }
 }
 </script>

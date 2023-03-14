@@ -93,16 +93,27 @@
             }
         }
 
-        
+
         .line {
             width: 100%;
+
             .info-title {
                 width: 20%;
             }
+
             .info-content {
                 width: 80%;
             }
         }
 
+    }
+}
+
+
+.full-card {
+    padding: 0px;
+
+    .el-card__body {
+        padding: 0px;
     }
 }

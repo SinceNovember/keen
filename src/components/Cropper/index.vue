@@ -1,10 +1,11 @@
 <template>
-    <keen-dialog title="图片剪裁" :visible.sync="dialogVisible" :width="780" @save="saveImg" @cancel="handleClose"
+    <keen-dialog title="图片剪裁" :visible.sync="visible" :width="780" @save="saveImg" @cancel="visible = false"
         :appendBody="true">
         <div class="cropper-content">
             <div class="cropper">
                 <vueCropper ref="cropper" :img="cropperImg" :outputSize="option.size" :outputType="option.outputType"
                     :info="true" :full="option.full" :canMove="option.canMove" :canMoveBox="option.canMoveBox"
+                    :autoCropWidth="option.autoCropWidth" :autoCropHeight="option.autoCropHeight"
                     :original="option.original" :autoCrop="option.autoCrop" :fixed="option.fixed"
                     :fixedNumber="option.fixedNumber" :centerBox="option.centerBox" :infoTrue="option.infoTrue"
                     :fixedBox="option.fixedBox"></vueCropper>
@@ -21,10 +22,6 @@ export default {
         VueCropper
     },
     props: {
-        dialogVisible: {
-            type: Boolean,
-            default: false
-        },
         imgType: {
             type: String,
             default: 'blob'
@@ -36,6 +33,7 @@ export default {
     },
     data() {
         return {
+            visible: false,
             option: {
                 img: '', // 裁剪图片的地址
                 info: true, // 裁剪框的大小信息
@@ -43,8 +41,8 @@ export default {
                 outputType: 'jpeg', // 裁剪生成图片的格式
                 canScale: false, // 图片是否允许滚轮缩放
                 autoCrop: true, // 是否默认生成截图框
-                autoCropWidth: 200, // 默认生成截图框宽度
-                autoCropHeight: 200, // 默认生成截图框高度
+                autoCropWidth: 150, // 默认生成截图框宽度
+                autoCropHeight: 150, // 默认生成截图框高度
                 // fixedBox: true, // 固定截图框大小 不允许改变
                 fixed: false, // 是否开启截图框宽高固定比例
                 fixedNumber: [7, 5], // 截图框的宽高比例
@@ -57,9 +55,6 @@ export default {
         }
     },
     methods: {
-        handleClose() {
-            this.$emit('colse-dialog', false);
-        },
         // 获取裁剪之后的图片，默认blob，也可以获取base64的图片
         saveImg() {
             if (this.imgType === 'blob') {
@@ -72,6 +67,10 @@ export default {
                     this.$emit('upload-img', data);
                 })
             }
+            this.visible = false
+        },
+        openDialog() {
+            this.visible = true
         }
     }
 }

@@ -48,6 +48,7 @@ export default {
     },
     methods: {
         dialogClose() {
+            console.log("ddd")
             this.$emit('update:visible', false)
         },
         cancel() {
