@@ -1,0 +1,126 @@
+server:
+  port: 8099
+  message-port: 9999
+datasource:
+  url: 127.0.0.1:3306/keen
+
+spring:
+  datasource:
+    jdbc-url: jdbc:mysql://${datasource.url}?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password:
+  # redis配置
+  redis:
+    # Redis数据库索引（默认为0）
+    database: 1
+    # Redis服务器地址
+    host:
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password:
+    # 连接超时时间
+    timeout: 10s
+    lettuce:
+      pool:
+        # 连接池最大连接数
+        max-active: 200
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1ms
+        # 连接池中的最大空闲连接
+        max-idle: 10
+        # 连接池中的最小空闲连接
+        min-idle: 0
+
+  # Kafka 配置项，对应 KafkaProperties 配置类
+  kafka:
+    bootstrap-servers:  # 指定 Kafka Broker 地址，可以设置多个，以逗号分隔
+    # Kafka Producer 配置项
+    producer:
+      acks: 1 # 0-不应答。1-leader 应答。all-所有 leader 和 follower 应答。
+      retries: 3 # 发送失败时，重试发送的次数
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer # 消息的 key 的序列化
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer # 消息的 value 的序列化
+    # Kafka Consumer 配置项
+    consumer:
+      auto-offset-reset: earliest # 设置消费者分组最初的消费进度为 earliest 。可参考博客 https://blog.csdn.net/lishuangzhe7047/article/details/74530417 理解
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      enable-auto-commit: false # 使用 Spring-Kafka 的消费进度的提交机制
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: com.simple.keen.kafka.message
+    # Kafka Consumer Listener 监听器配置
+    listener:
+      missing-topics-fatal: false # 消费监听接口监听的主题不存在时，默认会报错。所以通过设置为 false ，解决报错
+      ack-mode: MANUAL
+
+
+# mybatis-plus 配置内容
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true # 虽然默认为 true ，但是还是显示去指定下。
+  global-config:
+    db-config:
+      #      id-type: auto # ID 主键自增
+      select-strategy: not_empty
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+#  mapper-locations: classpath*:mapper/*.xml
+#  type-aliases-package: com.simple.*.system.model.entity
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+logging:
+  level:
+    com.simple.keen.system.mapper: debug
+    com.simple.keen.message.mapper: debug
+    com.simple.keen.monitor.mapper: debug
+aliyun:
+  oss:
+    # oss对外服务的访问域名
+    endpoint:
+    # 访问身份验证中用到用户标识
+    accessKeyId:
+    # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
+    accessKeySecret:
+    # oss的存储空间
+    bucketName:
+    # 上传文件大小(M)
+    maxSize: 50
+    urlPrefix: https://${aliyun.oss.bucketName}.${aliyun.oss.endpoint}/
+    # 上传文件夹路径前缀
+    dirPrefix: images/
+
+sa-token:
+  # token名称 (同时也是cookie名称)
+  token-name: Keen-Token
+  # token有效期，单位s 默认30天, -1代表永不过期
+  timeout: 2592000
+  # token临时有效期 (指定时间内无操作就视为token过期) 单位: 秒
+  activity-timeout: -1
+  # 是否允许同一账号并发登录 (为true时允许一起登录, 为false时新登录挤掉旧登录)
+  is-concurrent: true
+  # 在多人登录同一账号时，是否共用一个token (为true时所有登录共用一个token, 为false时每次登录新建一个token)
+  is-share: false
+  # token风格
+  token-style: uuid
+  # token前缀
+  token-prefix: "Bearer"
+  # 是否输出操作日志
+  is-log: false
+  # jwt密钥
+  jwt-secret-key: keenabcdefghijklmnopqrstuvwxyz
+  # 是否尝试从body里读取token
+  is-read-body: false
+  # 是否尝试从cookie里读取token
+  is-read-cookie: false
+  # 是否尝试从header里读取token
+  is-read-header: true
