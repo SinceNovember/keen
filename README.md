@@ -1,14 +1,15 @@
 <p align="center">
     <a href="#" target="_blank" rel="noopener noreferrer">
-        <img width="300" height="120" src="https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/logo.svg" alt="keen logo" />
+        <img width="300" height="120" src="https://github.com/SinceNovember/media/blob/master/images/keen/logo.svg" alt="keen logo" />
     </a>
 </p>
 
-> keen是一个包含用户之间聊天功能的前后端分离的权限后台管理系统。
+
+> keen是一个包含用户之间聊天功能的前后端分离的RABC权限后台管理系统。
 
 # 简介
 
-**keen** 是一个通过`Springboot` `Mybatis` `Vue` `Netty` `Sa-Token` 等主流技术开发的一个前后端分离的权限后台管理系统，开箱即用，可迅速搭建后台`权限认证`、`权限控制`、`按钮控制`、`动态路由`、`用户聊天`等功能。
+**keen** 是一个通过`Springboot` `Mybatis` `Vue` `Netty` `Sa-Token` 等主流技术开发的一个前后端分离的RABC权限后台管理系统，开箱即用，可迅速搭建后台`权限认证`、`权限控制`、`按钮控制`、`动态路由`、`用户聊天`等功能。
 
 
 # 功能
@@ -68,21 +69,21 @@
 
 # 界面
 
-| ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/0-1.png) | ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/0-2.png)  |
-| ------------------------------------------------------------ |----------------------------------------------------------------------------------------------------------|
-| ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/1-1.png) | ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/1-2.png)  |
-| ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/2-1.png) | ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/2-2.png)  |
-| ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/3-1.png) | ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/3-2.png)  |
-| ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/4-1.png) | ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/4-2.png)  |
-| ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/5-1.png) | ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/5-2.png)  |
-| ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/6-1.png) | ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/6-2.png)  |
-| ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/7-1.png) | ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/7-2.png)  |
-| ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/8-1.png) | ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/8-2.png)  |
-| ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/9-1.png) | ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/9-2.png)  |
-| ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/10-1.png) | ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/10-2.png) |
-| ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/11-1.png) | ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/11-2.png) |
-| ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/12-1.png) | ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/12-2.png) |
-| ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/13-1.png) | ![1640016007(1)](https://github.com/SinceNovember/keen-vue/blob/master/src/assets/media/github/13-2.png) |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/0-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/0-2.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/1-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/1-2.png) |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/2-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/2-2.png) |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/3-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/3-2.png) |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/4-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/4-2.png) |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/5-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/5-2.png) |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/6-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/6-2.png) |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/7-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/7-2.png) |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/8-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/8-2.png) |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/9-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/9-2.png) |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/10-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/10-2.png) |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/11-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/11-2.png) |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/12-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/12-2.png) |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/13-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/13-2.png) |
 
 
 # 安装
@@ -107,6 +108,4 @@ npm run lint
 
 #### 后端运行
 
-启动`keen`模块文件夹内的`KeenApplication` 即可
-
-
+找到`keen`模块中的`application.yml`, 配置好数据库等地址后，打开文件夹内的`KeenApplication`启动 即可
