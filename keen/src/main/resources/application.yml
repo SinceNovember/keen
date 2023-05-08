@@ -9,7 +9,7 @@ spring:
     jdbc-url: jdbc:mysql://${datasource.url}?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password:
+    password: mypassword
   # redis配置
   redis:
     # Redis数据库索引（默认为0）
@@ -19,7 +19,7 @@ spring:
     # Redis服务器连接端口
     port: 6379
     # Redis服务器连接密码（默认为空）
-    password:
+    password: mypassword
     # 连接超时时间
     timeout: 10s
     lettuce:
@@ -35,7 +35,7 @@ spring:
 
   # Kafka 配置项，对应 KafkaProperties 配置类
   kafka:
-    bootstrap-servers:  # 指定 Kafka Broker 地址，可以设置多个，以逗号分隔
+    bootstrap-servers: localhost:9092 # 指定 Kafka Broker 地址，可以设置多个，以逗号分隔
     # Kafka Producer 配置项
     producer:
       acks: 1 # 0-不应答。1-leader 应答。all-所有 leader 和 follower 应答。
@@ -85,6 +85,7 @@ logging:
     com.simple.keen.monitor.mapper: debug
 aliyun:
   oss:
+    enable: false
     # oss对外服务的访问域名
     endpoint:
     # 访问身份验证中用到用户标识

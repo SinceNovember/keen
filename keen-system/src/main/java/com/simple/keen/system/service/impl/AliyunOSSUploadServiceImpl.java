@@ -6,20 +6,20 @@ import com.aliyun.oss.model.ListObjectsRequest;
 import com.aliyun.oss.model.OSSObject;
 import com.aliyun.oss.model.OSSObjectSummary;
 import com.aliyun.oss.model.ObjectListing;
-import com.simple.keen.common.consts.MsgConsts;
 import com.simple.keen.common.exception.KeenException;
 import com.simple.keen.common.utils.StringUtils;
 import com.simple.keen.system.service.IUploadService;
+import com.simple.keen.system.service.impl.base.AbstractUploadService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Stream;
 
 /**
  * .
@@ -30,7 +30,8 @@ import java.util.stream.Stream;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class UploadServiceImpl implements IUploadService {
+@ConditionalOnBean(OSSClient.class)
+public class AliyunOSSUploadServiceImpl extends AbstractUploadService implements IUploadService {
 
     private final OSSClient ossClient;
 
@@ -42,12 +43,6 @@ public class UploadServiceImpl implements IUploadService {
 
     @Value("${aliyun.oss.dirPrefix:images/}")
     private String dirPrefix;
-
-    /**
-     * 图像类型
-     */
-    private static final String[] IMAGE_TYPE = new String[]{".bmp", ".jpg", ".jpeg", ".gif",
-        ".png"};
 
     /**
      * 文件上传
@@ -67,20 +62,6 @@ public class UploadServiceImpl implements IUploadService {
             return urlPrefix + filePath;
         } catch (Exception e) {
             throw new KeenException(e.getMessage());
-        }
-    }
-
-    /**
-     * 检查图片后缀
-     *
-     * @param file 文件
-     * @return
-     */
-    private void checkImgSuffix(MultipartFile file) {
-        if (Stream.of(IMAGE_TYPE)
-            .noneMatch(
-                type -> StringUtils.endWithIgnoreCase(file.getOriginalFilename(), type))) {
-            throw new KeenException(MsgConsts.UPLOAD_TYPE_ERROR_MSG);
         }
     }
 
