@@ -32,13 +32,10 @@ public class SingleMessageHandler extends CommonMessageHandler {
         //获取接收方与服务器端连接的channel，并向接收方发送数据
         Channel channel = ChannelUtils.getChannel(message.getToId());
         if (channel != null) {
-            channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(message)))
-                .addListener(future -> {
-                    if (future.isSuccess()) {
-                        addMessageHistory(message);
-                    }
-                });
+            channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(message)));
         }
+        addMessageHistory(message);
+
     }
 
     /**
