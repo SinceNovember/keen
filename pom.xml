@@ -17,6 +17,7 @@
     <module>keen-kafka</module>
     <module>keen-server</module>
     <module>keen-message</module>
+    <module>keen-attachment</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -34,6 +35,7 @@
     <sa-token.version>1.34.0</sa-token.version>
     <ip2region.version>1.7.2</ip2region.version>
     <fastjson.version>1.2.47</fastjson.version>
+    <thumbnailator.version>0.4.8</thumbnailator.version>
 
   </properties>
 
@@ -77,6 +79,11 @@
       <dependency>
         <groupId>com.simple</groupId>
         <artifactId>keen-message</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.simple</groupId>
+        <artifactId>keen-attachment</artifactId>
         <version>${project.version}</version>
       </dependency>
       <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
@@ -144,6 +151,13 @@
         <artifactId>fastjson</artifactId>
         <version>${fastjson.version}</version>
       </dependency>
+      <!-- 图片处理 -->
+      <dependency>
+        <groupId>net.coobird</groupId>
+        <artifactId>thumbnailator</artifactId>
+        <version>${thumbnailator.version}</version>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 

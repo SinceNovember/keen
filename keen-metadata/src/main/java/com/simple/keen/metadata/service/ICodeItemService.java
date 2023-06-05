@@ -33,6 +33,24 @@ public interface ICodeItemService extends IService<CodeItem> {
     CodeItemVO getCodeItemById(Integer id);
 
     /**
+     * 根据代码名和子项文本获取代码子项
+     *
+     * @param codeName 代码名
+     * @param itemText 子项文本
+     * @return 子项文本
+     */
+    CodeItemVO getCodeItemByCodeNameAndItemText(String codeName, String itemText);
+
+    /**
+     * 根据代码名和子项文本获取代码项值
+     *
+     * @param codeName 代码名
+     * @param itemText 子项文本
+     * @return 子项文本
+     */
+    String getCodeItemValueByCodeNameAndItemText(String codeName, String itemText);
+
+    /**
      * 删除代码子项
      *
      * @param ids id

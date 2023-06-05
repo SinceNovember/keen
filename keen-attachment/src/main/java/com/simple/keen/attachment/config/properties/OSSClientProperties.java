@@ -1,4 +1,4 @@
-package com.simple.keen.system.config.properties;
+package com.simple.keen.attachment.config.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -10,7 +10,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date 2022/12/28
  */
 @Data
-@ConfigurationProperties("aliyun.oss")
+@ConfigurationProperties(prefix = "aliyun.oss")
 public class OSSClientProperties {
 
     private String endpoint;

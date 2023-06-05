@@ -51,7 +51,7 @@ public interface IUserService extends IService<User> {
      */
     void addOrUpdateUser(UserQuery userQuery);
 
-    void updateProfileImage(UserQuery userQuery);
+    String updateProfileImage(UserQuery userQuery);
 
     /**
      * 通过id获取用户

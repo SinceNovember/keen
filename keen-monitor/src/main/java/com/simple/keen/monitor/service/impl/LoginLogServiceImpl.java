@@ -14,8 +14,6 @@ import com.simple.keen.common.base.dto.ChartDTO;
 import com.simple.keen.common.base.vo.ChartVO;
 import com.simple.keen.common.utils.LocalDateTimeUtils;
 import com.simple.keen.common.utils.PageHelperUtils;
-import com.simple.keen.kafka.message.LoginLogMessage;
-import com.simple.keen.kafka.producer.Producer;
 import com.simple.keen.monitor.mapper.LoginLogMapper;
 import com.simple.keen.monitor.mapping.LoginLogMapping;
 import com.simple.keen.monitor.model.dto.LoginLogDTO;
@@ -47,7 +45,7 @@ import org.springframework.stereotype.Service;
 public class LoginLogServiceImpl extends ServiceImpl<LoginLogMapper, LoginLog> implements
     ILoginLogService {
 
-    private final List<Producer> producerList;
+//    private final List<Producer> producerList;
 
     private final IUserRoleRelateService userRoleRelateService;
 
@@ -130,13 +128,13 @@ public class LoginLogServiceImpl extends ServiceImpl<LoginLogMapper, LoginLog> i
         loginLog.setLoginTime(LocalDateTime.now());
         loginLog.setUserId(StpUtil.getLoginIdAsInt());
 
-        LoginLogMessage loginLogMessage = new LoginLogMessage();
-        loginLogMessage.setNickname(nickname);
-        loginLogMessage.setBrowser(requestBrowser());
-        loginLogMessage.setSystem(requestSystem());
-        loginLogMessage.setIp(requestIp());
-        loginLogMessage.setLocation(requestLocation(requestIp()));
-        loginLogMessage.setLoginTime(LocalDateTime.now());
+//        LoginLogMessage loginLogMessage = new LoginLogMessage();
+//        loginLogMessage.setNickname(nickname);
+//        loginLogMessage.setBrowser(requestBrowser());
+//        loginLogMessage.setSystem(requestSystem());
+//        loginLogMessage.setIp(requestIp());
+//        loginLogMessage.setLocation(requestLocation(requestIp()));
+//        loginLogMessage.setLoginTime(LocalDateTime.now());
 
 //        KafkaProducers.LOGIN_LOG.sendAsync(loginLogMessage);
         save(loginLog);

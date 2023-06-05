@@ -13,6 +13,7 @@ import com.simple.keen.metadata.model.vo.CodeItemVO;
 import com.simple.keen.metadata.service.ICodeItemService;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -52,6 +53,21 @@ public class CodeItemServiceImpl extends
     @Override
     public CodeItemVO getCodeItemById(Integer id) {
         return CodeItemMapping.INSTANCE.toCodeItemVO(getById(id));
+    }
+
+    @Override
+    public CodeItemVO getCodeItemByCodeNameAndItemText(String codeName, String itemText) {
+        return CodeItemMapping.INSTANCE.toCodeItemVO(
+            baseMapper.selectCodeItemByCodeNameAndItemText(codeName, itemText));
+    }
+
+    @Override
+    public String getCodeItemValueByCodeNameAndItemText(String codeName, String itemText) {
+        CodeItemVO codeItemByCodeNameAndItemText = getCodeItemByCodeNameAndItemText(codeName,
+            itemText);
+        return Optional.ofNullable(codeItemByCodeNameAndItemText)
+            .map(CodeItemVO::getItemValue)
+            .orElse("");
     }
 
     @Override

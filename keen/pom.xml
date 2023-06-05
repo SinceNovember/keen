@@ -37,10 +37,10 @@
             <groupId>com.simple</groupId>
             <artifactId>keen-monitor</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.simple</groupId>
-            <artifactId>keen-kafka</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.simple</groupId>-->
+<!--            <artifactId>keen-kafka</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.simple</groupId>
             <artifactId>keen-server</artifactId>
@@ -48,6 +48,10 @@
         <dependency>
             <groupId>com.simple</groupId>
             <artifactId>keen-message</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.simple</groupId>
+            <artifactId>keen-attachment</artifactId>
         </dependency>
     </dependencies>
 </project>

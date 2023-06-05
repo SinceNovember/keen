@@ -19,6 +19,11 @@ public interface Consts {
     int MINIMUM_IDLE = 15;
 
     /**
+     * 文件上传最大尺寸（10M）
+     */
+    int FILE_UPLOAD_MAX_SIZE = 10 << 20;
+
+    /**
      * 主数据源名称
      */
     String PRIMARY_DATASOURCE = "primaryDataSource";

@@ -1,8 +1,8 @@
-package com.simple.keen.system.config;
+package com.simple.keen.attachment.config;
 
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.OSSClientBuilder;
-import com.simple.keen.system.config.properties.OSSClientProperties;
+import com.simple.keen.attachment.config.properties.OSSClientProperties;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;

@@ -47,6 +47,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     private final IUserRoleRelateService userRoleRelateService;
 
+
     @Override
     public PageSerializable<UserVO> pageUser(UserQuery userQuery) {
         PageHelperUtils.startPage(userQuery);
@@ -96,10 +97,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
-    public void updateProfileImage(UserQuery userQuery) {
+    public String updateProfileImage(UserQuery userQuery) {
         this.update(Wrappers.<User>lambdaUpdate()
             .set(User::getProfileImage, userQuery.getProfileImage())
             .eq(User::getId, StpUtil.getLoginIdAsInt()));
+        return userQuery.getProfileImage();
     }
 
     @Override

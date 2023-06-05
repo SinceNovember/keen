@@ -71,8 +71,7 @@ public class UserController {
     @PutMapping("/profileImage")
     @ControllerEndpoint(operation = "修改简介背景", exceptionMessage = "修改简介背景失败")
     public Response updateProfileImage(@RequestBody UserQuery userQuery) {
-        userService.updateProfileImage(userQuery);
-        return Response.ok();
+        return Response.ok(userService.updateProfileImage(userQuery));
     }
 
     @PostMapping("delete")

@@ -1,6 +1,7 @@
 package com.simple.keen.system.controller;
 
 import com.simple.keen.common.base.Response;
+import com.simple.keen.common.exception.KeenException;
 import com.simple.keen.system.model.query.DeptQuery;
 import com.simple.keen.system.service.IDeptService;
 import javax.validation.constraints.NotNull;

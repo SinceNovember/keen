@@ -3,6 +3,7 @@ package com.simple.keen.message.model.vo;
 import com.simple.keen.system.model.vo.UserVO;
 import java.util.List;
 import lombok.Data;
+import lombok.ToString;
 
 /**
  * .
@@ -11,6 +12,7 @@ import lombok.Data;
  * @date 2023/3/19
  */
 @Data
+@ToString
 public class ChatMessageContactUserVO {
 
     private UserVO user;

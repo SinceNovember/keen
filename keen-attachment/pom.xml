@@ -9,11 +9,11 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>keen-system</artifactId>
+  <artifactId>keen-attachment</artifactId>
 
   <properties>
-    <maven.compiler.source>8</maven.compiler.source>
-    <maven.compiler.target>8</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -24,7 +24,7 @@
     </dependency>
     <dependency>
       <groupId>com.simple</groupId>
-      <artifactId>keen-attachment</artifactId>
+      <artifactId>keen-metadata</artifactId>
     </dependency>
     <dependency>
       <groupId>com.baomidou</groupId>
@@ -49,5 +49,24 @@
       <groupId>org.mapstruct</groupId>
       <artifactId>mapstruct</artifactId>
     </dependency>
+    <!-- 阿里云 OSS -->
+    <dependency>
+      <groupId>com.aliyun.oss</groupId>
+      <artifactId>aliyun-sdk-oss</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>net.coobird</groupId>
+      <artifactId>thumbnailator</artifactId>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.google.caliper/caliper -->
+    <dependency>
+      <groupId>com.google.caliper</groupId>
+      <artifactId>caliper</artifactId>
+      <version>1.0-beta-1</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
+
 </project>

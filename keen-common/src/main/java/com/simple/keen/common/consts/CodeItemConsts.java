@@ -12,4 +12,11 @@ public interface CodeItemConsts {
 
     String STATUS_CODE_ITEM_NAME = "状态";
 
+    String ATTACHMENT_SUFFIX_TYPE_IMAGE_RELATE = "附件后缀图片关系";
+
+    String ATTACHMENT_TYPE_IMAGE = "附件类型图片";
+
+    String ATTACHMENT_UNKNOWN_TYPE_IMAGE = "unknown";
+
+
 }

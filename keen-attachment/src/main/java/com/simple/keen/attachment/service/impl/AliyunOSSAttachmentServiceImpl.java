@@ -1,4 +1,4 @@
-package com.simple.keen.system.service.impl;
+package com.simple.keen.attachment.service.impl;
 
 import cn.hutool.core.util.RandomUtil;
 import com.aliyun.oss.OSSClient;
@@ -6,10 +6,18 @@ import com.aliyun.oss.model.ListObjectsRequest;
 import com.aliyun.oss.model.OSSObject;
 import com.aliyun.oss.model.OSSObjectSummary;
 import com.aliyun.oss.model.ObjectListing;
+import com.simple.keen.attachment.model.entity.AttachmentInfo;
+import com.simple.keen.attachment.model.vo.AttachmentUploadVO;
+import com.simple.keen.attachment.service.IAttachmentService;
 import com.simple.keen.common.exception.KeenException;
 import com.simple.keen.common.utils.StringUtils;
-import com.simple.keen.system.service.IUploadService;
-import com.simple.keen.system.service.impl.base.AbstractUploadService;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.time.LocalDate;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,21 +25,17 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.*;
-import java.time.LocalDate;
-import java.util.List;
-
 /**
  * .
  *
  * @author SinceNovember
- * @date 2022/12/27
+ * @date 2023/5/26
  */
 @Slf4j
 @Service
 @RequiredArgsConstructor
 @ConditionalOnBean(OSSClient.class)
-public class AliyunOSSUploadServiceImpl extends AbstractUploadService implements IUploadService {
+public class AliyunOSSAttachmentServiceImpl extends AbstractAttachmentServiceImpl {
 
     private final OSSClient ossClient;
 
@@ -51,8 +55,7 @@ public class AliyunOSSUploadServiceImpl extends AbstractUploadService implements
      * @return
      */
     @Override
-    public String uploadImg(MultipartFile uploadFile) {
-        checkImgSuffix(uploadFile);
+    public String uploadImage(MultipartFile uploadFile) {
         // 文件新路径
         String filePath = getFilePath(uploadFile.getOriginalFilename());
         // 上传到阿里云
@@ -63,6 +66,34 @@ public class AliyunOSSUploadServiceImpl extends AbstractUploadService implements
         } catch (Exception e) {
             throw new KeenException(e.getMessage());
         }
+    }
+
+    @Override
+    public AttachmentUploadVO uploadAttachment(MultipartFile file) {
+        // 文件新路径
+        String filePath = getFilePath(file.getOriginalFilename());
+        // 上传到阿里云
+        try {
+            ossClient.putObject(bucketName, filePath,
+                new ByteArrayInputStream(file.getBytes()));
+        } catch (Exception e) {
+            throw new KeenException(e.getMessage());
+        }
+        return null;
+    }
+
+    @Override
+    protected String getImageUrl(MultipartFile file) {
+        return null;
+    }
+
+    @Override
+    protected AttachmentInfo saveAttachFile(MultipartFile file) {
+        return null;
+    }
+
+    @Override
+    public void downloadAttachment(Integer attachmentId) {
     }
 
     /**

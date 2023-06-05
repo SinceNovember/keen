@@ -49,10 +49,10 @@
       <groupId>org.mapstruct</groupId>
       <artifactId>mapstruct</artifactId>
     </dependency>
-    <dependency>
-      <groupId>com.simple</groupId>
-      <artifactId>keen-kafka</artifactId>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.simple</groupId>-->
+<!--      <artifactId>keen-kafka</artifactId>-->
+<!--    </dependency>-->
   </dependencies>
 
 </project>
