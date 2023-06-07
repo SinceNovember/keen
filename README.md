@@ -89,6 +89,7 @@
 # 安装
 
 #### 前端运行
+前端代码地址: [keen-vue](https://github.com/SinceNovember/keen-vue)
 
 在`keen-vue`文件夹下运行
 
@@ -109,3 +110,7 @@ npm run lint
 #### 后端运行
 
 找到`keen`模块中的`application.yml`, 配置好数据库等地址后，打开文件夹内的`KeenApplication`启动 即可
+
+#### 有问题联系
+![qq](https://github.com/SinceNovember/media/blob/master/images/keen/1686121501323_temp_qrcode_share_9993.png) 
+
