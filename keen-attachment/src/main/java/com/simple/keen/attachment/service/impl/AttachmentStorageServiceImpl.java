@@ -10,6 +10,7 @@ import com.simple.keen.common.consts.MsgConsts;
 import com.simple.keen.common.exception.KeenException;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -28,16 +29,16 @@ public class AttachmentStorageServiceImpl extends
     IAttachmentStorageService {
 
     @Override
-    public void save(MultipartFile file, Integer attachmentId) {
+    public void addAttachmentStorage(MultipartFile file, Integer attachmentId) {
         try {
             AttachmentStorage attachmentStorage = new AttachmentStorage();
             attachmentStorage.setAttachmentId(attachmentId);
             attachmentStorage.setCreateTime(LocalDateTime.now());
             attachmentStorage.setStorageData(file.getBytes());
-            attachmentStorage.setStorageSize(file.getBytes().length);
+            attachmentStorage.setStorageSize(file.getSize());
             save(attachmentStorage);
         } catch (IOException e) {
-            log.error("File [{}] upload failed!", e);
+            log.error("File [{}] upload failed!", file.getOriginalFilename(), e);
             throw new KeenException(MsgConsts.FILE_UPLOAD_ERROR_MSG);
         }
     }
@@ -71,6 +72,20 @@ public class AttachmentStorageServiceImpl extends
             Wrappers.<AttachmentStorage>lambdaQuery()
                 .eq(AttachmentStorage::getAttachmentId, attachmentId));
         return getStorageDataBase64ById(attachmentStorage.getId());
+    }
+
+    @Override
+    public void deleteAttachmentStorageByAttachmentId(Integer attachmentId) {
+        this.remove(
+            Wrappers.<AttachmentStorage>lambdaQuery()
+                .eq(AttachmentStorage::getAttachmentId, attachmentId));
+    }
+
+    @Override
+    public void deleteAttachmentStorageByAttachmentIds(List<Integer> attachmentIds) {
+        this.remove(
+            Wrappers.<AttachmentStorage>lambdaQuery()
+                .in(AttachmentStorage::getAttachmentId, attachmentIds));
     }
 
 }

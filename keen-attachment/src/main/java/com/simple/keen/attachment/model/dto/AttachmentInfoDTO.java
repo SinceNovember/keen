@@ -43,6 +43,12 @@ public class AttachmentInfoDTO {
      * 附件后缀
      */
     private String attachmentSuffix;
+
+    /**
+     * 附件大小
+     */
+    private long attachmentSize;
+
     /**
      * 创建者id
      */

@@ -1,9 +1,6 @@
 package com.simple.keen.attachment.model.dto;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
-import java.util.List;
 import lombok.Data;
 import lombok.ToString;
 
@@ -15,7 +12,7 @@ import lombok.ToString;
  */
 @Data
 @ToString
-public class AttachmentFolderDTO  {
+public class AttachmentFolderAndInfoDTO {
 
     /**
      * id
@@ -23,9 +20,14 @@ public class AttachmentFolderDTO  {
     private Integer id;
 
     /**
-     * 文件夹名
+     * 文件/文件夹名
      */
-    private String folderName;
+    private String name;
+
+    /**
+     * 文件后缀
+     */
+    private String suffix;
 
     /**
      * 创建人id
@@ -36,6 +38,16 @@ public class AttachmentFolderDTO  {
      * 创建人昵称
      */
     private String createUserNickname;
+
+    /**
+     * 附件大小
+     */
+    private long attachmentSize;
+
+    /**
+     * 格式化之后的大小
+     */
+    private String size;
 
     /**
      * 排序号
@@ -52,8 +64,10 @@ public class AttachmentFolderDTO  {
      */
     private Integer parentId;
 
+
     /**
-     * 子级
+     * 是否是文件夹
      */
-    private List<AttachmentFolderDTO> children;
+    private boolean isFolder;
+
 }

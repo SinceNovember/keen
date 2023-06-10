@@ -45,20 +45,19 @@ public final class PageHelperUtils {
         if (orderParams.length > 0) {
             if (orderParams.length == 1) {
                 pageQuery.setOrderBy(orderParams[0]);
-                pageQuery.setOrderType(DEFAULT_ORDER_TYPE);
             } else {
                 pageQuery.setOrderBy(orderParams[0]);
                 pageQuery.setOrderType(orderParams[1]);
             }
-        }
-        if (StringUtils.isBlank(pageQuery.getOrderBy())
-            || Objects.equals(pageQuery.getOrderType(), FONT_DEFAULT_ORDER_BY)) {
+        } else {
             pageQuery.setOrderBy(DEFAULT_ORDER_BY);
             pageQuery.setOrderType(DEFAULT_ORDER_TYPE);
         }
+
         PageHelper.startPage(pageQuery.getPageNum(), pageQuery.getPageSize(),
-            StringUtils.toUnderlineCase(pageQuery.getOrderBy()) + " "
-                + pageQuery.getOrderType());
+            orderParams.length == 1 ? pageQuery.getOrderBy() :
+                StringUtils.toUnderlineCase(pageQuery.getOrderBy()) + " "
+                    + pageQuery.getOrderType());
     }
 
     /**

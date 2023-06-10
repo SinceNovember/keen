@@ -7,8 +7,6 @@ import com.aliyun.oss.model.OSSObject;
 import com.aliyun.oss.model.OSSObjectSummary;
 import com.aliyun.oss.model.ObjectListing;
 import com.simple.keen.attachment.model.entity.AttachmentInfo;
-import com.simple.keen.attachment.model.vo.AttachmentUploadVO;
-import com.simple.keen.attachment.service.IAttachmentService;
 import com.simple.keen.common.exception.KeenException;
 import com.simple.keen.common.utils.StringUtils;
 import java.io.BufferedInputStream;
@@ -68,19 +66,19 @@ public class AliyunOSSAttachmentServiceImpl extends AbstractAttachmentServiceImp
         }
     }
 
-    @Override
-    public AttachmentUploadVO uploadAttachment(MultipartFile file) {
-        // 文件新路径
-        String filePath = getFilePath(file.getOriginalFilename());
-        // 上传到阿里云
-        try {
-            ossClient.putObject(bucketName, filePath,
-                new ByteArrayInputStream(file.getBytes()));
-        } catch (Exception e) {
-            throw new KeenException(e.getMessage());
-        }
-        return null;
-    }
+//    @Override
+//    public AttachmentUploadVO uploadAttachment(MultipartFile file) {
+//        // 文件新路径
+//        String filePath = getFilePath(file.getOriginalFilename());
+//        // 上传到阿里云
+//        try {
+//            ossClient.putObject(bucketName, filePath,
+//                new ByteArrayInputStream(file.getBytes()));
+//        } catch (Exception e) {
+//            throw new KeenException(e.getMessage());
+//        }
+//        return null;
+//    }
 
     @Override
     protected String getImageUrl(MultipartFile file) {
@@ -88,8 +86,12 @@ public class AliyunOSSAttachmentServiceImpl extends AbstractAttachmentServiceImp
     }
 
     @Override
-    protected AttachmentInfo saveAttachFile(MultipartFile file) {
-        return null;
+    protected void addAttachmentStorage(MultipartFile file, AttachmentInfo attachmentInfo) {
+    }
+
+    @Override
+    protected void deleteAttachmentStorage(List<Integer> attachmentInfoIds) {
+
     }
 
     @Override

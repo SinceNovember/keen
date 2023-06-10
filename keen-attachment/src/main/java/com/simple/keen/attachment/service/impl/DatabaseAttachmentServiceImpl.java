@@ -1,26 +1,20 @@
 package com.simple.keen.attachment.service.impl;
 
-import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.codec.Base64Encoder;
-import cn.hutool.core.io.FileUtil;
 import com.simple.keen.attachment.model.dto.AttachmentInfoDTO;
 import com.simple.keen.attachment.model.entity.AttachmentInfo;
-import com.simple.keen.attachment.model.vo.AttachmentUploadVO;
-import com.simple.keen.attachment.service.IAttachmentInfoService;
-import com.simple.keen.attachment.service.IAttachmentService;
 import com.simple.keen.attachment.service.IAttachmentStorageService;
 import com.simple.keen.common.consts.MsgConsts;
 import com.simple.keen.common.exception.KeenException;
 import com.simple.keen.common.utils.HttpContextUtils;
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.util.List;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -35,13 +29,18 @@ import org.springframework.web.multipart.MultipartFile;
 @ConditionalOnMissingBean(AliyunOSSAttachmentServiceImpl.class)
 public class DatabaseAttachmentServiceImpl extends AbstractAttachmentServiceImpl {
 
-    private final IAttachmentInfoService attachmentInfoService;
+    private final IAttachmentStorageService attachmentStorageService;
 
     private static final String BASE64_IMAGE_PREFIX = "data:image/png;base64,";
 
     @Override
-    public AttachmentInfo saveAttachFile(MultipartFile file) {
-        return attachmentInfoService.saveAttachmentFile(file);
+    public void addAttachmentStorage(MultipartFile file, AttachmentInfo attachmentInfo) {
+        attachmentStorageService.addAttachmentStorage(file, attachmentInfo.getId());
+    }
+
+    @Override
+    protected void deleteAttachmentStorage(List<Integer> attachmentInfoIds) {
+        attachmentStorageService.deleteAttachmentStorageByAttachmentIds(attachmentInfoIds);
     }
 
     @Override
@@ -55,9 +54,9 @@ public class DatabaseAttachmentServiceImpl extends AbstractAttachmentServiceImpl
 
     @Override
     public void downloadAttachment(Integer attachmentId) {
-        AttachmentInfoDTO attachmentDTO = attachmentInfoService.getAttachmentById(attachmentId);
+        AttachmentInfoDTO attachmentDTO = attachmentInfoService.getAttachmentInfoAndStorageById(attachmentId);
         HttpServletResponse response = HttpContextUtils.getHttpServletResponse();
-        response.setContentType(attachmentDTO.getContentType());
+        response.setHeader("Content-Type", "application/octet-stream");
         response.setHeader("Content-Disposition",
             "attachment;filename=" + attachmentDTO.getAttachmentName());
         response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
@@ -68,21 +67,6 @@ public class DatabaseAttachmentServiceImpl extends AbstractAttachmentServiceImpl
         } catch (IOException e) {
             throw new KeenException(MsgConsts.FILE_DOWNLOAD_ERROR_MSG);
         }
-
-//        ByteArrayResource resource = new ByteArrayResource(attachmentDTO.getStorageData());
-//        return ResponseEntity.ok()
-//            .contentLength(attachmentDTO.getStorageData().length)
-//            .contentType(MediaType.APPLICATION_OCTET_STREAM)
-//            .headers(headers)
-//            .body(resource);
-//        System.out.println(header);
-//        try {
-//            ServletOutputStream outputStream = res.getOutputStream();
-//            outputStream.write(attachmentDTO.getStorageData());
-//            IoUtil.close(outputStream);
-//        } catch (IOException e) {
-//            throw new KeenException(MsgConsts.FILE_DOWNLOAD_ERROR_MSG);
-//        }
     }
 
 }

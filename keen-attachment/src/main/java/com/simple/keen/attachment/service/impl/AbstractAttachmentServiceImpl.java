@@ -2,19 +2,16 @@ package com.simple.keen.attachment.service.impl;
 
 import com.simple.keen.attachment.model.entity.AttachmentInfo;
 import com.simple.keen.attachment.model.vo.AttachmentUploadVO;
+import com.simple.keen.attachment.service.IAttachmentInfoService;
 import com.simple.keen.attachment.service.IAttachmentService;
-import com.simple.keen.common.consts.CodeItemConsts;
 import com.simple.keen.common.consts.Consts;
 import com.simple.keen.common.consts.MsgConsts;
 import com.simple.keen.common.exception.KeenException;
 import com.simple.keen.common.utils.StringUtils;
-import com.simple.keen.metadata.service.ICodeItemService;
-import com.simple.keen.metadata.service.ICodeMainService;
 import java.io.IOException;
-import java.util.Optional;
+import java.util.List;
 import java.util.stream.Stream;
 import javax.annotation.Resource;
-import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -28,10 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 public abstract class AbstractAttachmentServiceImpl implements IAttachmentService {
 
     @Resource
-    private ICodeMainService codeMainService;
-
-    @Resource
-    private ICodeItemService codeItemService;
+    protected IAttachmentInfoService attachmentInfoService;
 
     /**
      * 图像类型
@@ -42,39 +36,29 @@ public abstract class AbstractAttachmentServiceImpl implements IAttachmentServic
     @Transactional(rollbackFor = Exception.class)
     public String uploadImage(MultipartFile file) {
         checkImgSuffix(file);
-        uploadAttachment(file);
+        uploadAttachment(file, null);
         return getImageUrl(file);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public AttachmentUploadVO uploadAttachment(MultipartFile file) {
+    public AttachmentUploadVO uploadAttachment(MultipartFile file, Integer folderId) {
         checkFileSize(file);
-        AttachmentInfo attachmentInfo = saveAttachFile(file);
-        String suffixImageUrl = getAttachmentImageBySuffix(
-            attachmentInfo.getAttachmentSuffix());
+        AttachmentInfo attachmentInfo = attachmentInfoService.addAttachmentInfoByFile(file,
+            folderId);
+        addAttachmentStorage(file, attachmentInfo);
         return AttachmentUploadVO.builder()
             .id(attachmentInfo.getId())
-            .url(suffixImageUrl)
             .build();
     }
 
-    private String getAttachmentImageBySuffix(String suffix) {
-        String itemValue = codeItemService.getCodeItemValueByCodeNameAndItemText(
-            CodeItemConsts.ATTACHMENT_SUFFIX_TYPE_IMAGE_RELATE, suffix);
-        if (StringUtils.isNotBlank(itemValue)) {
-            String imageItemValue =
-                codeItemService.getCodeItemValueByCodeNameAndItemText(
-                    CodeItemConsts.ATTACHMENT_TYPE_IMAGE, itemValue);
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteAttachment(List<Integer> ids) {
+        //先删除附件信息库数据
+        attachmentInfoService.removeByIds(ids);
+        deleteAttachmentStorage(ids);
 
-            if (StringUtils.isNotBlank(imageItemValue)) {
-                return imageItemValue;
-            }
-        }
-        //根据代码项找不到对应附件的图片 返回未知图片
-        return codeItemService.getCodeItemValueByCodeNameAndItemText(
-            CodeItemConsts.ATTACHMENT_TYPE_IMAGE,
-            CodeItemConsts.ATTACHMENT_UNKNOWN_TYPE_IMAGE);
     }
 
     protected void checkImgSuffix(MultipartFile file) {
@@ -97,5 +81,7 @@ public abstract class AbstractAttachmentServiceImpl implements IAttachmentServic
 
     protected abstract String getImageUrl(MultipartFile file);
 
-    protected abstract AttachmentInfo saveAttachFile(MultipartFile file);
+    protected abstract void addAttachmentStorage(MultipartFile file, AttachmentInfo attachmentInfo);
+
+    protected abstract void deleteAttachmentStorage(List<Integer> attachmentInfoIds);
 }

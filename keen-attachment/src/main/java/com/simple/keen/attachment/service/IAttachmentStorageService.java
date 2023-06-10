@@ -2,6 +2,7 @@ package com.simple.keen.attachment.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.simple.keen.attachment.model.entity.AttachmentStorage;
+import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface IAttachmentStorageService extends IService<AttachmentStorage> {
@@ -13,7 +14,7 @@ public interface IAttachmentStorageService extends IService<AttachmentStorage> {
      * @param attachmentId 附件标识
      * @return
      */
-    void save(MultipartFile file, Integer attachmentId);
+    void addAttachmentStorage(MultipartFile file, Integer attachmentId);
 
     /**
      * 根据附件id获取附件存储信息
@@ -47,5 +48,18 @@ public interface IAttachmentStorageService extends IService<AttachmentStorage> {
      */
     String getStorageDataBase64ByAttachmentId(Integer attachmentId);
 
+    /**
+     * 根据附件信息id删除附件存储信息
+     *
+     * @param attachmentId 附件信息id
+     */
+    void deleteAttachmentStorageByAttachmentId(Integer attachmentId);
+
+    /**
+     * 根据附件信息id删除附件存储信息
+     *
+     * @param attachmentIds 附件信息ids
+     */
+    void deleteAttachmentStorageByAttachmentIds(List<Integer> attachmentIds);
 
 }

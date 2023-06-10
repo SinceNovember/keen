@@ -1,8 +1,9 @@
 package com.simple.keen.attachment.controller;
 
-import com.simple.keen.attachment.model.query.AttachmentFolderQuery;
+import com.simple.keen.attachment.model.query.AttachmentFolderAndInfoQuery;
 import com.simple.keen.attachment.service.IAttachmentFolderService;
 import com.simple.keen.common.base.Response;
+import javax.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,14 +24,15 @@ public class AttachmentFolderController {
 
     private final IAttachmentFolderService attachmentFolderService;
 
-    @GetMapping
-    public Response pageFolder(AttachmentFolderQuery query) {
-        return Response.ok(attachmentFolderService.pageAttachmentFolder(query));
+    @PostMapping
+    public Response addOrUpdateAttachmentFolder(@RequestBody AttachmentFolderAndInfoQuery query) {
+        attachmentFolderService.addOrUpdateAttachmentFolder(query);
+        return Response.ok();
     }
 
-    @PostMapping
-    public Response addOrUpdateFolder(@RequestBody AttachmentFolderQuery query) {
-        attachmentFolderService.addOrUpdateAttachmentFolder(query);
+    @PostMapping("delete")
+    public Response deleteAttachmentFolder(@NotNull @RequestBody AttachmentFolderAndInfoQuery query) {
+        attachmentFolderService.recursiveDeleteFolderAndAttachment(query.getIds());
         return Response.ok();
     }
 

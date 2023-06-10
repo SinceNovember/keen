@@ -56,6 +56,13 @@ public class AttachmentInfo {
      */
     @TableField(value = "attachment_suffix")
     private String attachmentSuffix;
+
+    /**
+     * 附件大小
+     */
+    @TableField(value = "attachment_size")
+    private long attachmentSize;
+
     /**
      * 创建者id
      */

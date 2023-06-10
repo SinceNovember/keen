@@ -1,11 +1,12 @@
 package com.simple.keen.attachment.mapping;
 
-import com.simple.keen.attachment.model.dto.AttachmentFolderDTO;
+import com.simple.keen.attachment.model.dto.AttachmentFolderAndInfoDTO;
 import com.simple.keen.attachment.model.entity.AttachmentFolder;
-import com.simple.keen.attachment.model.query.AttachmentFolderQuery;
-import com.simple.keen.attachment.model.vo.AttachmentFolderVO;
+import com.simple.keen.attachment.model.query.AttachmentFolderAndInfoQuery;
+import com.simple.keen.attachment.model.vo.AttachmentFolderAndInfoVO;
 import java.util.List;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
@@ -13,14 +14,16 @@ public interface AttachmentFolderMapping {
 
     AttachmentFolderMapping INSTANCE = Mappers.getMapper(AttachmentFolderMapping.class);
 
-    List<AttachmentFolderVO> toAttachmentFolderVOList(List<AttachmentFolderDTO> attachmentFolderDTOS);
+    List<AttachmentFolderAndInfoVO> toAttachmentFolderVOList(List<AttachmentFolderAndInfoDTO> attachmentFolderDTOS);
 
-    AttachmentFolderVO toAttachmentFolderVO(AttachmentFolderDTO attachmentFolderDTO);
+    AttachmentFolderAndInfoVO toAttachmentFolderVO(AttachmentFolderAndInfoDTO attachmentFolderDTO);
 
-    AttachmentFolderVO toAttachmentFolderVO(AttachmentFolder attachmentFolder);
+    AttachmentFolderAndInfoVO toAttachmentFolderVO(AttachmentFolder attachmentFolder);
 
-    AttachmentFolderDTO toAttachmentFolderDTO(AttachmentFolderQuery attachmentFolderQuery);
+    AttachmentFolderAndInfoDTO toAttachmentFolderDTO(
+        AttachmentFolderAndInfoQuery attachmentFolderQuery);
 
-    AttachmentFolder toAttachmentFolder(AttachmentFolderDTO attachmentFolderDTO);
+    @Mapping(source = "name", target = "folderName")
+    AttachmentFolder toAttachmentFolder(AttachmentFolderAndInfoDTO attachmentFolderDTO);
 
 }

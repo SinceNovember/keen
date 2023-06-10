@@ -1,9 +1,7 @@
 package com.simple.keen.attachment.model.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.simple.keen.attachment.model.dto.AttachmentFolderDTO;
 import java.time.LocalDateTime;
-import java.util.List;
 import lombok.Data;
 import lombok.ToString;
 
@@ -15,7 +13,7 @@ import lombok.ToString;
  */
 @Data
 @ToString
-public class AttachmentFolderVO {
+public class AttachmentFolderAndInfoVO {
 
     /**
      * id
@@ -23,14 +21,26 @@ public class AttachmentFolderVO {
     private Integer id;
 
     /**
-     * 文件夹名
+     * 文件/文件夹名
      */
-    private String folderName;
+    private String name;
+
+    /**
+     * 文件后缀
+     */
+    private String suffix;
+
+    /**
+     * 附件大小
+     */
+    private String size;
 
     /**
      * 创建人昵称
      */
     private String createUserNickname;
+
+
 
     /**
      * 排序号
@@ -44,7 +54,13 @@ public class AttachmentFolderVO {
     private LocalDateTime createTime;
 
     /**
-     * 子级
+     * 是否是文件夹
      */
-    private List<AttachmentFolderVO> children;
+    private boolean isFolder;
+
+    /**
+     * 可编辑
+     */
+    private boolean editable;
+
 }

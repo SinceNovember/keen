@@ -2,6 +2,7 @@ package com.simple.keen;
 
 import com.simple.keen.server.WebSocketServer;
 import javax.annotation.Resource;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -15,13 +16,13 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 @SpringBootApplication
 @EnableScheduling
+@RequiredArgsConstructor
 public class KeenApplication implements ApplicationRunner {
 
     @Value("${server.message-port:9999}")
     private int port;
 
-    @Resource
-    private WebSocketServer server;
+    private final WebSocketServer server;
 
     public static void main(String[] args) {
         new SpringApplicationBuilder(KeenApplication.class)

@@ -1,7 +1,6 @@
 package com.simple.keen.attachment.model.query;
 
 import com.simple.keen.common.base.query.PageQuery;
-import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.ToString;
 
@@ -13,12 +12,17 @@ import lombok.ToString;
  */
 @Data
 @ToString
-public class AttachmentFolderQuery extends PageQuery {
+public class AttachmentFolderAndInfoQuery extends PageQuery {
+
+    /**
+     * id
+     */
+    private Integer id;
 
     /**
      * 文件夹名
      */
-    private String folderName;
+    private String name;
 
     /**
      * 排序号
@@ -28,5 +32,6 @@ public class AttachmentFolderQuery extends PageQuery {
     /**
      * 父目录Id
      */
-    private Integer pid;
+    private Integer parentId;
+
 }

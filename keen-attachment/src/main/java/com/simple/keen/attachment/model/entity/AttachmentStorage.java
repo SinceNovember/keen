@@ -37,7 +37,7 @@ public class AttachmentStorage {
      * 文件名
      */
     @TableField(value = "storage_size")
-    private Integer storageSize;
+    private long storageSize;
 
     /**
      * 附件标识

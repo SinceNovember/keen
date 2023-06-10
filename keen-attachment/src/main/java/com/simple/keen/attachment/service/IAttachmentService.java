@@ -1,6 +1,8 @@
 package com.simple.keen.attachment.service;
 
 import com.simple.keen.attachment.model.vo.AttachmentUploadVO;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface IAttachmentService {
@@ -16,10 +18,11 @@ public interface IAttachmentService {
     /**
      * 上传附件
      *
-     * @param file 文件
+     * @param file     文件
+     * @param folderId 文件夹id
      * @return
      */
-    AttachmentUploadVO uploadAttachment(MultipartFile file);
+    AttachmentUploadVO uploadAttachment(MultipartFile file, Integer folderId);
 
     /**
      * 根据附件id下载附件
@@ -29,6 +32,12 @@ public interface IAttachmentService {
      */
     void downloadAttachment(Integer attachmentId);
 
-
+    /**
+     * 删除附件
+     *
+     * @param ids id列表
+     * @return
+     */
+    void deleteAttachment(List<Integer> ids);
 
 }
