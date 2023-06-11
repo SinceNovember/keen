@@ -5,11 +5,11 @@
 </p>
 
 
-> keen是一个包含用户之间聊天功能的前后端分离的RABC权限后台管理系统。
+> keen是一个包含用户之间聊天、附件管理等功能的前后端分离的RABC权限后台管理系统。
 
 # 简介
 
-**keen** 是一个通过`Springboot` `Mybatis` `Vue` `Netty` `Sa-Token` 等主流技术开发的一个前后端分离的RABC权限后台管理系统，开箱即用，可迅速搭建后台`权限认证`、`权限控制`、`按钮控制`、`动态路由`、`用户聊天`等功能。
+**keen** 是一个通过`Springboot` `Mybatis` `Vue` `Netty` `Sa-Token` 等主流技术开发的一个前后端分离的RABC权限后台管理系统，开箱即用，可迅速搭建后台`权限认证`、`权限控制`、`按钮控制`、`动态路由`、`用户聊天`、`附件管理`等功能。
 
 
 # 功能
@@ -30,6 +30,7 @@
 - **消息管理**
   - **聊天管理**
   - **通知管理**
+- **附件管理**
 
 
 # 技术
@@ -69,17 +70,19 @@
 
 # 界面
 
-| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/0-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/0-2.png) |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/1-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/1-2.png) |
-| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/2-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/2-2.png) |
-| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/3-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/3-2.png) |
-| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/4-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/4-2.png) |
-| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/5-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/5-2.png) |
-| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/6-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/6-2.png) |
-| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/7-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/7-2.png) |
-| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/8-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/8-2.png) |
-| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/9-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/9-2.png) |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/0-1.png)  | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/0-2.png)  |
+|-------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/1-1.png)  | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/1-2.png)  |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/2-1.png)  | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/2-2.png)  |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/3-1.png)  | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/3-2.png)  |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/4-1.png)  | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/4-2.png)  |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/5-1.png)  | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/5-2.png)  |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/6-1.png)  | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/6-2.png)  |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/14-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/6-2.png)  |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/15-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/14-2.png) |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/7-1.png)  | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/15-2.png) |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/8-1.png)  | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/8-2.png)  |
+| ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/9-1.png)  | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/9-2.png)  |
 | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/10-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/10-2.png) |
 | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/11-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/11-2.png) |
 | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/12-1.png) | ![1640016007(1)](https://github.com/SinceNovember/media/blob/master/images/keen/12-2.png) |
