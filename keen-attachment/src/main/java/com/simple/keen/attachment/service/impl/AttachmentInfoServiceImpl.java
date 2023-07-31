@@ -42,17 +42,16 @@ public class AttachmentInfoServiceImpl extends
 
     private final IAttachmentStorageService attachmentStorageService;
 
-    private static final String DEFAULT_ORDER_BY = " isFolder desc, order_num desc,create_time desc";
+    private static final String DEFAULT_ORDER_BY = " isFolder desc, order_num desc, create_time desc";
 
     @Override
     public PageSerializable<AttachmentFolderAndInfoVO> pageAttachmentFolderAndInfo(
         AttachmentFolderAndInfoQuery folderQuery) {
         PageHelperUtils.startPage(folderQuery, DEFAULT_ORDER_BY);
-        List<AttachmentFolderAndInfoDTO> attachmentFolderDTOS = baseMapper.selectAttachmentFolderAndInfoList(
+        List<AttachmentFolderAndInfoDTO> attachmentFolderDTOS = baseMapper.selectAttachmentList(
             folderQuery);
-        attachmentFolderDTOS.forEach(item -> {
-            item.setSize(formatAttachmentSize(item.getAttachmentSize()));
-        });
+        attachmentFolderDTOS.forEach(
+            item -> item.setSize(formatAttachmentSize(item.getAttachmentSize())));
 
         return PageHelperUtils.convertPageDto2Vo(attachmentFolderDTOS,
             AttachmentFolderMapping.INSTANCE::toAttachmentFolderVOList);

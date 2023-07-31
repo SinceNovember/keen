@@ -37,7 +37,7 @@ public class WebSocketServer {
             ChannelFuture f = b.bind(port).sync();
             f.addListener(future -> {
                 if (future.isSuccess()) {
-                    log.info("Netty server started in port(s): {} success!", port);
+                    log.info("Netty server started on port(s): {} success!", port);
                 }
             });
             // 等待服务器 socket 关闭 。

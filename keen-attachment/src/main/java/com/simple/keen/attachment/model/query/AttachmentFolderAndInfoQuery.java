@@ -34,4 +34,14 @@ public class AttachmentFolderAndInfoQuery extends PageQuery {
      */
     private Integer parentId;
 
+    /**
+     * 文件的文件夹id
+     */
+    private Integer folderId;
+
+    /**
+     * 是否包含文件
+     */
+    private boolean includeFile;
+
 }
