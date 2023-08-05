@@ -26,6 +26,12 @@ public interface ChatMessageMapper extends BaseMapper<ChatMessage> {
         + "<if test=\"fromName != null and fromName != ''\">"
         + "and fromName like concat('%', #{fromName}, '%') "
         + "</if>"
+        + "<if test=\"toName != null and toName != ''\">"
+        + "and toName like concat('%', #{toName}, '%') "
+        + "</if>"
+        + "<if test=\"content != null and content != ''\">"
+        + "and content like concat('%', #{content}, '%') "
+        + "</if>"
         + "</where>"
         + "</script>")
     List<ChatMessageDTO> selectChatMessageList(ChatMessagePageQuery chatMessagePageQuery);

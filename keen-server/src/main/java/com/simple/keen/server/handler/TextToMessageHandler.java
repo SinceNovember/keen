@@ -1,6 +1,7 @@
 package com.simple.keen.server.handler;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.parser.ParserConfig;
 import com.simple.keen.server.message.Message;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;

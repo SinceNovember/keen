@@ -18,6 +18,9 @@ public interface NotificationMessageMapper extends BaseMapper<NotificationMessag
         + "<if test=\"title != null and title != ''\">"
         + "and title like concat('%', #{title}, '%') "
         + "</if>"
+        + "<if test=\"content != null and content != ''\">"
+        + "and content like concat('%', #{content}, '%') "
+        + "</if>"
         + "</where>"
         + "</script>")
     List<NotificationMessageDTO> selectNotificationMessageList(NotificationMessageQuery query);

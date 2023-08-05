@@ -21,6 +21,12 @@ public interface CodeItemMapper extends BaseMapper<CodeItem> {
         + "<if test=\"itemText != null and itemText != ''\">"
         + "and item_text like concat('%', #{itemText}, '%') "
         + "</if>"
+        + "<if test=\"itemValue != null and itemValue != ''\">"
+        + "and item_value like concat('%', #{itemValue}, '%') "
+        + "</if>"
+        + "<if test=\"description != null and description != ''\">"
+        + "and description like concat('%', #{description}, '%') "
+        + "</if>"
         + "</where>"
         + "</script>")
     List<CodeItemDTO> selectCodeItemList(CodeItemQuery systemConfigQuery);

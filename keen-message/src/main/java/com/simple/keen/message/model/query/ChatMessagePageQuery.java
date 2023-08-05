@@ -18,4 +18,6 @@ public class ChatMessagePageQuery extends PageQuery {
 
     private String toName;
 
+    private String content;
+
 }

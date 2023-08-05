@@ -27,6 +27,15 @@ public interface UserMapper extends BaseMapper<User> {
         + "<if test=\"nickname != null and nickname != ''\">"
         + "and nickname like concat('%', #{nickname}, '%') "
         + "</if>"
+        + "<if test=\"username != null and username != ''\">"
+        + "and username like concat('%', #{username}, '%') "
+        + "</if>"
+        + "<if test=\"deptId != null\">"
+        + "and dept_id = #{deptId} "
+        + "</if>"
+        + "<if test=\"status != null\">"
+        + "and status = #{status}"
+        + "</if>"
         + "order by order_num desc"
         + "</script>")
     List<UserDTO> selectUserList(UserQuery userQuery);

@@ -91,7 +91,6 @@ public class AliyunOSSAttachmentServiceImpl extends AbstractAttachmentServiceImp
 
     @Override
     protected void deleteAttachmentStorage(List<Integer> attachmentInfoIds) {
-
     }
 
     @Override

@@ -26,11 +26,16 @@ public final class PageHelperUtils {
 
     private static final int DEFAULT_PAGE_SIZE = 10;
 
-    private static final String DEFAULT_ORDER_BY = "order_num";
+    private static final String DEFAULT_ORDER_BY = "create_time";
 
-    private static final String DEFAULT_ORDER_TYPE = "desc";
+    private static final String ORDER_TYPE_DESC = "desc";
 
-    private static final String FONT_DEFAULT_ORDER_BY = "normal";
+    private static final String FONT_ORDER_TYPE_DESC = "descending";
+
+    private static final String FONT_ORDER_TYPE_ASC = "ascending";
+
+    private static final String FONT_ORDER_TYPE_SUFFIX = "ending";
+
 
     /**
      * 分页包装
@@ -49,15 +54,28 @@ public final class PageHelperUtils {
                 pageQuery.setOrderBy(orderParams[0]);
                 pageQuery.setOrderType(orderParams[1]);
             }
-        } else {
-            pageQuery.setOrderBy(DEFAULT_ORDER_BY);
-            pageQuery.setOrderType(DEFAULT_ORDER_TYPE);
         }
+        if (StringUtils.isBlank(pageQuery.getOrderBy()) ||
+            StringUtils.isBlank(pageQuery.getOrderType()) ||
+            Objects.equals(pageQuery.getOrderType(), "null")) {
+            pageQuery.setOrderBy(DEFAULT_ORDER_BY);
+            pageQuery.setOrderType(ORDER_TYPE_DESC);
+        }
+        //后置处理查询
+        postProcessPageQuery(pageQuery);
 
         PageHelper.startPage(pageQuery.getPageNum(), pageQuery.getPageSize(),
             orderParams.length == 1 ? pageQuery.getOrderBy() :
                 StringUtils.toUnderlineCase(pageQuery.getOrderBy()) + " "
                     + pageQuery.getOrderType());
+    }
+
+    private static void postProcessPageQuery(PageQuery pageQuery) {
+        if (StringUtils.equalsAny(pageQuery.getOrderType(), FONT_ORDER_TYPE_DESC,
+            FONT_ORDER_TYPE_ASC)) {
+            pageQuery.setOrderType(
+                StringUtils.subBefore(pageQuery.getOrderType(), FONT_ORDER_TYPE_SUFFIX, false));
+        }
     }
 
     /**

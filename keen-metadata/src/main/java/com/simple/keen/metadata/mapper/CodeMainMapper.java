@@ -18,6 +18,9 @@ public interface CodeMainMapper extends BaseMapper<CodeMain> {
         + "<if test=\"codeName != null and codeName != ''\">"
         + "and code_name like concat('%', #{codeName}, '%') "
         + "</if>"
+        + "<if test=\"description != null and description != ''\">"
+        + "and description like concat('%', #{description}, '%') "
+        + "</if>"
         + "</where>"
         + "</script>")
     List<CodeMainDTO> selectCodeMainList(CodeMainQuery systemConfigQuery);

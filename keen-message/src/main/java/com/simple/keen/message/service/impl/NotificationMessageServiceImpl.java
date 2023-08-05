@@ -33,7 +33,7 @@ public class NotificationMessageServiceImpl extends
     @Override
     public PageSerializable<NotificationMessageVO> pageNotificationMessage(
         NotificationMessageQuery notificationMessageQuery) {
-        PageHelperUtils.startPage(notificationMessageQuery, Consts.CREATE_TIME_FIELD);
+        PageHelperUtils.startPage(notificationMessageQuery);
         return PageHelperUtils.convertPageDto2Vo(
             baseMapper.selectNotificationMessageList(notificationMessageQuery),
             NotificationMessageMapping.INSTANCE::toNotificationMessageVOList);

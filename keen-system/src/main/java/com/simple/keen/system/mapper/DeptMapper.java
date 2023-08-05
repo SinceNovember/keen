@@ -22,6 +22,9 @@ public interface DeptMapper extends BaseMapper<Dept> {
         + "<if test=\"deptName != null and deptName != ''\">"
         + "and dept_name like concat('%', #{deptName}, '%') "
         + "</if>"
+        + "<if test=\"deptShortName != null and deptShortName != ''\">"
+        + "and dept_short_name like concat('%', #{deptShortName}, '%') "
+        + "</if>"
         + "</script>")
     @Results(id = "BaseResultMap", value = {
         @Result(column = "id", property = "id"),

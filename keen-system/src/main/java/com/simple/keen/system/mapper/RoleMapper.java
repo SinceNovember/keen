@@ -18,6 +18,12 @@ public interface RoleMapper extends BaseMapper<Role> {
         + "<if test=\"roleName != null and roleName != ''\">"
         + "and role_name like concat('%', #{roleName}, '%') "
         + "</if>"
+        + "<if test=\"roleTag != null and roleTag != ''\">"
+        + "and role_tag like concat('%', #{roleTag}, '%') "
+        + "</if>"
+        + "<if test=\"description != null and description != ''\">"
+        + "and description like concat('%', #{description}, '%') "
+        + "</if>"
         + "</script>")
     List<RoleDTO> selectRoleList(RoleQuery roleQuery);
 

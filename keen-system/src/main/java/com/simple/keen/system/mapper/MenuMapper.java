@@ -33,6 +33,12 @@ public interface MenuMapper extends BaseMapper<Menu> {
         + "<if test = \" title != null and title !='' \">"
         + " and title like concat('%', #{title}, '%')"
         + "</if>"
+        + "<if test = \" component != null and component !='' \">"
+        + " and component like concat('%', #{component}, '%')"
+        + "</if>"
+        + "<if test = \" path != null and path !='' \">"
+        + " and path like concat('%', #{path}, '%')"
+        + "</if>"
         + "</script>")
     @Results(id = "BaseResultMap", value = {
         @Result(column = "id", property = "id"),

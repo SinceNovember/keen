@@ -18,6 +18,12 @@ public interface SystemConfigMapper extends BaseMapper<SystemConfig> {
         + "<if test=\"configName != null and configName != ''\">"
         + "and config_name like concat('%', #{configName}, '%') "
         + "</if>"
+        + "<if test=\"configValue != null and configValue != ''\">"
+        + "and config_value like concat('%', #{configValue}, '%') "
+        + "</if>"
+        + "<if test=\"description != null and description != ''\">"
+        + "and description like concat('%', #{description}, '%') "
+        + "</if>"
         + "</where>"
         + "</script>")
     List<SystemConfigDTO> selectSystemConfigList(SystemConfigQuery systemConfigQuery);
