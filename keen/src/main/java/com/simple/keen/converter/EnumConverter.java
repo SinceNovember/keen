@@ -1,5 +1,6 @@
 package com.simple.keen.converter;
 
+import com.simple.keen.attachment.model.enums.AttachmentUploadPlatformType;
 import com.simple.keen.common.base.enums.ValueEnum;
 import com.simple.keen.message.model.enums.ChatMessageContentType;
 import com.simple.keen.message.model.enums.ChatMessageReadType;
@@ -27,7 +28,8 @@ import org.apache.ibatis.type.MappedTypes;
     MessageType.class,
     ChatMessageContentType.class,
     ChatMessageReadType.class,
-    NotificationMessageType.class})
+    NotificationMessageType.class,
+    AttachmentUploadPlatformType.class})
 public class EnumConverter<E extends Enum<E> & ValueEnum> extends AbstractEnumConverter<E> {
 
     public EnumConverter(Class<E> type) {

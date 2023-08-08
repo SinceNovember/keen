@@ -1,6 +1,8 @@
 package com.simple.keen.attachment.model.vo;
 
+import com.simple.keen.attachment.model.enums.AttachmentUploadPlatformType;
 import java.time.LocalDateTime;
+import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
@@ -11,32 +13,12 @@ import lombok.ToString;
  * @date 2023/5/10
  */
 @Data
+@Builder
 @ToString
 public class AttachmentStorageVO {
 
-    /**
-     * id
-     */
-    private Integer id;
+    private String uploadUrl;
 
-    /**
-     * 文件名
-     */
-    private String storageData;
-
-    /**
-     * 文件名
-     */
-    private String storageSize;
-
-    /**
-     * 附件标识
-     */
-    private Integer attachmentId;
-
-    /**
-     * 创建时间
-     */
-    private LocalDateTime createTime;
+    private AttachmentUploadPlatformType uploadPlatformType;
 
 }

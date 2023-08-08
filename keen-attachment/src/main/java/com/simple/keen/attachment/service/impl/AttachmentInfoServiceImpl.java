@@ -11,9 +11,11 @@ import com.simple.keen.attachment.model.dto.AttachmentFolderAndInfoDTO;
 import com.simple.keen.attachment.model.dto.AttachmentInfoDTO;
 import com.simple.keen.attachment.model.dto.AttachmentInfoSummaryDTO;
 import com.simple.keen.attachment.model.entity.AttachmentInfo;
+import com.simple.keen.attachment.model.enums.AttachmentUploadPlatformType;
 import com.simple.keen.attachment.model.query.AttachmentFolderAndInfoQuery;
 import com.simple.keen.attachment.model.vo.AttachmentFolderAndInfoVO;
 import com.simple.keen.attachment.model.vo.AttachmentInfoSummaryVO;
+import com.simple.keen.attachment.model.vo.AttachmentStorageVO;
 import com.simple.keen.attachment.service.IAttachmentInfoService;
 import com.simple.keen.attachment.service.IAttachmentStorageService;
 import com.simple.keen.common.utils.PageHelperUtils;
@@ -22,7 +24,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -35,7 +36,6 @@ import org.springframework.web.multipart.MultipartFile;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-@ConditionalOnMissingBean(AliyunOSSAttachmentServiceImpl.class)
 public class AttachmentInfoServiceImpl extends
     ServiceImpl<AttachmentInfoMapper, AttachmentInfo> implements
     IAttachmentInfoService {
@@ -62,7 +62,10 @@ public class AttachmentInfoServiceImpl extends
         AttachmentInfo attachment = getById(id);
         AttachmentInfoDTO attachmentInfoDTO = AttachmentInfoMapping.INSTANCE.toAttachmentInfoDTO(
             attachment);
-        attachmentInfoDTO.setStorageData(attachmentStorageService.getStorageDataByAttachmentId(id));
+        if (attachmentInfoDTO.getUploadPlatformType() == AttachmentUploadPlatformType.DATABASE) {
+            attachmentInfoDTO.setStorageData(attachmentStorageService.getStorageDataById(
+                Integer.valueOf(attachment.getUploadUrl())));
+        }
         return attachmentInfoDTO;
     }
 
@@ -83,19 +86,22 @@ public class AttachmentInfoServiceImpl extends
     }
 
     @Override
-    public AttachmentInfo addAttachmentInfoByFile(MultipartFile file, Integer folderId) {
-        AttachmentInfo attachment = new AttachmentInfo();
-        attachment.setAttachmentName(file.getOriginalFilename());
-        attachment.setMineType(file.getContentType());
-        attachment.setAttachmentSource(file.getOriginalFilename());
-        attachment.setContentType(file.getContentType());
-        attachment.setAttachmentSuffix(FileUtil.getSuffix(file.getOriginalFilename()));
-        attachment.setAttachmentSize(file.getSize());
-        attachment.setCreateUserId(StpUtil.getLoginIdAsInt());
-        attachment.setCreateTime(LocalDateTime.now());
-        attachment.setFolderId(folderId);
-        save(attachment);
-        return attachment;
+    public AttachmentInfo addAttachmentInfoByFile(MultipartFile file, Integer folderId,
+        AttachmentStorageVO attachmentStorageVO) {
+        AttachmentInfo attachmentInfo = new AttachmentInfo();
+        attachmentInfo.setAttachmentName(file.getOriginalFilename());
+        attachmentInfo.setMineType(file.getContentType());
+        attachmentInfo.setAttachmentSource(file.getOriginalFilename());
+        attachmentInfo.setContentType(file.getContentType());
+        attachmentInfo.setAttachmentSuffix(FileUtil.getSuffix(file.getOriginalFilename()));
+        attachmentInfo.setAttachmentSize(file.getSize());
+        attachmentInfo.setCreateUserId(StpUtil.getLoginIdAsInt());
+        attachmentInfo.setCreateTime(LocalDateTime.now());
+        attachmentInfo.setFolderId(folderId);
+        attachmentInfo.setUploadUrl(attachmentStorageVO.getUploadUrl());
+        attachmentInfo.setUploadPlatformType(attachmentStorageVO.getUploadPlatformType());
+        save(attachmentInfo);
+        return attachmentInfo;
     }
 
     @Override

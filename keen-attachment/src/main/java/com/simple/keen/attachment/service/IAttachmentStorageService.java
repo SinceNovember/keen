@@ -11,10 +11,9 @@ public interface IAttachmentStorageService extends IService<AttachmentStorage> {
      * 保存附件文件
      *
      * @param file         文件
-     * @param attachmentId 附件标识
-     * @return
+     * @return 附件存储id
      */
-    void addAttachmentStorage(MultipartFile file, Integer attachmentId);
+    Integer addAttachmentStorage(MultipartFile file);
 
     /**
      * 根据附件id获取附件存储信息
@@ -25,12 +24,12 @@ public interface IAttachmentStorageService extends IService<AttachmentStorage> {
     AttachmentStorage getStorageByAttachmentId(Integer attachmentId);
 
     /**
-     * 根据附件id获取存储数据
+     * 根据id获取存储数据
      *
      * @param attachmentId 附件标识
      * @return
      */
-    byte[] getStorageDataByAttachmentId(Integer attachmentId);
+    byte[] getStorageDataById(Integer attachmentId);
 
     /**
      * 通过id获取base64存储数据

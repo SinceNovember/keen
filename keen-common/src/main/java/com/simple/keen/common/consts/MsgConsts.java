@@ -25,6 +25,8 @@ public interface MsgConsts {
 
     String FILE_DOWNLOAD_ERROR_MSG = "文件下载失败";
 
+    String ALIYUN_FILE_ERROR_MSG = "该文件上传的平台为阿里云，请先配置阿里云属性为文件";
+
     String PASSWORD_ERROR_MSG = "输入的密码错误";
 
     String USER_NOT_LOGIN_MSG = "用户未登录";

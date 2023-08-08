@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.simple.keen.attachment.model.enums.AttachmentUploadPlatformType;
 import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -80,5 +81,18 @@ public class AttachmentInfo {
      */
     @TableField(value = "folder_id")
     private Integer folderId;
+
+    /**
+     * 上传url（外部oss需要使用）
+     */
+    @TableField(value = "upload_url")
+    private String uploadUrl;
+
+    /**
+     * 上传平台类型
+     */
+    @TableField(value = "upload_platform_type")
+    private AttachmentUploadPlatformType uploadPlatformType;
+
 
 }

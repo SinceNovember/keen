@@ -1,5 +1,6 @@
 package com.simple.keen.attachment.model.dto;
 
+import com.simple.keen.attachment.model.enums.AttachmentUploadPlatformType;
 import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.ToString;
@@ -69,5 +70,15 @@ public class AttachmentInfoDTO {
      * 所属文件夹id
      */
     private Integer folderId;
+
+    /**
+     * 上传url
+     */
+    private String uploadUrl;
+
+    /**
+     * 上传平台类型
+     */
+    private AttachmentUploadPlatformType uploadPlatformType;
 
 }

@@ -29,14 +29,14 @@ public class AttachmentStorageServiceImpl extends
     IAttachmentStorageService {
 
     @Override
-    public void addAttachmentStorage(MultipartFile file, Integer attachmentId) {
+    public Integer addAttachmentStorage(MultipartFile file) {
         try {
             AttachmentStorage attachmentStorage = new AttachmentStorage();
-            attachmentStorage.setAttachmentId(attachmentId);
             attachmentStorage.setCreateTime(LocalDateTime.now());
             attachmentStorage.setStorageData(file.getBytes());
             attachmentStorage.setStorageSize(file.getSize());
             save(attachmentStorage);
+            return attachmentStorage.getId();
         } catch (IOException e) {
             log.error("File [{}] upload failed!", file.getOriginalFilename(), e);
             throw new KeenException(MsgConsts.FILE_UPLOAD_ERROR_MSG);
@@ -51,8 +51,8 @@ public class AttachmentStorageServiceImpl extends
     }
 
     @Override
-    public byte[] getStorageDataByAttachmentId(Integer attachmentId) {
-        return Optional.ofNullable(getStorageByAttachmentId(attachmentId))
+    public byte[] getStorageDataById(Integer id) {
+        return Optional.ofNullable(getById(id))
             .map(AttachmentStorage::getStorageData)
             .orElse(new byte[0]);
     }
@@ -83,6 +83,7 @@ public class AttachmentStorageServiceImpl extends
 
     @Override
     public void deleteAttachmentStorageByAttachmentIds(List<Integer> attachmentIds) {
+        this.removeBatchByIds(attachmentIds);
         this.remove(
             Wrappers.<AttachmentStorage>lambdaQuery()
                 .in(AttachmentStorage::getAttachmentId, attachmentIds));

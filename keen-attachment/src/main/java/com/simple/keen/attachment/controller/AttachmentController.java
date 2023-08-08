@@ -1,7 +1,6 @@
 package com.simple.keen.attachment.controller;
 
 import com.simple.keen.attachment.model.query.AttachmentFolderAndInfoQuery;
-import com.simple.keen.attachment.model.query.AttachmentQuery;
 import com.simple.keen.attachment.service.IAttachmentService;
 import com.simple.keen.common.base.Response;
 import javax.validation.constraints.NotNull;
